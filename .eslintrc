@@ -5,7 +5,21 @@
     "strict": 0,
     "semi": ["error", "never"],
     "react/jsx-filename-extension": "off",
-    "react/jsx-one-expression-per-line": "off"
+    "react/prop-types": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "object-curly-newline": "off",
+    "operator-linebreak": "off",
+    "comma-dangle": [
+      "error",
+      {
+        "arrays": "never",
+        "objects": "never",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
+    "implicit-arrow-linebreak": "off"
   },
   "settings": {
     "import/resolver": {

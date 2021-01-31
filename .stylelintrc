@@ -6,5 +6,6 @@
     "stylelint-config-standard",
     "stylelint-config-recommended",
     "stylelint-config-styled-components"
-  ]
+  ],  
+  "rules": { "value-keyword-case": null }
 }
