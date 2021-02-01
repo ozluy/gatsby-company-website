@@ -8,7 +8,7 @@ import {
   opacity
 } from 'styled-system'
 
-export const shared = css`
+const sharedAttrs = css`
   ${typography};
   ${space};
   ${color};
@@ -17,13 +17,13 @@ export const shared = css`
 `
 
 export const Div = styled.div`
-  ${shared};
+  ${sharedAttrs};
 `
 export const H1 = styled.h1`
-  ${shared};
+  ${sharedAttrs};
 `
 export const H2 = styled.h2`
-  ${shared};
+  ${sharedAttrs};
 `
 
 export const Flex = styled(Div)`
@@ -32,7 +32,7 @@ export const Flex = styled(Div)`
 `
 
 export const Small = styled.small`
-  ${shared};
+  ${sharedAttrs};
   font-size: ${({ theme }) => theme.typography.small};
 `
 
@@ -42,13 +42,13 @@ export const InlineFlex = styled(Div)`
 `
 
 export const Paragraph = styled.p`
-  ${shared};
+  ${sharedAttrs};
 `
 
 export const Button = styled.button`
-  ${shared};
+  ${sharedAttrs};
 `
 
 export const Anchor = styled.a`
-  ${shared};
+  ${sharedAttrs};
 `

@@ -5,5 +5,5 @@
         "*": ["./src/*"]
       }
     },
-    "exclude": ["node_modules", "build", ".cache", "public"]
+    "exclude": ["node_modules", ".cache", "public"]
   }

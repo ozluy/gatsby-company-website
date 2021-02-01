@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components'
-import { shared } from 'components/CoreElements'
 
-export default styled.button`
-  ${shared};
+import { Button } from 'components/CoreElements'
+
+export default styled(Button)`
   height: 50px;
   padding: 16px 20px;
   font-size: ${({ theme }) => theme.typography.primary};
