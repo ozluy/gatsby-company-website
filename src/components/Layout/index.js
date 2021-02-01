@@ -37,7 +37,6 @@ const Layout = ({ children }) => (
       <Helmet>
         <meta httpEquiv="Content-Language" content="tr" />
         <title>Destan Nakliyat | Profesyonel Ev Ofis Nakliyatı</title>
-        <desc>Profesyonel Ev Ofis Nakliyatı</desc>
       </Helmet>
       <GlobalStyles />
       <Header />
