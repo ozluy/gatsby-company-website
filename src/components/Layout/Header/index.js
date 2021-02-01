@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import Container from 'components/Container'
 import { Flex, Small } from 'components/CoreElements'
 import Headphones from 'components/Icons/headphones'
+import logo from 'assets/images/logo.svg'
 import {
   Wrapper,
   Nav,
@@ -35,7 +36,7 @@ const Header = () => {
             alignItems="center"
             justifyContent="space-between"
           >
-            <Logo src="/static/images/logo.svg" />
+            <Logo src={logo} />
             {navList}
             <CallCenter>
               <HeadphonesWrapper>
