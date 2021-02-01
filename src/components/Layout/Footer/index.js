@@ -4,7 +4,7 @@ import Facebook from 'components/Icons/facebook'
 import Twitter from 'components/Icons/twitter'
 import Instagram from 'components/Icons/instagram'
 import { Anchor, Flex } from 'components/CoreElements'
-import logoFooter from 'assets/images/logo_footer.svg'
+import logoFooter from '../../../assets/images/logo_footer.svg'
 import { Socials, Logo, Wrapper, SocialItem } from './styled'
 
 const Footer = () => {
