@@ -8,7 +8,7 @@ import {
   opacity
 } from 'styled-system'
 
-const shared = css`
+export const shared = css`
   ${typography};
   ${space};
   ${color};
