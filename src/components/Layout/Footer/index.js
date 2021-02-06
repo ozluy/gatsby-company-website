@@ -1,11 +1,20 @@
-import React, { useMemo } from 'react'
+import Button from 'components/Button'
 import Container from 'components/Container'
+import { Anchor, Flex, H3 } from 'components/CoreElements'
 import Facebook from 'components/Icons/facebook'
-import Twitter from 'components/Icons/twitter'
 import Instagram from 'components/Icons/instagram'
-import { Anchor, Flex } from 'components/CoreElements'
+import Twitter from 'components/Icons/twitter'
+import React, { useMemo } from 'react'
 import logoFooter from '../../../assets/images/logo_footer.svg'
-import { Socials, Logo, Wrapper, SocialItem } from './styled'
+import {
+  Logo,
+  NavGroup,
+  NavItem,
+  NavList,
+  SocialItem,
+  Socials,
+  Wrapper
+} from './styled'
 
 const Footer = () => {
   const renderSocialMedia = useMemo(
@@ -41,9 +50,58 @@ const Footer = () => {
     []
   )
 
+  const NAV_LIST = [
+    [
+      'Çalıştığımız Şehirler',
+      'İstanbul Nakliyat',
+      'Ankara Nakliyat',
+      'Izmir Nakliyat',
+      'Bursa Nakliyat',
+      'Antalya Nakliyat'
+    ],
+    [
+      'En Popüler Rotalar',
+      'Istanbul -  Ankara',
+      'Ankara - Istanbul',
+      'Istanbul -  Izmir',
+      'Istanbul -  Antalya'
+    ],
+    [
+      'Popüler Hizmetler',
+      'Evden Eve Nakliyat',
+      'Asansörlü Nakliyat',
+      'Eşya Depolama',
+      'Parça Taşımacılık',
+      'Şehirler Arası Nakliyat'
+    ],
+    [
+      'Taşınma Rehberi',
+      'Taşınma Oncesi',
+      'Taşınma Sonrası',
+      'Yeni ev alırken',
+      'Yeni ev Kiralarken'
+    ],
+    ['Kurumsal', 'Kariyer', 'Referanslarımız', 'Bize Ulaşın']
+  ]
+
   return (
     <Wrapper>
       <Container>
+        <Flex alignItems="center" justifyContent="space-between">
+          <H3 maxWidth="672px" color="grey">
+            Destan Nakliyat ile hemen taşınmak iletişime geçin.
+          </H3>
+          <Button black>Hemen Hizmet Al</Button>
+        </Flex>
+        <NavGroup>
+          {NAV_LIST.map((navRow, rowIndex) => (
+            <NavList key={rowIndex}>
+              {navRow.map((navItem) => (
+                <NavItem key={navItem}>{navItem}</NavItem>
+              ))}
+            </NavList>
+          ))}
+        </NavGroup>
         <Flex
           flexDirection="row"
           alignItems="center"

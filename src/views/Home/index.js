@@ -1,17 +1,12 @@
 import React from 'react'
-import Container from 'components/Container'
-import Button from 'components/Button'
-import { Wrapper, Paragraph } from './styled'
+import Banner from './Banner'
+import WhyDestanNakliyat from './WhyDestanNakliyat'
 
 const HomePage = () => (
-  <Wrapper>
-    <Container>
-      <Paragraph> This is home page!</Paragraph>
-      <Button>Primary</Button>
-      <Button black>Black</Button>
-      <Button green>Green</Button>
-    </Container>
-  </Wrapper>
+  <>
+    <Banner />
+    <WhyDestanNakliyat />
+  </>
 )
 
 export default HomePage
