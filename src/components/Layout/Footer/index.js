@@ -5,7 +5,7 @@ import Facebook from 'components/Icons/facebook'
 import Instagram from 'components/Icons/instagram'
 import Twitter from 'components/Icons/twitter'
 import React, { useMemo } from 'react'
-import logoFooter from '../../../assets/images/logo_footer.svg'
+import logoFooter from './logo_footer.svg'
 import {
   Logo,
   NavGroup,

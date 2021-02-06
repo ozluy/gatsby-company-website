@@ -1,6 +1,6 @@
-import { InlineFlex, Flex } from 'components/CoreElements'
+import { InlineFlex, Section } from 'components/CoreElements'
 import styled from 'styled-components'
-import homeBannerBg from '../../../assets/images/home/home_banner_bg.png'
+import homeBannerBg from './banner.png'
 
 export const ActionWrapper = styled(InlineFlex)`
   padding: 15px;
@@ -13,11 +13,10 @@ export const ActionWrapper = styled(InlineFlex)`
   background-color: ${({ theme }) => theme.colors.white};
 `
 
-export const BannerWrapper = styled(Flex)`
+export const BannerWrapper = styled(Section)`
   background-image: url(${homeBannerBg});
   background-repeat: no-repeat;
   background-size: cover auto;
   background-position: 0 100%;
   height: calc(100vh - 145px);
-  padding-top: 88px;
 `

@@ -38,7 +38,7 @@ export const ListItem = styled.li`
 export const VS = styled(InlineFlex)`
   width: 48px;
   height: 48px;
-  background: ${({ theme }) => theme.colors.blue};
+  background: ${({ theme }) => theme.colors.blue100};
   border-radius: 50%;
   color: ${({ theme }) => theme.colors.white};
   font-weight: ${({ theme }) => theme.fontWeight.semibold};

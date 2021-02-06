@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import Container from 'components/Container'
 import { Flex, Small } from 'components/CoreElements'
 import Headphones from 'components/Icons/headphones'
-import logo from '../../../assets/images/logo.svg'
+import logo from './logo.svg'
 import {
   Wrapper,
   Nav,

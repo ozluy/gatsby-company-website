@@ -14,11 +14,20 @@ const theme = {
     black: '#303030',
     white: '#FFFFFF',
     grey: '#7F8F9E',
+    greyLighter: '#BBC9D6',
+    greyLight: '#8D8D8D',
+    greyLightest: '#cae5f2',
     green: '#09C66B',
+    blueDarker: '#0181BB',
     blue: '#22A6E3',
     blueBg: '#41B3E7',
+    blue100: '#6FB9E1',
+    blue25: '#ECF1F5',
+    blue50: '#E3F3FB',
     whiteBg: '#F8FAFB',
-    red: '#E7A588'
+    lightBg: '#f4f4f4',
+    red: '#E7A588',
+    transparent: 'transparent'
   },
   fontWeight: {
     regular: 400,

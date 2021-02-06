@@ -12,7 +12,7 @@ import {
   maxHeight
 } from 'styled-system'
 
-const sharedAttrs = css`
+export const sharedAttrs = css`
   ${typography};
   ${space};
   ${color};
@@ -27,6 +27,12 @@ const sharedAttrs = css`
 export const Div = styled.div`
   ${sharedAttrs};
 `
+
+export const Section = styled.section`
+  padding: 100px 0;
+  ${sharedAttrs};
+`
+
 export const H1 = styled.h1`
   font-size: ${({ theme }) => theme.typography.h1};
   font-weight: ${({ theme }) => theme.fontWeight.semibold};
@@ -55,8 +61,20 @@ export const Headline = styled.h4`
   ${sharedAttrs};
 `
 
+export const H5 = styled.h5`
+  font-size: ${({ theme }) => theme.typography.large};
+  font-weight: ${({ theme }) => theme.fontWeight.regular};
+  margin: 0;
+  ${sharedAttrs};
+`
+
 export const Flex = styled(Div)`
   display: flex;
+  ${flexbox};
+`
+
+export const I = styled.i`
+  ${sharedAttrs};
   ${flexbox};
 `
 
@@ -72,11 +90,6 @@ export const InlineFlex = styled(Div)`
 
 export const Paragraph = styled.p`
   margin: 0;
-  font-size: ${({ theme }) => theme.typography.large};
-  ${sharedAttrs};
-`
-
-export const Button = styled.button`
   ${sharedAttrs};
 `
 

@@ -1,9 +1,16 @@
 import React from 'react'
-import { Div, H2, Headline, Img, Paragraph } from 'components/CoreElements'
+import {
+  Div,
+  H2,
+  Headline,
+  Img,
+  Paragraph,
+  Section
+} from 'components/CoreElements'
 import Container from 'components/Container'
 import Negative from 'components/Icons/negative'
 import Positive from 'components/Icons/positive'
-import awardSrc from '../../../assets/images/home/award.png'
+import awardSrc from './award.png'
 import { ListItem, TwinBox, VS, ComparisonWrapper } from './styled'
 
 const WhyDestanNakliyat = () => {
@@ -20,7 +27,7 @@ const WhyDestanNakliyat = () => {
     'Puan ve yorumlarını göremediğiniz müşteri deneyimleri'
   ]
   return (
-    <Div p="100px 0" bg="whiteBg">
+    <Section bg="whiteBg">
       <Container>
         <Div textAlign="center">
           <Img
@@ -30,7 +37,7 @@ const WhyDestanNakliyat = () => {
             alt="en iyi taşımacı"
           />
           <H2 m="24px 0">Neden en iyisiyiz?</H2>
-          <Paragraph>
+          <Paragraph fontSize="var(--typography-large)">
             Müşterilerimizin %78`i bizi arkadaşlarına ve yakınlarına tavsiye
             ediyor
           </Paragraph>
@@ -61,7 +68,7 @@ const WhyDestanNakliyat = () => {
           </TwinBox>
         </ComparisonWrapper>
       </Container>
-    </Div>
+    </Section>
   )
 }
 export default WhyDestanNakliyat
