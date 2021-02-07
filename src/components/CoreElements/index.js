@@ -6,10 +6,9 @@ import {
   background,
   flexbox,
   opacity,
-  width,
-  height,
-  maxWidth,
-  maxHeight
+  border,
+  layout,
+  shadow
 } from 'styled-system'
 
 export const sharedAttrs = css`
@@ -18,10 +17,9 @@ export const sharedAttrs = css`
   ${color};
   ${background};
   ${opacity};
-  ${width};
-  ${height};
-  ${maxWidth};
-  ${maxHeight}
+  ${border}
+  ${layout}
+  ${shadow};
 `
 
 export const Div = styled.div`

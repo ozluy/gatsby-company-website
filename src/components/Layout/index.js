@@ -60,6 +60,11 @@ const GlobalStyles = createGlobalStyle`
   ul {
     list-style: none;
   }
+
+  a {
+    color: unset;
+    text-decoration: none;
+  }
 `
 
 const Layout = ({ children }) => (

@@ -22,9 +22,8 @@ const SwitchButtons = ({ buttons = [] }) => {
           green={activeIndex === index}
           key={index}
           onClick={() => {
-            if (onClick) {
-              onClick()
-            }
+            onClick && onClick()
+
             setActiveIndex(index)
           }}
         />

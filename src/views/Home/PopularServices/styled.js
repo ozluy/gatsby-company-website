@@ -19,6 +19,7 @@ export const ListItem = styled(Flex)`
   align-items: center;
   justify-content: flex-start;
   min-width: 264px;
+  max-width: 264px;
   margin-left: 28px;
 `
 

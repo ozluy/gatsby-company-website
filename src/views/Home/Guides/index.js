@@ -21,47 +21,10 @@ import {
   GuidesWrapper
 } from './styled'
 import howto from './howto.png'
+import guides from './data'
 
 const Guides = () => {
   const [activeIndex, setActiveIndex] = useState(1)
-  const guides = [
-    {
-      title: 'Taşınma Öncesi Rehberi',
-      items: [
-        'Yeni Eviniz için Yeni Dekorasyon Önerileri',
-        'Eşyaları Kolilerden Çıkarırken Dikkat Etmeniz Gerekenler',
-        'Yeni Evinizin Güvenliği İçin Dikkat Etmeniz Gerekenler',
-        'Taşınma Süreci Sonrasında Abonelik İşlemleri '
-      ]
-    },
-    {
-      title: 'Taşınma Öncesi Rehberi',
-      items: [
-        'Yeni Eviniz için Yeni Dekorasyon Önerileri',
-        'Eşyaları Kolilerden Çıkarırken Dikkat Etmeniz Gerekenler',
-        'Yeni Evinizin Güvenliği İçin Dikkat Etmeniz Gerekenler',
-        'Taşınma Süreci Sonrasında Abonelik İşlemleri '
-      ]
-    },
-    {
-      title: 'Taşınma Sonrası  Rehberi',
-      items: [
-        'Yeni Eviniz için Yeni Dekorasyon Önerileri',
-        'Eşyaları Kolilerden Çıkarırken Dikkat Etmeniz Gerekenler',
-        'Yeni Evinizin Güvenliği İçin Dikkat Etmeniz Gerekenler',
-        'Taşınma Süreci Sonrasında Abonelik İşlemleri '
-      ]
-    },
-    {
-      title: 'Yeni Ev Kiralama Rehberi',
-      items: [
-        'Yeni Eviniz için Yeni Dekorasyon Önerileri',
-        'Eşyaları Kolilerden Çıkarırken Dikkat Etmeniz Gerekenler',
-        'Yeni Evinizin Güvenliği İçin Dikkat Etmeniz Gerekenler',
-        'Taşınma Süreci Sonrasında Abonelik İşlemleri '
-      ]
-    }
-  ]
 
   return (
     <Section>
@@ -74,7 +37,7 @@ const Guides = () => {
           </H5>
         </Div>
         <Flex mt="50px" alignItems="center" justifyContent="space-between">
-          <GuidesWrapper>
+          <GuidesWrapper width="456px">
             {guides.map(({ title, items }, index) => {
               const isActive = activeIndex === index
               return (

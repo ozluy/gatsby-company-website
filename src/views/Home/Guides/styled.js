@@ -2,7 +2,6 @@ import { Flex, I } from 'components/CoreElements'
 import styled from 'styled-components'
 
 export const GuidesWrapper = styled(Flex)`
-  width: 456px;
   flex-direction: column;
 `
 

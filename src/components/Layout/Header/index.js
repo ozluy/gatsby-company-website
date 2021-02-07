@@ -1,14 +1,13 @@
 import React, { useMemo } from 'react'
+import { Link } from 'gatsby'
 import Container from 'components/Container'
 import { Flex, Small } from 'components/CoreElements'
 import Headphones from 'components/Icons/headphones'
-import logo from './logo.svg'
+import HeaderLogo from './logo'
 import {
   Wrapper,
-  Nav,
   NavList,
   NavItem,
-  Logo,
   CallCenter,
   PhoneNumber,
   HeadphonesWrapper
@@ -18,25 +17,34 @@ const Header = () => {
   const navList = useMemo(
     () => (
       <NavList>
-        {['kurumsal', 'hizmetlerimiz', 'referanslarımız', 'iletişim'].map(
-          (navItem) => (
-            <NavItem key={navItem}> {navItem}</NavItem>
-          )
-        )}
+        {[
+          { title: 'Kurumsal', url: '/kurumsal' },
+          { title: 'Hizmetlerimiz', url: '/hizmetlerimiz' },
+          { title: 'Referanslarımız', url: '/referanslarimiz' },
+          { title: 'İletişim', url: '/iletisim' }
+        ].map(({ title, url }) => (
+          <NavItem key={title}>
+            <Link activeClassName="nav__active" to={url}>
+              {title}
+            </Link>
+          </NavItem>
+        ))}
       </NavList>
     ),
     []
   )
   return (
-    <Wrapper>
+    <Wrapper id="app_header">
       <Container>
-        <Nav>
+        <nav>
           <Flex
             flexDirection="row"
             alignItems="center"
             justifyContent="space-between"
           >
-            <Logo src={logo} />
+            <Link style={{ color: '#1F2147' }} to="/">
+              <HeaderLogo />
+            </Link>
             {navList}
             <CallCenter>
               <HeadphonesWrapper>
@@ -50,7 +58,7 @@ const Header = () => {
               </Flex>
             </CallCenter>
           </Flex>
-        </Nav>
+        </nav>
       </Container>
     </Wrapper>
   )

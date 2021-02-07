@@ -26,8 +26,11 @@ const theme = {
     blue50: '#E3F3FB',
     whiteBg: '#F8FAFB',
     lightBg: '#f4f4f4',
+    darkBg: '#0B1A33',
+    lighterBg: '#E5E5E5',
     red: '#E7A588',
-    transparent: 'transparent'
+    transparent: 'transparent',
+    border: '#DCE4F1'
   },
   fontWeight: {
     regular: 400,
@@ -39,6 +42,7 @@ const theme = {
     h2: '36px',
     h3: '32px',
     headline: '24px',
+    subline: '20px',
     large: '18px',
     medium: '16px',
     primary: '14px',

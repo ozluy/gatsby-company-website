@@ -4,9 +4,6 @@ import styled from 'styled-components'
 export const Wrapper = styled.header`
   padding: 45px 0;
 `
-
-export const Nav = styled.nav``
-
 export const NavList = styled.ul`
   display: flex;
   flex-direction: row;
@@ -16,13 +13,18 @@ export const NavList = styled.ul`
 export const NavItem = styled.li`
   text-transform: capitalize;
 
+  a {
+    color: ${({ theme }) => theme.colors.primary};
+
+    &.nav__active {
+      color: ${({ theme }) => theme.colors.secondary};
+    }
+  }
+
   &:not(:last-child) {
     margin-right: 45px;
   }
 `
-
-export const Logo = styled.img``
-
 export const HeadphonesWrapper = styled(Flex)`
   padding: 4px;
   background-color: ${({ theme }) => theme.colors.secondary};
