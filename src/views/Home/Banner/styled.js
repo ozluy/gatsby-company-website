@@ -16,7 +16,7 @@ export const ActionWrapper = styled(InlineFlex)`
 export const BannerWrapper = styled(Section)`
   background-image: url(${homeBannerBg});
   background-repeat: no-repeat;
-  background-size: cover auto;
+  background-size: cover;
   background-position: 0 100%;
   height: calc(100vh - 145px);
 `
