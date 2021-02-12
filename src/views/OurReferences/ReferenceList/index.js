@@ -36,7 +36,7 @@ const ReferenceList = () => {
           mt="65px"
         >
           {logos.map((logoSrc, index) => (
-            <Img mt="20px" key={index} src={logoSrc} />
+            <Img mt="20px" borderRadius="10px" key={index} src={logoSrc} />
           ))}
         </Flex>
       </Container>

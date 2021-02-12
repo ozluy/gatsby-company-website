@@ -73,12 +73,23 @@ const Layout = ({ children }) => (
       <Helmet>
         <meta httpEquiv="Content-Language" content="tr" />
         <title>Destan Nakliyat | Profesyonel Ev Ofis Nakliyatı</title>
+        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
       </Helmet>
       <GlobalStyles />
       <Header />
       <Main>{children}</Main>
       <Footer />
     </>
+    <script>
+      {`if (window.netlifyIdentity){' '}
+      {window.netlifyIdentity.on('init', (user) => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => {
+            document.location.href = '/admin/'
+          })
+        }
+      })}`}
+    </script>
   </ThemeProvider>
 )
 

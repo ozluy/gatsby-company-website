@@ -9,6 +9,7 @@ module.exports = {
     image: '/images/logo.jpg'
   },
   plugins: [
+    'gatsby-plugin-netlify-cms',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-styled-components',
