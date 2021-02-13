@@ -2,7 +2,7 @@ backend:
   name: github
   repo: ozluy/destan-nakliyat-gatsby
   branch: master
-  site_domain: destan-nakliyat.netlify.com
+  site_domain: destan-nakliyat.netlify.app
 media_folder: static/assets
 public_folder: /assets
 collections:
