@@ -9,7 +9,7 @@ const guides = [
     ]
   },
   {
-    title: 'Taşınma Öncesi Rehberi',
+    title: 'Taşınma Sonrası Rehberi',
     items: [
       'Yeni Eviniz için Yeni Dekorasyon Önerileri',
       'Eşyaları Kolilerden Çıkarırken Dikkat Etmeniz Gerekenler',

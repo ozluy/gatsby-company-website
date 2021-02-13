@@ -1,3 +1,4 @@
+import React from 'react'
 import ArrowButtons from 'components/ChevronButtons'
 import Container from 'components/Container'
 import {
@@ -13,7 +14,7 @@ import {
 import IconButton from 'components/IconButton'
 import Button from 'components/Button'
 import MapMarker from 'components/Icons/mapMarker'
-import React from 'react'
+import Animator from 'components/Animator'
 import antalya from './antalya.png'
 import { List, ListItem } from './styled'
 
@@ -53,8 +54,16 @@ const Intercity = () => {
           <ArrowButtons disableBefore />
         </Flex>
         <List>
-          {processSteps.map(({ from, to }) => (
-            <ListItem key={`${from}-${to}`}>
+          {processSteps.map(({ from, to }, index) => (
+            <Animator
+              key={`${from}-${to}`}
+              component={ListItem}
+              customConfig={{
+                distance: `${50 + index * 50}px`,
+                delay: 50 + index * 100,
+                duration: 500 + index * 100
+              }}
+            >
               <Img src={antalya} />
               <Flex
                 mt="32px"
@@ -80,7 +89,7 @@ const Intercity = () => {
                 </Flex>
                 <IconButton />
               </Flex>
-            </ListItem>
+            </Animator>
           ))}
         </List>
         <Flex mt="80px" flexDirection="row" justifyContent="center">

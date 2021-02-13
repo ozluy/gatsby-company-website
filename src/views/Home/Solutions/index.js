@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Parallax } from 'react-scroll-parallax'
 import {
   Div,
   Flex,
@@ -18,6 +19,7 @@ import { BoxItem, BoxList, IconWrapper, ImgList } from './styled'
 import HashTag from './HashTag'
 
 const Solutions = () => {
+  const [activeIndex, setActiveIndex] = useState(1)
   const tariffs = [
     {
       title: 'Destan Standart',
@@ -50,14 +52,26 @@ const Solutions = () => {
         </Flex>
         <Flex mt="80px" justifyContent="space-between" alignItems="center">
           <ImgList>
-            <Img src={solution1} />
-            <Img src={solution2} />
-            <Img src={solution3} />
-            <HashTag />
+            <Parallax y={[-30, 30]} tagOuter="figure">
+              <Img src={solution1} />
+            </Parallax>
+            <Parallax tagOuter="figure">
+              <Img src={solution2} />
+            </Parallax>
+            <Parallax y={[30, -30]} tagOuter="figure">
+              <Img src={solution3} />
+            </Parallax>
+            <Parallax x={[5, -5]} y={[-20, 20]} tagOuter="small">
+              <HashTag />
+            </Parallax>
           </ImgList>
           <BoxList>
-            {tariffs.map(({ title, Icon, desc }) => (
-              <BoxItem key={title}>
+            {tariffs.map(({ title, Icon, desc }, index) => (
+              <BoxItem
+                active={activeIndex === index}
+                key={title}
+                onClick={() => setActiveIndex(index)}
+              >
                 <Flex alignItems="center" justifyContent="flex-start">
                   <IconWrapper>
                     <Icon />

@@ -34,6 +34,7 @@ module.exports = {
       options: {
         common: path.join(__dirname, 'src/common'),
         views: path.join(__dirname, 'src/views'),
+        hooks: path.join(__dirname, 'src/hooks'),
         pages: path.join(__dirname, 'src/pages'),
         components: path.join(__dirname, 'src/components')
       }

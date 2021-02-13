@@ -1,8 +1,10 @@
 import React from 'react'
+import { ParallaxProvider } from 'react-scroll-parallax'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Helmet } from 'react-helmet'
 import appTheme, { cssVariables } from 'common/theme'
 import hexToRGBA from 'common/hexToRGBA'
+import useComponentDidMount from 'hooks/useComponentDidMount'
 import Footer from './Footer'
 import Header from './Header'
 import Main from './styled'
@@ -67,21 +69,35 @@ const GlobalStyles = createGlobalStyle`
   }
 `
 
-const Layout = ({ children }) => (
-  <ThemeProvider theme={appTheme}>
-    <>
-      <Helmet>
-        <meta httpEquiv="Content-Language" content="tr" />
-        <title>Destan Nakliyat | Profesyonel Ev Ofis Nakliyatı</title>
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
-      </Helmet>
-      <GlobalStyles />
-      <Header />
-      <Main>{children}</Main>
-      <Footer />
-    </>
-    <script>
-      {`if (window.netlifyIdentity){' '}
+const Layout = ({ children }) => {
+  useComponentDidMount(() => {
+    ScrollReveal().reveal('header.load-hidden')
+    ScrollReveal().reveal('main.load-hidden')
+    ScrollReveal().reveal('footer.load-hidden')
+  })
+  return (
+    <ThemeProvider theme={appTheme}>
+      <ParallaxProvider>
+        <div className="sr">
+          <Helmet>
+            <meta httpEquiv="Content-Language" content="tr" />
+            <title>Destan Nakliyat | Profesyonel Ev Ofis Nakliyatı</title>
+            <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" />
+            <script src="https://unpkg.com/scrollreveal" />
+            <style>
+              {`
+        div.sr .load-hidden {
+        visibility: hidden;
+          }`}
+            </style>
+          </Helmet>
+          <GlobalStyles />
+          <Header className="load-hidden" />
+          <Main className="load-hidden">{children}</Main>
+          <Footer className="load-hidden" />
+        </div>
+        <script>
+          {`if (window.netlifyIdentity){' '}
       {window.netlifyIdentity.on('init', (user) => {
         if (!user) {
           window.netlifyIdentity.on('login', () => {
@@ -89,8 +105,9 @@ const Layout = ({ children }) => (
           })
         }
       })}`}
-    </script>
-  </ThemeProvider>
-)
-
+        </script>
+      </ParallaxProvider>
+    </ThemeProvider>
+  )
+}
 export default Layout

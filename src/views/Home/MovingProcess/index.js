@@ -1,3 +1,4 @@
+import Animator from 'components/Animator'
 import { ButtonWithArrow } from 'components/Button'
 import Container from 'components/Container'
 import {
@@ -48,12 +49,19 @@ const MovingProcess = () => {
           <ButtonWithArrow green>Hemen fiyat hesaplayın</ButtonWithArrow>
         </Flex>
         <TripletWrapper>
-          {processSteps.map(({ title, desc, img }) => (
-            <Triplet key={title}>
+          {processSteps.map(({ title, desc, img }, index) => (
+            <Animator
+              key={title}
+              component={Triplet}
+              customConfig={{
+                origin: 'bottom',
+                delay: 200 * index + 50
+              }}
+            >
               <Img alt={title} src={img} />
               <H5 m="28px 0 12px 0">{title}</H5>
               <Paragraph color="grey">{desc}</Paragraph>
-            </Triplet>
+            </Animator>
           ))}
         </TripletWrapper>
       </Container>

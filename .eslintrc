@@ -37,6 +37,7 @@
     "node": true
   },
   "globals": {
-    "document": false
+    "document": false,
+    "ScrollReveal": false
   }
 }

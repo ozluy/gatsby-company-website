@@ -1,18 +1,18 @@
 import { Flex, I } from 'components/CoreElements'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const ImgList = styled(Flex)`
   flex-direction: column;
   position: relative;
 
-  svg {
+  small {
     position: absolute;
     top: 310px;
     left: 220px;
     z-index: 3;
   }
 
-  img {
+  figure {
     &:nth-child(1) {
       margin-left: 200px;
       max-width: 296px;
@@ -25,7 +25,7 @@ export const ImgList = styled(Flex)`
     }
 
     &:nth-child(3) {
-      margin-top: -50px;
+      margin-top: -70px;
       margin-left: 250px;
       max-width: 282px;
       z-index: 3;
@@ -55,14 +55,17 @@ export const BoxItem = styled(Flex)`
   flex-direction: column;
   width: 480px;
   padding: 24px 26px;
+  cursor: pointer;
 
-  &:nth-child(even) {
-    background-color: ${({ theme }) => theme.colors.white};
-    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+  ${({ active }) =>
+    active &&
+    css`
+      background-color: ${({ theme }) => theme.colors.white};
+      box-shadow: 0 18px 34px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
 
-    ${IconWrapper} {
-      background-color: ${({ theme }) => theme.colors.blueDarker};
-    }
-  }
+      ${IconWrapper} {
+        background-color: ${({ theme }) => theme.colors.blueDarker};
+      }
+    `};
 `

@@ -1,4 +1,5 @@
 import React from 'react'
+import Animator from 'components/Animator'
 import {
   Div,
   H2,
@@ -43,7 +44,7 @@ const WhyDestanNakliyat = () => {
           </Paragraph>
         </Div>
         <ComparisonWrapper>
-          <TwinBox>
+          <Animator component={TwinBox} customConfig={{ origin: 'bottom' }}>
             <Headline mb="8px" color="secondary">
               Destan Nakliyat
             </Headline>
@@ -53,9 +54,17 @@ const WhyDestanNakliyat = () => {
                 {item}
               </ListItem>
             ))}
-          </TwinBox>
-          <VS>VS</VS>
-          <TwinBox>
+          </Animator>
+          <Animator
+            component={VS}
+            customConfig={{ origin: 'bottom', delay: 150 }}
+          >
+            VS
+          </Animator>
+          <Animator
+            component={TwinBox}
+            customConfig={{ origin: 'bottom', delay: 200 }}
+          >
             <Headline mb="8px" color="grey">
               Diğer firmalar
             </Headline>
@@ -65,7 +74,7 @@ const WhyDestanNakliyat = () => {
                 {item}
               </ListItem>
             ))}
-          </TwinBox>
+          </Animator>
         </ComparisonWrapper>
       </Container>
     </Section>

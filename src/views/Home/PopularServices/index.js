@@ -9,6 +9,7 @@ import {
   Paragraph,
   Section
 } from 'components/CoreElements'
+import Animator from 'components/Animator'
 import Container from 'components/Container'
 import SwitchButtons from 'components/SwitchButtons'
 import Button from 'components/Button'
@@ -36,8 +37,16 @@ const PopulerServices = () => (
         />
       </Flex>
       <List>
-        {services.map(({ title, desc, Icon }) => (
-          <ListItem key={title}>
+        {services.map(({ title, desc, Icon }, index) => (
+          <Animator
+            component={ListItem}
+            key={title}
+            customConfig={{
+              distance: `${50 + index * 50}px`,
+              delay: 50 + index * 100,
+              duration: 500 + index * 100
+            }}
+          >
             <Img src={service1} />
             <Div mt="-15px">
               <IconWrapper>
@@ -52,7 +61,7 @@ const PopulerServices = () => (
               </H5>
               <Paragraph>{desc}</Paragraph>
             </Div>
-          </ListItem>
+          </Animator>
         ))}
       </List>
       <Flex mt="80px" flexDirection="row" justifyContent="center">

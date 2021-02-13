@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Parallax } from 'react-scroll-parallax'
 import {
   Div,
   H2,
@@ -64,7 +65,11 @@ const Guides = () => {
               )
             })}
           </GuidesWrapper>
-          <Img src={howto} />
+          <Div borderRadius="10px" overflow="hidden" maxHeight="550px">
+            <Parallax tagOuter="figure" y={[25, -25]}>
+              <Img src={howto} />
+            </Parallax>
+          </Div>
         </Flex>
       </Container>
     </Section>

@@ -13,7 +13,7 @@ import {
   HeadphonesWrapper
 } from './styled'
 
-const Header = () => {
+const Header = (props) => {
   const navList = useMemo(
     () => (
       <NavList>
@@ -34,7 +34,7 @@ const Header = () => {
     []
   )
   return (
-    <Wrapper id="app_header">
+    <Wrapper {...props} id="app_header">
       <Container>
         <nav>
           <Flex

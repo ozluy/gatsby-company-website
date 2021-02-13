@@ -1,6 +1,5 @@
 import { InlineFlex, Section } from 'components/CoreElements'
 import styled from 'styled-components'
-import homeBannerBg from './banner.png'
 
 export const ActionWrapper = styled(InlineFlex)`
   padding: 15px;
@@ -13,10 +12,22 @@ export const ActionWrapper = styled(InlineFlex)`
   background-color: ${({ theme }) => theme.colors.white};
 `
 
+export const BgWrapper = styled.div`
+  position: absolute;
+  width: 100%;
+  left: 0;
+  right: 0;
+  bottom: -20.3%;
+  z-index: -1;
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+`
+
 export const BannerWrapper = styled(Section)`
-  background-image: url(${homeBannerBg});
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: 0 100%;
   height: calc(100vh - 145px);
+  position: relative;
+  overflow: hidden;
 `

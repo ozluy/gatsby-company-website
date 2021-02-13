@@ -16,7 +16,7 @@ import {
   Wrapper
 } from './styled'
 
-const Footer = () => {
+const Footer = (props) => {
   const renderSocialMedia = useMemo(
     () => (
       <Socials>
@@ -85,7 +85,7 @@ const Footer = () => {
   ]
 
   return (
-    <Wrapper>
+    <Wrapper {...props}>
       <Container>
         <Flex alignItems="center" justifyContent="space-between">
           <H3 maxWidth="672px" color="grey">
