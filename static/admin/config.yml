@@ -2,9 +2,9 @@ backend:
   name: github
   repo: ozluy/destan-nakliyat-gatsby
   branch: master
-  site_domain: destan-nakliyat.netlify.app
 media_folder: static/assets
 public_folder: /assets
+site_url: https://destan-nakliyat.netlify.app
 collections:
   - name: blog
     label: Blog
