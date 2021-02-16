@@ -5,6 +5,6 @@ title: asdasd
 ---
 > asdasdasdasd
 >
-> ![Test](/assets/group-2-10.png "Test")
+> ![Test](/assets/rectangle-31.png "Test")
 >
 > asdasdasdasd
