@@ -10,6 +10,7 @@ import {
   Section
 } from 'components/CoreElements'
 import Animator from 'components/Animator'
+import ScrollContainer from 'react-indiana-drag-scroll'
 import Container from 'components/Container'
 import SwitchButtons from 'components/SwitchButtons'
 import Button from 'components/Button'
@@ -37,32 +38,42 @@ const PopulerServices = () => (
         />
       </Flex>
       <List>
-        {services.map(({ title, desc, Icon }, index) => (
-          <Animator
-            component={ListItem}
-            key={title}
-            customConfig={{
-              distance: `${50 + index * 50}px`,
-              delay: 50 + index * 100,
-              duration: 500 + index * 100
-            }}
-          >
-            <Img src={service1} />
-            <Div mt="-15px">
-              <IconWrapper>
-                <Icon />
-              </IconWrapper>
-              <H5
-                fontWeight="var(--font-weight-bold)"
-                fontSize="var(--typography-medium)"
-                margin="24px 0 16px 0"
+        <ScrollContainer
+          className="scrollable__content"
+          horizontal
+          vertical={false}
+          hideScrollbars={false}
+        >
+          {services.map(({ title, desc, Icon }, index) => {
+            const ItemComponent = index < 5 ? Animator : ListItem
+            return (
+              <ItemComponent
+                component={ListItem}
+                key={title}
+                customConfig={{
+                  distance: `${50 + index * 50}px`,
+                  delay: 50 + index * 100,
+                  duration: 500 + index * 100
+                }}
               >
-                {title}
-              </H5>
-              <Paragraph>{desc}</Paragraph>
-            </Div>
-          </Animator>
-        ))}
+                <Img src={service1} />
+                <Div mt="-15px">
+                  <IconWrapper>
+                    <Icon />
+                  </IconWrapper>
+                  <H5
+                    fontWeight="var(--font-weight-bold)"
+                    fontSize="var(--typography-medium)"
+                    margin="24px 0 16px 0"
+                  >
+                    {title}
+                  </H5>
+                  <Paragraph>{desc}</Paragraph>
+                </Div>
+              </ItemComponent>
+            )
+          })}
+        </ScrollContainer>
       </List>
       <Flex mt="80px" flexDirection="row" justifyContent="center">
         <Button light>Tümünü Görüntüle</Button>

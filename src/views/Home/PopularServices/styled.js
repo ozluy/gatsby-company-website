@@ -1,13 +1,16 @@
 import { Flex, I } from 'components/CoreElements'
 import styled from 'styled-components'
 
-export const List = styled(Flex)`
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-direction: row;
+export const List = styled.div`
   margin-top: 70px;
-  width: 100%;
-  overflow: scroll auto;
+
+  .scrollable__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    max-width: 100%;
+  }
 `
 
 export const ListItem = styled(Flex)`
@@ -20,7 +23,10 @@ export const ListItem = styled(Flex)`
   justify-content: flex-start;
   min-width: 264px;
   max-width: 264px;
-  margin-left: 28px;
+
+  &:not(:first-child) {
+    margin-left: 28px;
+  }
 `
 
 export const IconWrapper = styled(I)`

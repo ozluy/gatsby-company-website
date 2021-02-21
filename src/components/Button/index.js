@@ -16,6 +16,7 @@ const Button = styled.button`
   display: inline-flex;
   align-items: center;
   flex-direction: row;
+  justify-content: center;
   cursor: pointer;
   ${sharedAttrs};
   ${borderRadius};

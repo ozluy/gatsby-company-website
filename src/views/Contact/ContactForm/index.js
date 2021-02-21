@@ -3,6 +3,7 @@ import { Flex, H2, Headline, Section } from 'components/CoreElements'
 import Container from 'components/Container'
 import Button from 'components/Button'
 import InputField from 'components/InputField'
+import Dropdown from 'components/Dropdown'
 
 const ContactForm = () => (
   <Section bg="lighterBg">
@@ -29,7 +30,15 @@ const ContactForm = () => (
         <InputField placeholder="İsim" wrapperProps={{ width: '45%' }} />
         <InputField placeholder="Telefon" wrapperProps={{ width: '45%' }} />
         <InputField placeholder="Email" wrapperProps={{ width: '45%' }} />
-        <InputField placeholder="Kategori" wrapperProps={{ width: '45%' }} />
+        <Dropdown
+          options={[
+            { value: 0, label: 'Sehirler arasi nakliyat' },
+            { value: 1, label: 'Evden eve nakliyat' }
+          ]}
+          defaultValue={{ value: 0, label: 'Sehirler arasi nakliyat' }}
+          title="Kategori"
+          wrapperProps={{ width: '45%' }}
+        />
         <InputField placeholder="Mesajınız" wrapperProps={{ width: '100%' }} />
         <Flex
           mt="50px"

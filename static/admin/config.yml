@@ -8,34 +8,7 @@ site_url: https://destan-nakliyat.netlify.app
 collections:
   - name: blog
     label: Blog
-    folder: blog
-    create: true
-    fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: datetime }
-      - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
-  - name: header
-    label: Header
-    folder: static/header
-    create: true
-    fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: datetime }
-      - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
-  - name: footer
-    label: Footer
-    folder: static/footer
-    create: true
-    fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: datetime }
-      - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
-  - name: faq
-    label: FAQ
-    folder: static/faq
+    folder: backend/blog
     create: true
     fields:
       - { name: path, label: Path }

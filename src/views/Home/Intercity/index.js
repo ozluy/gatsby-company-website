@@ -1,6 +1,8 @@
 import React from 'react'
 import ArrowButtons from 'components/ChevronButtons'
 import Container from 'components/Container'
+import Dropdown from 'components/Dropdown'
+import ScrollContainer from 'react-indiana-drag-scroll'
 import {
   Div,
   Flex,
@@ -11,12 +13,22 @@ import {
   I,
   Img
 } from 'components/CoreElements'
+import Swap from 'components/Icons/swap'
 import IconButton from 'components/IconButton'
-import Button from 'components/Button'
+import Button, { ButtonWithArrow } from 'components/Button'
+import InputField from 'components/InputField'
 import MapMarker from 'components/Icons/mapMarker'
 import Animator from 'components/Animator'
 import antalya from './antalya.png'
-import { List, ListItem } from './styled'
+import cities from './cities'
+import {
+  List,
+  ListItem,
+  CalculatorWrapper,
+  ItemBody,
+  Preview,
+  SwapWrapper
+} from './styled'
 
 const Intercity = () => {
   const processSteps = [
@@ -37,10 +49,28 @@ const Intercity = () => {
       to: 'Nevşehir'
     },
     {
-      from: 'Istanbul',
-      to: 'Trabzon'
+      from: 'Izmir',
+      to: 'Antalya'
     }
   ]
+
+  const Calculator = () => (
+    <CalculatorWrapper>
+      <InputField placeholder="Nereden" value="Istanbul" />
+      <SwapWrapper>
+        <IconButton icon={<Swap />} />
+      </SwapWrapper>
+      <Dropdown
+        title="Nereye"
+        options={cities}
+        placeholder="Sehir Ara..."
+        defaultValue={{ value: 6, label: 'Ankara' }}
+        maxMenuHeight={90}
+      />
+      <ButtonWithArrow mt="20px"> Fiyat Hesapla</ButtonWithArrow>
+    </CalculatorWrapper>
+  )
+
   return (
     <Section bg="whiteBg">
       <Container>
@@ -54,44 +84,51 @@ const Intercity = () => {
           <ArrowButtons disableBefore />
         </Flex>
         <List>
-          {processSteps.map(({ from, to }, index) => (
-            <Animator
-              key={`${from}-${to}`}
-              component={ListItem}
-              customConfig={{
-                distance: `${50 + index * 50}px`,
-                delay: 50 + index * 100,
-                duration: 500 + index * 100
-              }}
-            >
-              <Img src={antalya} />
-              <Flex
-                mt="32px"
-                width="100%"
-                flexDirection="row"
-                alignItems="center"
-                justifyContent="space-between"
-              >
-                <Flex
-                  flexDirection="column"
-                  justifyContent="flex-start"
-                  alignItems="flex-start"
+          <ScrollContainer
+            className="scrollable__content"
+            vertical={false}
+            hideScrollbars={false}
+          >
+            {processSteps.map(({ from, to }, index) => {
+              const ItemComponent = index < 4 ? Animator : ListItem
+              return (
+                <ItemComponent
+                  key={`${from}-${to}`}
+                  component={ListItem}
+                  customConfig={{
+                    distance: `${50 + index * 50}px`,
+                    delay: 50 + index * 100,
+                    duration: 500 + index * 100
+                  }}
                 >
-                  <Headline>
-                    <I mr="8px" color="secondary">
-                      <MapMarker />
-                    </I>
-                    {to}
-                  </Headline>
-                  <Paragraph color="greyLight" mt="3px">
-                    Evden eve nakliyat
-                  </Paragraph>
-                </Flex>
-                <IconButton />
-              </Flex>
-            </Animator>
-          ))}
+                  <Img src={antalya} />
+                  <ItemBody>
+                    <Calculator />
+                    <Preview>
+                      <Flex
+                        flexDirection="column"
+                        justifyContent="flex-start"
+                        alignItems="flex-start"
+                      >
+                        <Headline>
+                          <I mr="8px" color="secondary">
+                            <MapMarker />
+                          </I>
+                          {to}
+                        </Headline>
+                        <Paragraph color="greyLight" mt="3px">
+                          Evden eve nakliyat
+                        </Paragraph>
+                      </Flex>
+                      <IconButton />
+                    </Preview>
+                  </ItemBody>
+                </ItemComponent>
+              )
+            })}
+          </ScrollContainer>
         </List>
+
         <Flex mt="80px" flexDirection="row" justifyContent="center">
           <Button light>Tümünü Görüntüle</Button>
         </Flex>

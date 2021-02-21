@@ -9,6 +9,14 @@ module.exports = {
     image: '/images/logo.jpg'
   },
   plugins: [
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'backend',
+        path: `${__dirname}/backend/`,
+        ignore: ['**/.*'] // ignore files starting with a dot
+      }
+    },
     'gatsby-plugin-netlify-cms',
     'gatsby-plugin-react-helmet',
     {
