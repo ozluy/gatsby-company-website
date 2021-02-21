@@ -1,3 +1,4 @@
+import media from 'common/media'
 import { Flex, I } from 'components/CoreElements'
 import styled, { css } from 'styled-components'
 
@@ -53,9 +54,13 @@ export const BoxItem = styled(Flex)`
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  width: 480px;
+  width: 100%;
   padding: 24px 26px;
   cursor: pointer;
+
+  ${media.desktop`
+  width: 480px;
+  `};
 
   ${({ active }) =>
     active &&

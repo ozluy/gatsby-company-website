@@ -51,7 +51,7 @@ const Solutions = () => {
           </Div>
         </Flex>
         <Flex mt="80px" justifyContent="space-between" alignItems="center">
-          <ImgList>
+          <ImgList display={['none', 'flex']}>
             <Parallax y={[-30, 30]} tagOuter="figure">
               <Img src={solution1} />
             </Parallax>

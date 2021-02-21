@@ -1,3 +1,4 @@
+import Animator from 'components/Animator'
 import Button from 'components/Button'
 import Container from 'components/Container'
 import { Anchor, Flex, H3 } from 'components/CoreElements'
@@ -86,7 +87,7 @@ const Footer = (props) => {
 
   return (
     <Wrapper {...props}>
-      <Container>
+      <Animator component={Container} customConfig={{ origin: 'bottom' }}>
         <Flex alignItems="center" justifyContent="space-between">
           <H3 maxWidth="672px" color="grey">
             Destan Nakliyat ile hemen taşınmak iletişime geçin.
@@ -110,7 +111,7 @@ const Footer = (props) => {
           <Logo src={logoFooter} />
           {renderSocialMedia}
         </Flex>
-      </Container>
+      </Animator>
     </Wrapper>
   )
 }

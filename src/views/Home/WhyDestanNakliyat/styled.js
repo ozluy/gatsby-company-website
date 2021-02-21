@@ -1,20 +1,24 @@
 import styled, { css } from 'styled-components'
-import { Flex, InlineFlex } from 'components/CoreElements'
+import { InlineFlex } from 'components/CoreElements'
+import media from 'common/media'
 
 export const TwinBox = styled.ul`
-  width: 513px;
   height: 320px;
   padding: 48px 20px 48px 40px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 15px 20px rgba(31, 72, 143, 0.02);
   border-radius: 20px;
+  width: 100%;
+
+  ${media.desktop`
+  width: 513px;
+  `};
 `
 
 export const ListItem = styled.li`
   display: flex;
   align-items: center;
   padding: 15px 20px;
-  margin-left: -20px;
 
   svg {
     margin-right: 15px;
@@ -47,8 +51,14 @@ export const VS = styled(InlineFlex)`
   justify-content: center;
 `
 
-export const ComparisonWrapper = styled(Flex)`
+export const ComparisonWrapper = styled.div`
+  display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 60px;
+  flex-direction: column;
+
+  ${media.desktop`
+  flex-direction: row;
+  `};
 `

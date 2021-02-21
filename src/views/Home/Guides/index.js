@@ -65,7 +65,12 @@ const Guides = () => {
               )
             })}
           </GuidesWrapper>
-          <Div borderRadius="10px" overflow="hidden" maxHeight="550px">
+          <Div
+            display={['none', 'block']}
+            borderRadius="10px"
+            overflow="hidden"
+            maxHeight="550px"
+          >
             <Parallax tagOuter="figure" y={[25, -25]}>
               <Img src={howto} />
             </Parallax>

@@ -8,7 +8,8 @@ import {
   opacity,
   border,
   layout,
-  shadow
+  shadow,
+  display
 } from 'styled-system'
 
 export const sharedAttrs = css`
@@ -68,6 +69,7 @@ export const H5 = styled.h5`
 
 export const Flex = styled(Div)`
   display: flex;
+  ${display};
   ${flexbox};
 `
 

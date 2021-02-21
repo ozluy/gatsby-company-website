@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React, { useMemo, useState } from 'react'
 import { Link } from 'gatsby'
 import Container from 'components/Container'
 import { Flex, Small } from 'components/CoreElements'
@@ -10,13 +10,15 @@ import {
   NavItem,
   CallCenter,
   PhoneNumber,
-  HeadphonesWrapper
+  HeadphonesWrapper,
+  Hamburger
 } from './styled'
 
 const Header = (props) => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const navList = useMemo(
     () => (
-      <NavList>
+      <NavList isOpen={mobileMenuOpen}>
         {[
           { title: 'Kurumsal', url: '/kurumsal' },
           { title: 'Hizmetlerimiz', url: '/hizmetlerimiz' },
@@ -31,7 +33,7 @@ const Header = (props) => {
         ))}
       </NavList>
     ),
-    []
+    [mobileMenuOpen]
   )
   return (
     <Wrapper {...props} id="app_header">
@@ -42,6 +44,14 @@ const Header = (props) => {
             alignItems="center"
             justifyContent="space-between"
           >
+            <Hamburger
+              isOpen={mobileMenuOpen}
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <span />
+              <span />
+              <span />
+            </Hamburger>
             <Link style={{ color: '#1F2147' }} to="/">
               <HeaderLogo />
             </Link>

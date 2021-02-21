@@ -1,3 +1,4 @@
+import media from 'common/media'
 import { Flex, I } from 'components/CoreElements'
 import styled from 'styled-components'
 
@@ -8,8 +9,12 @@ export const List = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-direction: row;
+    flex-direction: column;
     max-width: 100%;
+
+    ${media.tablet`
+  flex-direction: row;
+  `};
   }
 `
 

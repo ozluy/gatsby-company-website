@@ -21,7 +21,11 @@ import services from './data'
 const PopulerServices = () => (
   <Section>
     <Container>
-      <Flex justifyContent="space-between" alignItems="center">
+      <Flex
+        flexDirection={['column', 'row']}
+        justifyContent="space-between"
+        alignItems="center"
+      >
         <Div maxWidth="343px">
           <Headline color="secondary">Destan Nakliyat ile</Headline>
           <H2 mt="15px">Size özel öne çıkan hizmetler</H2>

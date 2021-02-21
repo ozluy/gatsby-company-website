@@ -1,11 +1,16 @@
+import media from 'common/media'
 import { Flex } from 'components/CoreElements'
 import styled from 'styled-components'
 
 export const TripletWrapper = styled(Flex)`
   justify-content: space-between;
   align-items: flex-start;
-  flex-direction: row;
+  flex-direction: column;
   margin-top: 70px;
+
+  ${media.tablet`
+  flex-direction: row;
+  `};
 `
 
 export const Triplet = styled(Flex)`
@@ -19,4 +24,8 @@ export const Triplet = styled(Flex)`
   text-align: center;
   width: 360px;
   height: 400px;
+
+  ${media.desktop`
+  flex-direction: row;
+  `};
 `

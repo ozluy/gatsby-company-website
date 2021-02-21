@@ -41,7 +41,11 @@ const MovingProcess = () => {
   return (
     <Section bg="whiteBg">
       <Container>
-        <Flex justifyContent="space-between" alignItems="center">
+        <Flex
+          flexDirection={['column', 'row']}
+          justifyContent="space-between"
+          alignItems="center"
+        >
           <Div maxWidth="343px">
             <Headline color="secondary">Destan Nakliyat ile</Headline>
             <H2 mt="15px">Stressiz taşıma süreci nasıl işliyor?</H2>

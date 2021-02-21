@@ -1,13 +1,12 @@
 export const breakpoints = {
   // mobile first
-  uhd: 1980,
-  widescreen: 1366,
+  widescreen: 1260,
   desktop: 1024,
   tablet: 768
 }
 
 const theme = {
-  breakpoints,
+  breakpoints: Object.keys(breakpoints).map((key) => breakpoints[key]),
   colors: {
     primary: '#2E3054',
     secondary: '#059CE1',

@@ -1,4 +1,5 @@
 import hexToRGBA from 'common/hexToRGBA'
+import media from 'common/media'
 import styled from 'styled-components'
 
 export const Wrapper = styled.footer`
@@ -30,11 +31,14 @@ export const NavGroup = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-direction: row;
+  flex-direction: column;
   padding: 96px 0;
   margin: 96px 0;
   border: solid 1px ${({ theme }) => hexToRGBA(theme.colors.grey, 0.4)};
   border-width: 1px 0;
+  ${media.tablet`
+    flex-direction: row;  
+  `};
 `
 
 export const NavList = styled.ul`
