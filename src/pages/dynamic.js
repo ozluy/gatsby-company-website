@@ -23,7 +23,7 @@ export default function Template() {
       `}
       render={(data) => (
         <Container>
-          {data.allMarkdownRemark.edges.map(
+          {data?.allMarkdownRemark?.edges?.map(
             ({
               node: {
                 frontmatter: { title, date },
