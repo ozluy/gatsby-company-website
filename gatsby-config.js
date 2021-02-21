@@ -17,6 +17,7 @@ module.exports = {
         ignore: ['**/.*'] // ignore files starting with a dot
       }
     },
+    'gatsby-transformer-remark',
     'gatsby-plugin-netlify-cms',
     'gatsby-plugin-react-helmet',
     {

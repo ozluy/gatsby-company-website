@@ -12,6 +12,7 @@
     "object-curly-newline": "off",
     "operator-linebreak": "off",
     "react/jsx-props-no-spreading": "off",
+    "react/no-danger": "off",
     "no-unused-expressions": "off",
     "comma-dangle": [
       "error",
