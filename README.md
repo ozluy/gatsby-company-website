@@ -7,7 +7,7 @@
 Destan Nakliyat Gatsby
 </h1>
 
-### TODO: set production branch as Netlify auto build branch
+⚠️ TODO: set production branch as Netlify auto build branch
 
 ## Netlify Build
 
