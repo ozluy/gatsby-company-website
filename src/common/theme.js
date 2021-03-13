@@ -26,7 +26,7 @@ const theme = {
     whiteBg: '#F8FAFB',
     lightBg: '#f4f4f4',
     darkBg: '#0B1A33',
-    lighterBg: '#E5E5E5',
+    lighterBg: '#F8FAFB',
     red: '#E7A588',
     transparent: 'transparent',
     border: '#DCE4F1'

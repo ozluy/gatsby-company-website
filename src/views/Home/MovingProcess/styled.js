@@ -24,8 +24,4 @@ export const Triplet = styled(Flex)`
   text-align: center;
   width: 360px;
   height: 400px;
-
-  ${media.desktop`
-  flex-direction: row;
-  `};
 `

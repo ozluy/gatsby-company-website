@@ -42,9 +42,9 @@ const MovingProcess = () => {
     <Section bg="whiteBg">
       <Container>
         <Flex
-          flexDirection={['column', 'row']}
+          flexDirection="row"
           justifyContent="space-between"
-          alignItems="center"
+          alignItems={['center', 'left']}
         >
           <Div maxWidth="343px">
             <Headline color="secondary">Destan Nakliyat ile</Headline>

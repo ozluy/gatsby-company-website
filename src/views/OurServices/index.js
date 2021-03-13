@@ -6,28 +6,33 @@ import {
   H5,
   Headline,
   Img,
-  Paragraph,
-  Section
+  Paragraph
 } from 'components/CoreElements'
 import Container from 'components/Container'
 import services from 'views/Home/PopularServices/data'
-import { IconWrapper, ListItem } from 'views/Home/PopularServices/styled'
 import service1 from 'views/Home/PopularServices/service_1.png'
+import Dropdown from 'components/Dropdown'
+import { ButtonWithArrow } from 'components/Button'
+import ArrowRight from 'components/Icons/arrowRight'
 import {
-  Guide,
-  GuideHeader,
-  GuideList,
-  GuideListItem,
-  GuidesWrapper,
-  StateIcon
-} from 'views/Home/Guides/styled'
-import { List } from './styled'
+  List,
+  Service,
+  ServiceHeader,
+  ServiceList,
+  ServiceListItem,
+  ServicesWrapper,
+  StateIcon,
+  IconWrapper,
+  ListItem,
+  StyledSection,
+  VerticalCalculator
+} from './styled'
 
 const OurServicesPage = () => {
   const [activeIndex, setActiveIndex] = useState(1)
 
   return (
-    <Section>
+    <StyledSection>
       <Container>
         <Headline color="secondary" textAlign="center">
           Destan Nakliyat ile
@@ -35,30 +40,30 @@ const OurServicesPage = () => {
         <H1 textAlign="center">Hizmetlerimiz</H1>
         <Flex mt="100px">
           <Flex>
-            <GuidesWrapper width="300px">
+            <ServicesWrapper width="300px">
               {services.map(({ title }, index) => {
                 const isActive = activeIndex === index
                 return (
-                  <Guide key={title}>
-                    <GuideHeader
+                  <Service key={title}>
+                    <ServiceHeader
                       onClick={() => setActiveIndex(isActive ? -1 : index)}
                     >
                       <H5>{title}</H5>
                       <StateIcon> {isActive ? '-' : '+'}</StateIcon>
-                    </GuideHeader>
+                    </ServiceHeader>
                     {isActive && (
-                      <GuideList>
+                      <ServiceList>
                         {services.map((item) => (
-                          <GuideListItem key={item.title}>
+                          <ServiceListItem key={item.title}>
                             <Paragraph color="grey">{item.title}</Paragraph>
-                          </GuideListItem>
+                          </ServiceListItem>
                         ))}
-                      </GuideList>
+                      </ServiceList>
                     )}
-                  </Guide>
+                  </Service>
                 )
               })}
-            </GuidesWrapper>
+            </ServicesWrapper>
           </Flex>
           <List>
             {services.map(({ title, desc, Icon }) => (
@@ -81,8 +86,16 @@ const OurServicesPage = () => {
             ))}
           </List>
         </Flex>
+
+        <VerticalCalculator>
+          <Dropdown placeholder="Nereden seçin" />
+          <ArrowRight />
+          <Dropdown placeholder="Nereye seçin" />
+          <Dropdown placeholder="Hizmeti belirtin" />
+          <ButtonWithArrow>Fiyat Hesapla</ButtonWithArrow>
+        </VerticalCalculator>
       </Container>
-    </Section>
+    </StyledSection>
   )
 }
 export default OurServicesPage
