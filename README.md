@@ -4,9 +4,10 @@
   </a>
 </p>
 <h1 align="center">
-  Gatsby minimal starter
+Destan Nakliyat Gatsby
 </h1>
 
+### TODO: set production branch as Netlify auto build branch
 
 ## Netlify Build
 
