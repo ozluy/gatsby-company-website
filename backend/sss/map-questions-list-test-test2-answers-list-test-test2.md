@@ -1,8 +1,10 @@
 ---
 questions:
-  - '["test"'
-  - '"test2"]'
+  - test
+  - test2
+  - tesat3
 answers:
-  - '["test"'
-  - '"test2"]'
+  - answer
+  - answer
+  - answer
 ---
