@@ -3,6 +3,7 @@ import {
   Div,
   Flex,
   H1,
+  H2,
   H5,
   Headline,
   Img,
@@ -85,6 +86,16 @@ const OurServicesPage = () => {
               </ListItem>
             ))}
           </List>
+        </Flex>
+
+        <Flex
+          textAlign="center"
+          m="50px auto 0 auto"
+          maxWidth="350px"
+          flexDirection="column"
+        >
+          <Headline color="secondary">Destan Nakliyat ile</Headline>
+          <H2>Sana yardım etmek için burdayız</H2>
         </Flex>
 
         <VerticalCalculator>

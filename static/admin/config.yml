@@ -15,3 +15,22 @@ collections:
       - { name: date, label: Date, widget: datetime }
       - { name: title, label: Title }
       - { name: body, label: Body, widget: markdown }
+  - name: faq
+    label: Frequently Asked Questions
+    folder: backend/faq
+    create: true
+    widget: list
+    allow_add: true
+    summary: '{{fields.question}} {{fields.answer}}'
+    fields:
+      - { name: question, label: Question, widget: text }
+      - { name: answer, label: Answer, widget: text }
+  - name: sss
+    label: Frequently Asked Questions
+    folder: backend/sss
+    create: true
+    widget: list
+    allow_add: true
+    fields:
+      - { name: questions, label: Questions, widget: list }
+      - { name: answers, label: Answers, widget: list }
