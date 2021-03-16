@@ -10,10 +10,11 @@ module.exports = {
   },
   plugins: [
     {
+      // TODO : before production deployment needs correction
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.example.com',
-        sitemap: 'https://www.example.com/sitemap.xml',
+        host: 'https://oo234ju98.netlify.app',
+        sitemap: 'https://oo234ju98.netlify.app/sitemap.xml',
         env: {
           development: {
             policy: [{ userAgent: '*', disallow: ['/'] }]
