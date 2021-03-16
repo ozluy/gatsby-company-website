@@ -10,6 +10,21 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.example.com',
+        sitemap: 'https://www.example.com/sitemap.xml',
+        env: {
+          development: {
+            policy: [{ userAgent: '*', disallow: ['/'] }]
+          },
+          production: {
+            policy: [{ userAgent: '*', disallow: '/' }]
+          }
+        }
+      }
+    },
+    {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'backend',
