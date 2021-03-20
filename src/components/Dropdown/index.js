@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import Select from 'react-select'
 import {
   Wrapper,
@@ -45,20 +45,21 @@ const customStyles = {
   })
 }
 
-const Dropdown = ({
-  wrapperProps,
-  focused,
-  value,
-  title,
-  errorMessage,
-  ...rest
-}) => (
-  <Wrapper {...wrapperProps}>
-    {' '}
-    <Placeholder focused>{title}&nbsp;</Placeholder>
-    <Select styles={customStyles} {...rest} />
-    <ErrorMessage>{errorMessage}&nbsp;</ErrorMessage>
-  </Wrapper>
+const Dropdown = forwardRef(
+  ({ wrapperProps, value, title, inputValue, errorMessage, ...rest }, ref) => (
+    <Wrapper {...wrapperProps}>
+      <Placeholder active>{title}&nbsp;</Placeholder>
+      <Select
+        inputValue={inputValue}
+        ref={ref}
+        styles={customStyles}
+        {...rest}
+      />
+      <ErrorMessage>{errorMessage}&nbsp;</ErrorMessage>
+    </Wrapper>
+  )
 )
+
+Dropdown.displayName = 'Dropdown'
 
 export default Dropdown

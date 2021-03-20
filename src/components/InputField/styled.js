@@ -35,8 +35,9 @@ export const Placeholder = styled.label`
   font-size: ${({ theme }) => theme.typography.primary};
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   transition: all 0.2s ease-in;
-  ${({ focused }) =>
-    focused &&
+
+  ${({ active }) =>
+    active &&
     css`
       top: 0;
       font-size: ${({ theme }) => theme.typography.small};
