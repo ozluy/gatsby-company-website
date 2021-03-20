@@ -26,11 +26,13 @@ collections:
       - { name: question, label: Question, widget: text }
       - { name: answer, label: Answer, widget: text }
   - name: sss
-    label: Frequently Asked Questions
+    label: SSS
     folder: backend/sss
     create: true
-    widget: list
+    widget: markdown
     allow_add: true
+    extension: json
+    summary: '{{fields.questions}} {{fields.answers}}'
     fields:
       - { name: questions, label: Questions, widget: list }
       - { name: answers, label: Answers, widget: list }
