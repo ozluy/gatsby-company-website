@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 import {
   Div,
   Flex,
@@ -10,8 +11,6 @@ import {
   Paragraph
 } from 'components/CoreElements'
 import Container from 'components/Container'
-import services from 'views/Home/PopularServices/data'
-import service1 from 'views/Home/PopularServices/service_1.png'
 import Dropdown from 'components/Dropdown'
 import { ButtonWithArrow } from 'components/Button'
 import ArrowRight from 'components/Icons/arrowRight'
@@ -19,8 +18,7 @@ import {
   List,
   Service,
   ServiceHeader,
-  ServiceList,
-  ServiceListItem,
+  ServiceSubCategory,
   ServicesWrapper,
   StateIcon,
   IconWrapper,
@@ -31,7 +29,25 @@ import {
 
 const OurServicesPage = () => {
   const [activeIndex, setActiveIndex] = useState(1)
-
+  const { allGraphCmsService } = useStaticQuery(graphql`
+    {
+      allGraphCmsService(limit: 5) {
+        nodes {
+          name
+          summary
+          subcategories {
+            html
+          }
+          image {
+            url
+          }
+          icon {
+            url
+          }
+        }
+      }
+    }
+  `)
   return (
     <StyledSection>
       <Container>
@@ -42,49 +58,54 @@ const OurServicesPage = () => {
         <Flex mt="100px">
           <Flex>
             <ServicesWrapper width="300px">
-              {services.map(({ title }, index) => {
-                const isActive = activeIndex === index
-                return (
-                  <Service key={title}>
-                    <ServiceHeader
-                      onClick={() => setActiveIndex(isActive ? -1 : index)}
-                    >
-                      <H5>{title}</H5>
-                      <StateIcon> {isActive ? '-' : '+'}</StateIcon>
-                    </ServiceHeader>
-                    {isActive && (
-                      <ServiceList>
-                        {services.map((item) => (
-                          <ServiceListItem key={item.title}>
-                            <Paragraph color="grey">{item.title}</Paragraph>
-                          </ServiceListItem>
-                        ))}
-                      </ServiceList>
-                    )}
-                  </Service>
-                )
-              })}
+              {allGraphCmsService.nodes.map(
+                ({ name, subcategories: { html } }, index) => {
+                  const isActive = activeIndex === index
+                  return (
+                    <Service key={name}>
+                      <ServiceHeader
+                        onClick={() => setActiveIndex(isActive ? -1 : index)}
+                      >
+                        <H5>{name}</H5>
+                        <StateIcon> {isActive ? '-' : '+'}</StateIcon>
+                      </ServiceHeader>
+                      {isActive && (
+                        <ServiceSubCategory
+                          dangerouslySetInnerHTML={{ __html: html }}
+                        />
+                      )}
+                    </Service>
+                  )
+                }
+              )}
             </ServicesWrapper>
           </Flex>
           <List>
-            {services.map(({ title, desc, Icon }) => (
-              <ListItem key={title}>
-                <Img src={service1} />
-                <Div mt="-15px">
-                  <IconWrapper>
-                    <Icon />
-                  </IconWrapper>
-                  <H5
-                    fontWeight="var(--font-weight-bold)"
-                    fontSize="var(--typography-medium)"
-                    margin="24px 0 16px 0"
-                  >
-                    {title}
-                  </H5>
-                  <Paragraph>{desc}</Paragraph>
-                </Div>
-              </ListItem>
-            ))}
+            {allGraphCmsService.nodes.map(
+              ({
+                name,
+                summary,
+                image: { url: imageUrl },
+                icon: { url: iconUrl }
+              }) => (
+                <ListItem key={name}>
+                  <Img src={imageUrl} />
+                  <Div mt="-15px">
+                    <IconWrapper>
+                      <Img src={iconUrl} />
+                    </IconWrapper>
+                    <H5
+                      fontWeight="var(--font-weight-bold)"
+                      fontSize="var(--typography-medium)"
+                      margin="24px 0 16px 0"
+                    >
+                      {name}
+                    </H5>
+                    <Paragraph>{summary}</Paragraph>
+                  </Div>
+                </ListItem>
+              )
+            )}
           </List>
         </Flex>
 

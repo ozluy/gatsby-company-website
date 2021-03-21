@@ -86,13 +86,16 @@ export const StateIcon = styled(I)`
   margin-left: auto;
   cursor: pointer;
 `
-export const ServiceList = styled.ul`
-  list-style: disc;
-  padding-top: 2px;
-`
-export const ServiceListItem = styled.li`
-  margin-top: 22px;
-  color: ${({ theme }) => theme.colors.secondary};
+export const ServiceSubCategory = styled.div`
+  ul {
+    padding-top: 2px;
+    list-style: disc;
+  }
+
+  li {
+    color: ${({ theme }) => theme.colors.secondary};
+    margin-top: 22px;
+  }
 `
 
 export const ListItem = styled(Flex)`

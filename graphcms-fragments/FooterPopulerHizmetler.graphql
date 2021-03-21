@@ -1,7 +1,0 @@
-fragment FooterPopulerHizmetler on FooterPopulerHizmetler {
-  stage
-  remoteId: id
-  createdAt
-  updatedAt
-  publishedAt
-}

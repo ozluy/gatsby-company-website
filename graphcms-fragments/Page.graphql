@@ -1,0 +1,17 @@
+fragment Page on Page {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  title
+  header
+  content {
+    ... on RichText {
+      raw
+      html
+      markdown
+      text
+    }
+  }
+}

@@ -6,7 +6,7 @@ fragment Service on Service {
   publishedAt
   name
   summary
-  description {
+  subcategories {
     ... on RichText {
       raw
       html

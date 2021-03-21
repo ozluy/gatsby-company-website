@@ -11,5 +11,54 @@ fragment Asset on Asset {
   width
   size
   mimeType
+  photoPopulerRotalar {
+    ... on PopulerRotalar {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  imageService {
+    ... on Service {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  iconService {
+    ... on Service {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  iconEvdenEveNakliyatRehberi {
+    ... on EvdenEveNakliyatRehberi {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  photoTestimonial {
+    ... on Testimonial {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  logoReferanslar {
+    ... on Referanslar {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  photoTasidigimizKamuKurumlari {
+    ... on TasidigimizKamuKurumlari {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
   url
 }

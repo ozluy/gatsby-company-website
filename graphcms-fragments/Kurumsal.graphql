@@ -1,10 +1,11 @@
-fragment Hakkimizda on Hakkimizda {
+fragment Kurumsal on Kurumsal {
   stage
   remoteId: id
   createdAt
   updatedAt
   publishedAt
   title
+  subtitle
   content {
     ... on RichText {
       raw

@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useMemo } from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 import ArrowButtons from 'components/ChevronButtons'
 import Container from 'components/Container'
-import Dropdown from 'components/Dropdown'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import {
   Div,
@@ -13,63 +13,49 @@ import {
   I,
   Img
 } from 'components/CoreElements'
-import Swap from 'components/Icons/swap'
 import IconButton from 'components/IconButton'
-import Button, { ButtonWithArrow } from 'components/Button'
-import InputField from 'components/InputField'
+import Button from 'components/Button'
 import MapMarker from 'components/Icons/mapMarker'
 import Animator from 'components/Animator'
-import antalya from './antalya.png'
-import cities from './cities'
-import {
-  List,
-  ListItem,
-  CalculatorWrapper,
-  ItemBody,
-  Preview,
-  SwapWrapper
-} from './styled'
+import getCityId from 'common/getCityId'
+import { List, ListItem, ItemBody, Preview } from './styled'
+import Calculator from './Calculator'
 
 const Intercity = () => {
-  const processSteps = [
+  const {
+    allGraphCmsPopulerRotalar,
+    allGraphCmsSehirler
+  } = useStaticQuery(graphql`
     {
-      from: 'Istanbul',
-      to: 'Ankara'
-    },
-    {
-      from: 'Istanbul',
-      to: 'Gaziantep'
-    },
-    {
-      from: 'Istanbul',
-      to: 'Antalya'
-    },
-    {
-      from: 'Istanbul',
-      to: 'Nevşehir'
-    },
-    {
-      from: 'Izmir',
-      to: 'Antalya'
+      allGraphCmsSehirler {
+        nodes {
+          citiesInTurkey
+        }
+      }
+      allGraphCmsPopulerRotalar {
+        nodes {
+          subText
+          destinationCity
+          currentCity
+          photo {
+            url
+          }
+        }
+      }
     }
-  ]
+  `)
 
-  const Calculator = () => (
-    <CalculatorWrapper>
-      <InputField placeholder="Nereden" value="Istanbul" />
-      <SwapWrapper>
-        <IconButton icon={<Swap />} />
-      </SwapWrapper>
-      <Dropdown
-        title="Nereye"
-        options={cities}
-        placeholder="Sehir Ara..."
-        defaultValue={{ value: 6, label: 'Ankara' }}
-        maxMenuHeight={90}
-      />
-      <ButtonWithArrow mt="20px"> Fiyat Hesapla</ButtonWithArrow>
-    </CalculatorWrapper>
-  )
+  const [cities, citiesMap] = useMemo(() => {
+    const { citiesInTurkey } = allGraphCmsSehirler.nodes[0]
+
+    const mappedCities = new Map()
+    citiesInTurkey.map((item) => {
+      mappedCities.set(item.value, item)
+      return item
+    })
+    return [citiesInTurkey, mappedCities]
+  })
+  const populerRotalar = allGraphCmsPopulerRotalar?.nodes
 
   return (
     <Section bg="whiteBg">
@@ -89,43 +75,53 @@ const Intercity = () => {
             vertical={false}
             hideScrollbars={false}
           >
-            {processSteps.map(({ from, to }, index) => {
-              const ItemComponent = index < 4 ? Animator : ListItem
-              return (
-                <ItemComponent
-                  key={`${from}-${to}`}
-                  component={ListItem}
-                  customConfig={{
-                    distance: `${50 + index * 50}px`,
-                    delay: 50 + index * 100,
-                    duration: 500 + index * 100
-                  }}
-                >
-                  <Img src={antalya} />
-                  <ItemBody>
-                    <Calculator />
-                    <Preview>
-                      <Flex
-                        flexDirection="column"
-                        justifyContent="flex-start"
-                        alignItems="flex-start"
-                      >
-                        <Headline>
-                          <I mr="8px" color="secondary">
-                            <MapMarker />
-                          </I>
-                          {to}
-                        </Headline>
-                        <Paragraph color="greyLight" mt="3px">
-                          Evden eve nakliyat
-                        </Paragraph>
-                      </Flex>
-                      <IconButton />
-                    </Preview>
-                  </ItemBody>
-                </ItemComponent>
-              )
-            })}
+            {populerRotalar.map(
+              ({ currentCity, destinationCity, photo, subText }, index) => {
+                const ItemComponent = index < 4 ? Animator : ListItem
+                const fromCity = citiesMap.get(getCityId(currentCity))
+                const toCity = citiesMap.get(getCityId(destinationCity))
+
+                return (
+                  <ItemComponent
+                    key={`${currentCity}-${destinationCity}`}
+                    component={ListItem}
+                    customConfig={{
+                      distance: `${50 + index * 50}px`,
+                      delay: 50 + index * 100,
+                      duration: 500 + index * 100
+                    }}
+                  >
+                    <Img src={photo.url} />
+                    <ItemBody>
+                      <Calculator
+                        cities={cities}
+                        citiesMap={citiesMap}
+                        currentCity={fromCity}
+                        destinationCity={toCity}
+                      />
+                      <Preview>
+                        <Flex
+                          flexDirection="column"
+                          justifyContent="flex-start"
+                          alignItems="flex-start"
+                        >
+                          <Headline>
+                            <I mr="8px" color="secondary">
+                              <MapMarker />
+                            </I>
+                            {fromCity.label}
+                          </Headline>
+                          <Paragraph color="greyLight" mt="3px">
+                            {subText}
+                          </Paragraph>
+                        </Flex>
+                        <IconButton />
+                      </Preview>
+                    </ItemBody>
+                  </ItemComponent>
+                )
+              }
+            )}
           </ScrollContainer>
         </List>
 

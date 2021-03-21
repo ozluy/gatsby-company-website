@@ -15,4 +15,18 @@ fragment Testimonial on Testimonial {
   name
   title
   quote
+  color {
+    ... on Color {
+      hex
+      rgba {
+        ... on RGBA {
+          r
+          g
+          b
+          a
+        }
+      }
+      css
+    }
+  }
 }

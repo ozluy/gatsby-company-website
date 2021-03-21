@@ -8,8 +8,8 @@ const Wrapper = styled.div`
   overflow: hidden;
 `
 
-const SwitchButtons = ({ buttons = [] }) => {
-  const [activeIndex, setActiveIndex] = useState(0)
+const SwitchButtons = ({ buttons = [], startIndex = 0 }) => {
+  const [activeIndex, setActiveIndex] = useState(startIndex)
 
   return (
     <Wrapper>
