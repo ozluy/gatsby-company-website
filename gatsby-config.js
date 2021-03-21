@@ -26,15 +26,13 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: 'gatsby-source-graphcms',
       options: {
-        name: 'backend',
-        path: `${__dirname}/backend/`,
-        ignore: ['**/.*'] // ignore files starting with a dot
+        endpoint:
+          'https://api-eu-central-1.graphcms.com/v2/ckmhzz8xnkl9901xna1wb2big/master',
+        stages: ['PUBLISHED']
       }
     },
-    'gatsby-transformer-remark',
-    'gatsby-plugin-netlify-cms',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-styled-components',

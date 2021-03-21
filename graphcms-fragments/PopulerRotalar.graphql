@@ -1,0 +1,18 @@
+fragment PopulerRotalar on PopulerRotalar {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  currentCity
+  destinationCity
+  photo {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+      stage
+    }
+  }
+  subText
+}

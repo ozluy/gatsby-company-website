@@ -1,0 +1,9 @@
+fragment FooterKurumsal on FooterKurumsal {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  title
+  link
+}

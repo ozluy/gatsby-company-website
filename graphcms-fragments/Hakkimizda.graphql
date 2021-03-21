@@ -1,0 +1,16 @@
+fragment Hakkimizda on Hakkimizda {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  title
+  content {
+    ... on RichText {
+      raw
+      html
+      markdown
+      text
+    }
+  }
+}

@@ -1,0 +1,9 @@
+fragment NavBarLink on NavBarLink {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  title
+  link
+}

@@ -1,0 +1,9 @@
+fragment CalistigimizSehirler on CalistigimizSehirler {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  title
+  website
+}

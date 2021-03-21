@@ -10,6 +10,7 @@ const InputField = forwardRef(
       placeholder,
       onBlur,
       onFocus,
+      onChange,
       value,
       ...rest
     },
@@ -24,6 +25,7 @@ const InputField = forwardRef(
         <Placeholder active={isActive}>{placeholder}&nbsp;</Placeholder>
         <Input
           value={value}
+          onChange={onChange}
           ref={ref}
           onFocus={() => {
             onFocus && onFocus()

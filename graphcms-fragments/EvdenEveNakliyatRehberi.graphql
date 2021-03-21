@@ -1,0 +1,25 @@
+fragment EvdenEveNakliyatRehberi on EvdenEveNakliyatRehberi {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  title
+  body {
+    ... on RichText {
+      raw
+      html
+      markdown
+      text
+    }
+  }
+  link
+  icon {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+      stage
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-import { Link } from 'gatsby'
+import { Link, useStaticQuery, graphql } from 'gatsby'
 import Container from 'components/Container'
 import { Flex, Small } from 'components/CoreElements'
 import Headphones from 'components/Icons/headphones'
@@ -16,17 +16,24 @@ import {
 
 const Header = (props) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const data = useStaticQuery(graphql`
+    {
+      allGraphCmsNavBarLink {
+        nodes {
+          title
+          link
+        }
+      }
+    }
+  `)
+
+  const navLinks = data?.allGraphCmsNavBarLink?.nodes
   const navList = useMemo(
     () => (
       <NavList isOpen={mobileMenuOpen}>
-        {[
-          { title: 'Kurumsal', url: '/kurumsal' },
-          { title: 'Hizmetlerimiz', url: '/hizmetlerimiz' },
-          { title: 'Referanslarımız', url: '/referanslarimiz' },
-          { title: 'İletişim', url: '/iletisim' }
-        ].map(({ title, url }) => (
+        {navLinks.map(({ title, link }) => (
           <NavItem key={title}>
-            <Link activeClassName="nav__active" to={url}>
+            <Link activeClassName="nav__active" to={`/${link}`}>
               {title}
             </Link>
           </NavItem>

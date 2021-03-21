@@ -1,0 +1,9 @@
+fragment FooterTasinmaRehberi on FooterTasinmaRehberi {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  title
+  link
+}

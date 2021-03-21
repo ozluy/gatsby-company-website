@@ -1,0 +1,8 @@
+fragment Sehirler on Sehirler {
+  stage
+  remoteId: id
+  createdAt
+  updatedAt
+  publishedAt
+  citiesInTurkey
+}
