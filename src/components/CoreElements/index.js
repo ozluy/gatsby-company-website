@@ -88,6 +88,10 @@ export const InlineFlex = styled(Div)`
   ${flexbox};
 `
 
+export const RicTextContent = styled(Div)`
+  line-height: 24px;
+`
+
 export const Paragraph = styled.p`
   margin: 0;
   ${sharedAttrs};

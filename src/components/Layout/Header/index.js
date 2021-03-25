@@ -16,7 +16,10 @@ import {
 
 const Header = (props) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const data = useStaticQuery(graphql`
+  const {
+    allGraphCmsNavBarLink,
+    allGraphCmsContactDetail
+  } = useStaticQuery(graphql`
     {
       allGraphCmsNavBarLink {
         nodes {
@@ -24,10 +27,16 @@ const Header = (props) => {
           link
         }
       }
+      allGraphCmsContactDetail {
+        nodes {
+          phone
+        }
+      }
     }
   `)
 
-  const navLinks = data?.allGraphCmsNavBarLink?.nodes
+  const navLinks = allGraphCmsNavBarLink?.nodes
+  const { phone } = allGraphCmsContactDetail?.nodes[0]
   const navList = useMemo(
     () => (
       <NavList isOpen={mobileMenuOpen}>
@@ -71,7 +80,7 @@ const Header = (props) => {
                 <Small color="black" opacity="0.6">
                   Türkiye’nin her yerinden
                 </Small>
-                <PhoneNumber> 0 312 332 16 96</PhoneNumber>
+                <PhoneNumber>{phone}</PhoneNumber>
               </Flex>
             </CallCenter>
           </Flex>

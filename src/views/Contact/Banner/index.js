@@ -1,5 +1,7 @@
 import React from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 import {
+  Anchor,
   Flex,
   H1,
   Headline,
@@ -10,11 +12,38 @@ import {
 import Container from 'components/Container'
 import { useTheme } from 'styled-components'
 import { Helmet } from 'react-helmet'
-import map from './map.png'
 
 const Banner = () => {
   const theme = useTheme()
   const { darkBg, white, secondary } = theme.colors
+  const { allGraphCmsContactDetail } = useStaticQuery(graphql`
+    {
+      allGraphCmsContactDetail {
+        nodes {
+          address
+          email
+          mapImage {
+            url
+          }
+          mobile
+          mapLink
+          phone
+          phone2
+        }
+      }
+    }
+  `)
+
+  const {
+    phone,
+    phone2,
+    email,
+    address,
+    mobile,
+    mapImage: { url: mapImageSrc },
+    mapLink
+  } = allGraphCmsContactDetail.nodes[0]
+
   return (
     <Section bg={darkBg}>
       <Helmet>
@@ -42,22 +71,27 @@ const Banner = () => {
             <H1 mb="70px" color="white">
               Nasıl yardımcı olabiliriz?
             </H1>
-            <Img src={map} />
+            <Anchor
+              title="Google Maps'te aç"
+              href={mapLink}
+              target="_blank"
+              rel="no-referrer no-opener"
+            >
+              <Img src={mapImageSrc} />
+            </Anchor>
           </Flex>
           <Flex color="secondary" flexDirection="column">
             <Headline mb="16px" color="white">
               İletişim Bilgileri
             </Headline>
-            <Paragraph mt="16px">info@destannakliyat.com.tr</Paragraph>
-            <Paragraph mt="16px">0(312) 332 16 96</Paragraph>
-            <Paragraph mt="16px">0(312) 346 67 87</Paragraph>
-            <Paragraph mt="16px">
-              Demetlale Mah., Bağdat Cad. No:32/3 Yenimahalle / ANKARA
-            </Paragraph>
+            <Paragraph mt="16px">{email}</Paragraph>
+            <Paragraph mt="16px">{phone}</Paragraph>
+            <Paragraph mt="16px">{phone2}</Paragraph>
+            <Paragraph mt="16px">{address}</Paragraph>
             <Headline m="40px 0 32px 0" color="white">
               24/7 Mobil Ulaşım
             </Headline>
-            <Paragraph>0(506) 700 39 28</Paragraph>
+            <Paragraph>{mobile}</Paragraph>
           </Flex>
         </Flex>
       </Container>

@@ -60,5 +60,12 @@ fragment Asset on Asset {
       stage
     }
   }
+  mapImageContactDetail {
+    ... on ContactDetail {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
   url
 }
