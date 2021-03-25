@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
-import ArrowButtons from 'components/ChevronButtons'
+import ChevronButtons from 'components/ChevronButtons'
 import Container from 'components/Container'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import {
@@ -67,7 +67,7 @@ const Intercity = () => {
               Şehirler arası “Evden Eve Nakliyat” için doğru seçim.
             </H2>
           </Div>
-          <ArrowButtons disableBefore />
+          <ChevronButtons disableBefore />
         </Flex>
         <List>
           <ScrollContainer

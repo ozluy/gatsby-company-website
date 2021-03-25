@@ -40,6 +40,7 @@ export const VerticalCalculator = styled(Flex)`
 export const List = styled(Flex)`
   justify-content: flex-start;
   align-items: flex-start;
+  align-content: flex-start;
   flex-direction: row;
   width: 100%;
   flex-wrap: wrap;
@@ -49,7 +50,7 @@ export const ServicesWrapper = styled(Flex)`
 `
 
 export const Service = styled.div`
-  background: ${({ theme }) => theme.colors.lightBg};
+  background: ${({ theme }) => theme.colors.white};
   border-radius: 10px;
   padding: 24px 24px;
   margin-top: 24px;

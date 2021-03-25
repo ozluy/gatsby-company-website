@@ -67,5 +67,19 @@ fragment Asset on Asset {
       stage
     }
   }
+  asset1Page {
+    ... on Page {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
+  asset2Page {
+    ... on Page {
+      remoteTypeName: __typename
+      remoteId: id
+      stage
+    }
+  }
   url
 }

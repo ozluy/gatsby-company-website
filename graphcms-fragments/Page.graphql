@@ -14,4 +14,20 @@ fragment Page on Page {
       text
     }
   }
+  asset1 {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+      stage
+    }
+  }
+  asset2 {
+    ... on Asset {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+      stage
+    }
+  }
 }

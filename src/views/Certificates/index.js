@@ -8,20 +8,30 @@ import {
   Headline,
   Img,
   Section,
-  RicTextContent
+  RicTextContent,
+  Flex,
+  InlineFlex
 } from 'components/CoreElements'
-import Wrapper from './styled'
+import { Banner, AssetContent, TextContent } from './styled'
 import bannerImage from './sertifikalarimiz_banner.svg'
 
 const CertificatesPage = () => {
   const { allGraphCmsPage } = useStaticQuery(graphql`
     {
-      allGraphCmsPage(filter: { title: { eq: "Sertifikalarımız" } }) {
+      allGraphCmsPage(
+        filter: { remoteId: { eq: "ckmj4nw8wcx0i0b03nx1gkrph" } }
+      ) {
         nodes {
           title
           header
           content {
             html
+          }
+          asset1 {
+            url
+          }
+          asset2 {
+            url
           }
         }
       }
@@ -31,27 +41,40 @@ const CertificatesPage = () => {
   const {
     content: { html },
     title,
-    header
+    header,
+    asset1,
+    asset2
   } = allGraphCmsPage.nodes[0]
 
   return (
     <>
       <Section p="0 0 0 0">
         <Container>
-          <Wrapper>
+          <Banner>
             <Div>
               <Headline color="secondary">Destan Nakilyat ile</Headline>
               <H1 mt="15px">{title}</H1>
             </Div>
             <Img src={bannerImage} />
-          </Wrapper>
+          </Banner>
         </Container>
       </Section>
-      <Section bg="white">
+      <Section bg="lightBg">
         <Container>
-          <H2>{header}</H2>
-
-          <RicTextContent dangerouslySetInnerHTML={{ __html: html }} />
+          <InlineFlex>
+            <H2 borderBottom="solid 2px" borderColor="secondary">
+              {header}
+            </H2>
+          </InlineFlex>
+          <Flex>
+            <TextContent>
+              <RicTextContent dangerouslySetInnerHTML={{ __html: html }} />
+            </TextContent>
+            <AssetContent>
+              <Img src={asset1.url} />
+              <Img src={asset2.url} />
+            </AssetContent>
+          </Flex>
         </Container>
       </Section>
     </>
