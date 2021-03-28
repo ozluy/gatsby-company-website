@@ -18,7 +18,12 @@ const Calculator = ({ cities, currentCity, destinationCity }) => {
 
   return (
     <CalculatorWrapper>
-      <InputField placeholder="Nereden" value={cityFrom.label} />
+      <InputField
+        placeholder="Nereden"
+        value={cityFrom.label}
+        readOnly
+        onChange={() => ''}
+      />
       <SwapWrapper>
         <IconButton icon={<Swap />} onClick={handleSwap} />
       </SwapWrapper>

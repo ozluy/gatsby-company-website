@@ -90,12 +90,15 @@ export const StateIcon = styled(I)`
 export const ServiceSubCategory = styled.div`
   ul {
     padding-top: 2px;
-    list-style: disc;
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
   }
 
   li {
-    color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.black};
     margin-top: 22px;
+    margin-left: 0;
   }
 `
 

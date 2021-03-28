@@ -66,7 +66,9 @@ const OurServicesPage = () => {
                       <ServiceHeader
                         onClick={() => setActiveIndex(isActive ? -1 : index)}
                       >
-                        <H5>{name}</H5>
+                        <H5 color={isActive ? 'secondary' : 'primary'}>
+                          {name}
+                        </H5>
                         <StateIcon> {isActive ? '-' : '+'}</StateIcon>
                       </ServiceHeader>
                       {isActive && (
