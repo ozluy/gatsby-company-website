@@ -33,7 +33,6 @@ const Calculator = ({ cities, currentCity, destinationCity }) => {
         options={cities}
         placeholder="Sehir Ara..."
         defaultValue={cityTo}
-        value={cityTo}
         maxMenuHeight={90}
         onChange={(val) => setCityTo(val)}
       />

@@ -1,11 +1,14 @@
 import { Flex } from 'components/CoreElements'
 import styled, { css } from 'styled-components'
+import { height, space } from 'styled-system'
 
 export const Wrapper = styled(Flex)`
   position: relative;
   height: 65px;
   padding-top: 20px;
   flex-direction: column;
+  ${height};
+  ${space};
 `
 
 export const Input = styled.input`

@@ -1,4 +1,4 @@
-fragment Service on Service {
+fragment FAQCateroy on FAQCateroy {
   stage
   remoteId: id
   createdAt
@@ -25,30 +25,6 @@ fragment Service on Service {
       stage
     }
   }
-  name
-  summary
-  subcategories {
-    ... on RichText {
-      raw
-      html
-      markdown
-      text
-    }
-  }
-  image {
-    ... on Asset {
-      remoteTypeName: __typename
-      remoteId: id
-      locale
-      stage
-    }
-  }
-  icon {
-    ... on Asset {
-      remoteTypeName: __typename
-      remoteId: id
-      locale
-      stage
-    }
-  }
+  label
+  connectedEnum
 }

@@ -9,10 +9,10 @@ const Button = styled.button`
   padding: 16px 20px;
   font-size: ${({ theme }) => theme.typography.primary};
   border-radius: 10px;
-  border: none;
   outline: none;
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.secondary};
+  border: solid 1px ${({ theme }) => theme.colors.secondary};
   display: inline-flex;
   align-items: center;
   flex-direction: row;
@@ -25,19 +25,30 @@ const Button = styled.button`
     inline &&
     css`
       background-color: ${({ theme }) => theme.colors.transparent};
+      border: solid 1px ${({ theme }) => theme.colors.transparent};
       color: ${({ theme }) => theme.colors.black};
+    `};
+
+  ${({ passive }) =>
+    passive &&
+    css`
+      background-color: ${({ theme }) => theme.colors.transparent};
+      border: solid 1px ${({ theme }) => theme.colors.transparent};
+      color: ${({ theme }) => theme.colors.greyLighter};
     `};
 
   ${({ black }) =>
     black &&
     css`
       background-color: ${({ theme }) => theme.colors.black};
+      border: solid 1px ${({ theme }) => theme.colors.black};
     `};
 
   ${({ green }) =>
     green &&
     css`
       background-color: ${({ theme }) => theme.colors.green};
+      border: solid 1px ${({ theme }) => theme.colors.green};
       color: ${({ theme }) => theme.colors.white};
     `};
 
@@ -47,6 +58,21 @@ const Button = styled.button`
       background-color: ${({ theme }) => theme.colors.transparent};
       border: solid 1px ${({ theme }) => theme.colors.blueBg};
       color: ${({ theme }) => theme.colors.blueBg};
+    `}
+
+  ${({ rounded }) =>
+    rounded &&
+    css`
+      border-radius: 90px;
+      padding: 16px 35px;
+    `};
+
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      background-color: ${({ theme }) => theme.colors.greyLighter};
+      border: solid 1px ${({ theme }) => theme.colors.greyLighter};
+      color: ${({ theme }) => theme.colors.white};
     `}
 `
 

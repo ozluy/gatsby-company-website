@@ -14,6 +14,7 @@ import avertacySemiboldWoff from '../../assets/fonts/avertacy-semibold-webfont.w
 import avertacySemiboldWoff2 from '../../assets/fonts/avertacy-semibold-webfont.woff2'
 import avertacyRegularWoff from '../../assets/fonts/avertacy-regular-webfont.woff'
 import avertacyRegularWoff2 from '../../assets/fonts/avertacy-regular-webfont.woff2'
+import 'react-datepicker/dist/react-datepicker.css'
 
 const GlobalStyles = createGlobalStyle`
   @font-face {
@@ -66,6 +67,12 @@ const GlobalStyles = createGlobalStyle`
   a {
     color: unset;
     text-decoration: none;
+  }
+
+  ::placeholder {
+    color: ${({ theme }) => theme.colors.greyLighter};
+    font-size: ${({ theme }) => theme.typography.primary};
+    line-height: 21px;
   }
 `
 
