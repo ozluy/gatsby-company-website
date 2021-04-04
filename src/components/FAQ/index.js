@@ -35,11 +35,12 @@ const FAQSection = () => {
     }
   `)
 
-  const faqs = allGraphCmsFaq.nodes
   const faqCategories = allGraphCmsFaqCateroy.nodes
-
   const [currentCategory, setCurrentCategy] = useState(
     faqCategories[0].connectedEnum
+  )
+  const faqs = allGraphCmsFaq.nodes.filter(
+    ({ category }) => category === currentCategory
   )
 
   return (
@@ -63,7 +64,12 @@ const FAQSection = () => {
                   ? { green: true }
                   : { passive: true })}
                 key={connectedEnum}
-                onClick={() => setCurrentCategy(connectedEnum)}
+                onClick={() => {
+                  if (currentCategory !== connectedEnum) {
+                    setCurrentCategy(connectedEnum)
+                    setActiveIndex(0)
+                  }
+                }}
               >
                 {label}
               </Button>
@@ -72,10 +78,7 @@ const FAQSection = () => {
         </Flex>
 
         <FAQsWrapper>
-          {faqs.map(({ question, answer: { html }, category }, index) => {
-            if (category !== currentCategory) {
-              return null
-            }
+          {faqs.map(({ question, answer: { html } }, index) => {
             const isActive = activeIndex === index
             return (
               <FAQ key={question} isActive={isActive}>

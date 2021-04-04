@@ -73,6 +73,7 @@ const Button = styled.button`
       background-color: ${({ theme }) => theme.colors.greyLighter};
       border: solid 1px ${({ theme }) => theme.colors.greyLighter};
       color: ${({ theme }) => theme.colors.white};
+      cursor: not-allowed;
     `}
 `
 

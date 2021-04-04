@@ -12,9 +12,11 @@ import packaging from './steps/packaging'
 import insurance from './steps/insurance'
 import dateOfMoving from './steps/dateOfMoving'
 
-const CalculatorPage = () => {
+const CalculatorPage = ({ location }) => {
+  const { cityFrom, cityTo, selectedService } = location.state || {}
   const [currentStep, setCurrentStep] = useState(0)
   const [calculatorParams, setCalculatorParams] = useState({
+    selectedService,
     sizeOfMoving: sizeOfMoving[0],
     oldHouseCondition: oldHouseCondition[0],
     destinationHouseCondition: oldHouseCondition[0],
@@ -26,9 +28,11 @@ const CalculatorPage = () => {
       name: '',
       phone: '',
       email: ''
-    }
+    },
+    cityFrom,
+    cityTo
   })
-  const { allGraphCmsService } = useStaticQuery(graphql`
+  const { allGraphCmsService, allGraphCmsSehirler } = useStaticQuery(graphql`
     {
       allGraphCmsService {
         nodes {
@@ -36,9 +40,15 @@ const CalculatorPage = () => {
           name
         }
       }
+      allGraphCmsSehirler {
+        nodes {
+          citiesInTurkey
+        }
+      }
     }
   `)
   const services = allGraphCmsService.nodes
+  const { citiesInTurkey } = allGraphCmsSehirler.nodes[0]
 
   return (
     <Section>
@@ -46,6 +56,7 @@ const CalculatorPage = () => {
         <H1 mb="40px">Hesap Makinesi</H1>
         <Banner>
           <Steps
+            citiesInTurkey={citiesInTurkey}
             currentStep={currentStep}
             setCurrentStep={setCurrentStep}
             setCalculatorParams={setCalculatorParams}

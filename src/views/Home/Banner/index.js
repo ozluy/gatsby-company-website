@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import Animator from 'components/Animator'
 import Container from 'components/Container'
 import { ButtonWithArrow } from 'components/Button'
@@ -28,7 +29,9 @@ const Banner = () => (
 
       <ActionWrapper>
         <div>Talep ettiğiniz hizmeti seçerek en uygun teklifi alın</div>
-        <ButtonWithArrow>Fiyat hesapla</ButtonWithArrow>
+        <Link to="/hesap-makinesi">
+          <ButtonWithArrow>Fiyat hesapla</ButtonWithArrow>
+        </Link>
       </ActionWrapper>
     </Container>
 

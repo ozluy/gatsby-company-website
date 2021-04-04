@@ -2,7 +2,7 @@ import React from 'react'
 import { ParallaxProvider } from 'react-scroll-parallax'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Helmet } from 'react-helmet'
-import appTheme, { cssVariables } from 'common/theme'
+import appTheme, { cssVariables, colorClasses } from 'common/theme'
 import hexToRGBA from 'common/hexToRGBA'
 import useComponentDidMount from 'hooks/useComponentDidMount'
 import Footer from './Footer'
@@ -37,7 +37,8 @@ const GlobalStyles = createGlobalStyle`
     font-style: normal;
     src: url(${avertacyRegularWoff2}) format('woff2'), url(${avertacyRegularWoff}) format('woff');
   }
-  ${cssVariables}
+  ${cssVariables};
+  ${colorClasses};
 
 
   html,

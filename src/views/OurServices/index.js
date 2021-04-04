@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, navigate, useStaticQuery } from 'gatsby'
 import {
   Div,
   Flex,
@@ -29,10 +29,14 @@ import {
 
 const OurServicesPage = () => {
   const [activeIndex, setActiveIndex] = useState(1)
-  const { allGraphCmsService } = useStaticQuery(graphql`
+  const [cityFrom, setCityFrom] = useState()
+  const [cityTo, setCityTo] = useState()
+  const [selectedService, setSelectedService] = useState()
+  const { allGraphCmsService, allGraphCmsSehirler } = useStaticQuery(graphql`
     {
-      allGraphCmsService(limit: 5) {
+      allGraphCmsService {
         nodes {
+          id
           name
           summary
           subcategories {
@@ -46,8 +50,17 @@ const OurServicesPage = () => {
           }
         }
       }
+      allGraphCmsSehirler {
+        nodes {
+          citiesInTurkey
+        }
+      }
     }
   `)
+  const allServices = allGraphCmsService.nodes
+  const populerServices = allServices.slice(0, 5)
+
+  const { citiesInTurkey } = allGraphCmsSehirler.nodes[0]
   return (
     <StyledSection>
       <Container>
@@ -58,7 +71,7 @@ const OurServicesPage = () => {
         <Flex mt="100px">
           <Flex>
             <ServicesWrapper width="300px">
-              {allGraphCmsService.nodes.map(
+              {populerServices.map(
                 ({ name, subcategories: { html } }, index) => {
                   const isActive = activeIndex === index
                   return (
@@ -83,7 +96,7 @@ const OurServicesPage = () => {
             </ServicesWrapper>
           </Flex>
           <List>
-            {allGraphCmsService.nodes.map(
+            {populerServices.map(
               ({
                 name,
                 summary,
@@ -122,11 +135,35 @@ const OurServicesPage = () => {
         </Flex>
 
         <VerticalCalculator>
-          <Dropdown placeholder="Nereden seçin" />
+          <Dropdown
+            options={citiesInTurkey}
+            onChange={(val) => setCityTo(val)}
+            placeholder="Nereden seçin"
+          />
           <ArrowRight />
-          <Dropdown placeholder="Nereye seçin" />
-          <Dropdown placeholder="Hizmeti belirtin" />
-          <ButtonWithArrow>Fiyat Hesapla</ButtonWithArrow>
+          <Dropdown
+            options={citiesInTurkey}
+            onChange={(val) => setCityFrom(val)}
+            placeholder="Nereye seçin"
+          />
+          <Dropdown
+            options={allServices.map(({ name, id }) => ({
+              label: name,
+              value: id
+            }))}
+            onChange={(val) => setSelectedService(val)}
+            placeholder="Hizmeti belirtin"
+          />
+          <ButtonWithArrow
+            disabled={!cityFrom || !cityTo || !selectedService}
+            onClick={() =>
+              navigate('/hesap-makinesi', {
+                state: { cityFrom, cityTo, selectedService }
+              })
+            }
+          >
+            Fiyat Hesapla
+          </ButtonWithArrow>
         </VerticalCalculator>
       </Container>
     </StyledSection>

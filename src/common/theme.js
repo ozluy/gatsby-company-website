@@ -59,6 +59,16 @@ const attrSpreader = (obj, attrPrefix) => {
   return spreadedAttrs
 }
 
+const classSpreader = (obj, attrPrefix) => {
+  let spreadedAttrs = ''
+  for (const attr in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, attr)) {
+      spreadedAttrs += `.destan--${attr}{${attrPrefix}:${obj[attr]};}`
+    }
+  }
+  return spreadedAttrs
+}
+
 export const cssVariables = () => `
 :root{
   ${attrSpreader(theme.colors, '--color-')}
@@ -66,6 +76,10 @@ export const cssVariables = () => `
   ${attrSpreader(theme.typography, '--typography-')}
   ${attrSpreader(theme.breakpoints, '--media-')}
 }
+`
+
+export const colorClasses = () => `
+${classSpreader(theme.colors, 'color')}
 `
 
 export default theme

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { navigate } from 'gatsby'
+
 import Dropdown from 'components/Dropdown'
 import Swap from 'components/Icons/swap'
 import IconButton from 'components/IconButton'
@@ -36,7 +38,15 @@ const Calculator = ({ cities, currentCity, destinationCity }) => {
         maxMenuHeight={90}
         onChange={(val) => setCityTo(val)}
       />
-      <ButtonWithArrow mt="20px"> Fiyat Hesapla</ButtonWithArrow>
+
+      <ButtonWithArrow
+        onClick={() =>
+          navigate('/hesap-makinesi', { state: { cityFrom, cityTo } })
+        }
+        mt="20px"
+      >
+        Fiyat Hesapla
+      </ButtonWithArrow>
     </CalculatorWrapper>
   )
 }
