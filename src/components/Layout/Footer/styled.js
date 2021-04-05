@@ -9,6 +9,7 @@ export const Wrapper = styled.footer`
 export const Socials = styled.ul`
   display: flex;
   flex-direction: row;
+  list-style: none;
 `
 
 export const SocialItem = styled.li`
@@ -44,6 +45,7 @@ export const NavGroup = styled.nav`
 export const NavList = styled.ul`
   display: flex;
   flex-direction: column;
+  list-style: none;
 `
 
 export const NavItem = styled.li`

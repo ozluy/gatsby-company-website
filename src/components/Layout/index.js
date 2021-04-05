@@ -65,10 +65,6 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  ul {
-    list-style: none;
-  }
-
   a {
     color: unset;
     text-decoration: none;

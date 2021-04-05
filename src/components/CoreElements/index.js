@@ -114,6 +114,10 @@ export const InlineFlex = styled(Div)`
 export const RicTextContent = styled(Div)`
   line-height: 24px;
 
+  img {
+    max-width: 100%;
+  }
+
   p {
     color: ${({ theme }) => theme.colors.greyLight};
 
@@ -140,6 +144,70 @@ export const RicTextContent = styled(Div)`
 
   h5 {
     ${h5Styles};
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    thead {
+      th,
+      td {
+        border: 1px solid ${({ theme }) => theme.colors.border};
+        border-top-width: 0;
+        text-align: center;
+
+        &:first-child {
+          border-left-width: 0;
+        }
+
+        &:last-child {
+          border-right-width: 0;
+        }
+
+        p {
+          color: ${({ theme }) => theme.colors.primary};
+          font-weight: ${({ theme }) => theme.fontWeight.bold};
+        }
+      }
+    }
+
+    tbody {
+      th,
+      td {
+        border: 1px solid ${({ theme }) => theme.colors.border};
+        text-align: center;
+
+        &:first-child {
+          border-left-width: 0;
+        }
+
+        &:last-child {
+          border-right-width: 0;
+        }
+
+        p {
+          color: ${({ theme }) => theme.colors.grey};
+          font-weight: ${({ theme }) => theme.fontWeight.normal};
+        }
+      }
+
+      tr {
+        &:first-child {
+          th,
+          td {
+            border-top-width: 0;
+          }
+        }
+
+        &:last-child {
+          th,
+          td {
+            border-bottom-width: 0;
+          }
+        }
+      }
+    }
   }
 `
 

@@ -8,7 +8,8 @@ import {
   H5,
   Headline,
   Img,
-  Paragraph
+  Paragraph,
+  RicTextContent
 } from 'components/CoreElements'
 import Container from 'components/Container'
 import Dropdown from 'components/Dropdown'
@@ -28,18 +29,24 @@ import {
 } from './styled'
 
 const OurServicesPage = () => {
-  const [activeIndex, setActiveIndex] = useState(1)
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeContent, setActiveContent] = useState(null)
   const [cityFrom, setCityFrom] = useState()
   const [cityTo, setCityTo] = useState()
   const [selectedService, setSelectedService] = useState()
-  const { allGraphCmsService, allGraphCmsSehirler } = useStaticQuery(graphql`
+  const {
+    allGraphCmsService,
+    allGraphCmsSehirler,
+    allGraphCmsServicesCategory
+  } = useStaticQuery(graphql`
     {
       allGraphCmsService {
         nodes {
           id
           name
           summary
-          subcategories {
+          category
+          pageContent {
             html
           }
           image {
@@ -55,10 +62,23 @@ const OurServicesPage = () => {
           citiesInTurkey
         }
       }
+      allGraphCmsServicesCategory {
+        nodes {
+          title
+          relatedEnum
+        }
+      }
     }
   `)
   const allServices = allGraphCmsService.nodes
-  const populerServices = allServices.slice(0, 5)
+  const allServiceCategories = allGraphCmsServicesCategory.nodes.map(
+    ({ title, relatedEnum }) => {
+      const items =
+        allServices.filter(({ category }) => category === relatedEnum) || []
+
+      return { title, relatedEnum, items }
+    }
+  )
 
   const { citiesInTurkey } = allGraphCmsSehirler.nodes[0]
   return (
@@ -71,57 +91,78 @@ const OurServicesPage = () => {
         <Flex mt="100px">
           <Flex>
             <ServicesWrapper width="300px">
-              {populerServices.map(
-                ({ name, subcategories: { html } }, index) => {
-                  const isActive = activeIndex === index
-                  return (
-                    <Service key={name}>
-                      <ServiceHeader
-                        onClick={() => setActiveIndex(isActive ? -1 : index)}
-                      >
-                        <H5 color={isActive ? 'secondary' : 'primary'}>
-                          {name}
-                        </H5>
-                        <StateIcon> {isActive ? '-' : '+'}</StateIcon>
-                      </ServiceHeader>
-                      {isActive && (
-                        <ServiceSubCategory
-                          dangerouslySetInnerHTML={{ __html: html }}
-                        />
-                      )}
-                    </Service>
-                  )
-                }
-              )}
+              {allServiceCategories.map(({ title, items }, index) => {
+                const isActive = activeIndex === index
+                return (
+                  <Service key={title}>
+                    <ServiceHeader
+                      onClick={() => {
+                        setActiveIndex(index)
+                        setActiveContent(null)
+                      }}
+                    >
+                      <H5 color={isActive ? 'secondary' : 'primary'}>
+                        {title}
+                      </H5>
+                      <StateIcon> {isActive ? '-' : '+'}</StateIcon>
+                    </ServiceHeader>
+                    {isActive && (
+                      <ServiceSubCategory>
+                        <ul>
+                          {items.map(({ name, pageContent }) => (
+                            <li
+                              key={name}
+                              onClick={() => setActiveContent(pageContent.html)}
+                            >
+                              {name}
+                            </li>
+                          ))}
+                        </ul>
+                      </ServiceSubCategory>
+                    )}
+                  </Service>
+                )
+              })}
             </ServicesWrapper>
           </Flex>
-          <List>
-            {populerServices.map(
-              ({
-                name,
-                summary,
-                image: { url: imageUrl },
-                icon: { url: iconUrl }
-              }) => (
-                <ListItem key={name}>
-                  <Img src={imageUrl} />
-                  <Div mt="-15px">
-                    <IconWrapper>
-                      <Img src={iconUrl} />
-                    </IconWrapper>
-                    <H5
-                      fontWeight="var(--font-weight-bold)"
-                      fontSize="var(--typography-medium)"
-                      margin="24px 0 16px 0"
-                    >
-                      {name}
-                    </H5>
-                    <Paragraph>{summary}</Paragraph>
-                  </Div>
-                </ListItem>
-              )
-            )}
-          </List>
+          {activeContent ? (
+            <RicTextContent
+              p={[0, 0, '40px']}
+              dangerouslySetInnerHTML={{ __html: activeContent }}
+            />
+          ) : (
+            <List>
+              {allServiceCategories[activeIndex].items.map(
+                ({
+                  name,
+                  summary,
+                  image: { url: imageUrl },
+                  icon: { url: iconUrl },
+                  pageContent
+                }) => (
+                  <ListItem
+                    key={name}
+                    onClick={() => setActiveContent(pageContent.html)}
+                  >
+                    <Img src={imageUrl} />
+                    <Div mt="-15px">
+                      <IconWrapper>
+                        <Img src={iconUrl} />
+                      </IconWrapper>
+                      <H5
+                        fontWeight="var(--font-weight-bold)"
+                        fontSize="var(--typography-medium)"
+                        margin="24px 0 16px 0"
+                      >
+                        {name}
+                      </H5>
+                      <Paragraph>{summary}</Paragraph>
+                    </Div>
+                  </ListItem>
+                )
+              )}
+            </List>
+          )}
         </Flex>
 
         <Flex

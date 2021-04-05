@@ -35,6 +35,8 @@ export const NavList = styled.ul`
   margin: 0;
   flex-direction: row;
   display: flex;
+  list-style: none;
+
   ${media.desktop`
   flex-direction: column;
   align-items: center;

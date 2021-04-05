@@ -59,6 +59,7 @@ export const ServiceHeader = styled(Flex)`
   align-items: center;
   justify-content: flex-start;
   flex-direction: row;
+  cursor: pointer;
 `
 export const TitleIcon = styled(I)`
   width: 48px;
@@ -99,10 +100,13 @@ export const ServiceSubCategory = styled.div`
     color: ${({ theme }) => theme.colors.black};
     margin-top: 22px;
     margin-left: 0;
+    cursor: pointer;
   }
 `
 
-export const ListItem = styled(Flex)`
+export const ListItem = styled.div`
+  cursor: pointer;
+  display: flex;
   padding: 0 32px 32px 32px;
   background: ${({ theme }) => theme.colors.white};
   box-shadow: 0 15px 20px rgba(31, 72, 143, 0.02);
@@ -114,6 +118,7 @@ export const ListItem = styled(Flex)`
   max-width: 264px;
   margin-top: 22px;
   margin-left: 22px;
+  overflow: hidden;
 `
 
 export const IconWrapper = styled(I)`

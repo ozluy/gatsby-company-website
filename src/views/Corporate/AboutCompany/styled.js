@@ -5,6 +5,7 @@ export const SideList = styled.ul`
   margin-top: 44px;
   min-width: 300px;
   display: flex;
+  list-style: none;
   flex-direction: column;
 `
 
