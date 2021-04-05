@@ -37,8 +37,13 @@ const Guides = () => {
             Taşınma Rehberi
           </H5>
         </Div>
-        <Flex mt="50px" alignItems="center" justifyContent="space-between">
-          <GuidesWrapper width="456px">
+        <Flex
+          mt="50px"
+          alignItems="flex-start"
+          flexDirection={['column-reverse', 'column-reverse', 'row']}
+          justifyContent="space-between"
+        >
+          <GuidesWrapper width={['auto', 'auto', '456px']}>
             {guides.map(({ title, items }, index) => {
               const isActive = activeIndex === index
               return (

@@ -42,15 +42,17 @@ const MovingProcess = () => {
     <Section bg="whiteBg">
       <Container>
         <Flex
-          flexDirection="row"
+          flexDirection={['column', 'column', 'row']}
           justifyContent="space-between"
-          alignItems={['center', 'left']}
+          alignItems={['center', 'center', 'left']}
         >
           <Div maxWidth="343px">
             <Headline color="secondary">Destan Nakliyat ile</Headline>
             <H2 mt="15px">Stressiz taşıma süreci nasıl işliyor?</H2>
           </Div>
-          <ButtonWithArrow green>Hemen fiyat hesaplayın</ButtonWithArrow>
+          <ButtonWithArrow m={['40px', '40px', '0']} green>
+            Hemen fiyat hesaplayın
+          </ButtonWithArrow>
         </Flex>
         <TripletWrapper>
           {processSteps.map(({ title, desc, img }, index) => (

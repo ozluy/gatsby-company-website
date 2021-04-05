@@ -4,9 +4,12 @@ export const breakpoints = {
   desktop: 1024,
   tablet: 768
 }
+const styledBreakPoints = Object.keys(breakpoints).map(
+  (key) => `${breakpoints[key]}px`
+)
 
 const theme = {
-  breakpoints: Object.keys(breakpoints).map((key) => breakpoints[key]),
+  breakpoints: styledBreakPoints,
   colors: {
     primary: '#2E3054',
     secondary: '#059CE1',

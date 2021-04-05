@@ -3,7 +3,7 @@ import { Link, useStaticQuery, graphql } from 'gatsby'
 import Container from 'components/Container'
 import { Flex, Small } from 'components/CoreElements'
 import Headphones from 'components/Icons/headphones'
-import HeaderLogo from './logo'
+import HeaderLogo, { HeaderLogoMobile } from './logo'
 import {
   Wrapper,
   NavList,
@@ -13,6 +13,7 @@ import {
   HeadphonesWrapper,
   Hamburger
 } from './styled'
+import BodyClassChanger from './BodyClassChanger'
 
 const Header = (props) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -68,8 +69,10 @@ const Header = (props) => {
               <span />
               <span />
             </Hamburger>
-            <Link style={{ color: '#1F2147' }} to="/">
+            {mobileMenuOpen && <BodyClassChanger />}
+            <Link className="destan__logo" to="/">
               <HeaderLogo />
+              <HeaderLogoMobile />
             </Link>
             {navList}
             <CallCenter>

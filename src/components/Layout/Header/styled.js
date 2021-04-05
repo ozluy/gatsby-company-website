@@ -4,31 +4,58 @@ import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.header`
   padding: 45px 0;
+
+  .destan__logo {
+    svg {
+      &:first-child {
+        display: inline-block;
+      }
+
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+
+  ${media.tablet`
+  .destan__logo{
+    svg {
+      &:first-child {
+        display: none;
+      }
+      &:last-child {
+        display: inline-block;
+      }
+    }
+  }
+  `};
 `
 export const NavList = styled.ul`
+  align-items: center;
+  margin: 0;
+  flex-direction: row;
+  display: flex;
+  ${media.desktop`
   flex-direction: column;
   align-items: center;
   display: none;
-  margin: 0;
+  `};
 
   ${({ isOpen }) =>
     isOpen &&
     css`
-      display: flex;
+      display: flex !important;
       position: fixed;
-      width: 50%;
+      width: 100%;
       right: 0;
+      left: 0;
       top: 0;
       bottom: 0;
+      height: 100vh;
       justify-content: space-evenly;
       background-color: ${({ theme }) => theme.colors.white};
       z-index: 10;
     `};
-
-  ${media.desktop`
-  flex-direction: row;
-  display: flex;
-  `};
 `
 
 export const Hamburger = styled.button`
@@ -41,6 +68,7 @@ export const Hamburger = styled.button`
   cursor: pointer;
   position: relative;
   overflow: hidden;
+  z-index: 11;
 
   span {
     height: 2px;
@@ -82,9 +110,9 @@ export const Hamburger = styled.button`
         }
       }
     `};
-
+  display: none;
   ${media.desktop`
-    display: none;
+    display: inline-block;
   `};
 `
 
@@ -115,6 +143,10 @@ export const HeadphonesWrapper = styled(Flex)`
 export const PhoneNumber = styled(Div)`
   font-size: ${({ theme }) => theme.typography.medium};
   color: ${({ theme }) => theme.colors.primary};
+
+  ${media.tablet`
+  font-size: ${({ theme }) => theme.typography.small};
+  `}
 `
 
 export const CallCenter = styled(Flex)`
@@ -126,4 +158,9 @@ export const CallCenter = styled(Flex)`
   align-items: center;
   justify-content: space-between;
   padding: 15px;
+
+  ${media.tablet`
+  font-size: ${({ theme }) => theme.typography.small};
+  padding: 8px;
+  `}
 `

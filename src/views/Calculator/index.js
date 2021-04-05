@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Container from 'components/Container'
 import FAQSection from 'components/FAQ'
-import { H1, Img, Section } from 'components/CoreElements'
-import { Banner } from './styled'
+import { Flex, H1, Img, Section } from 'components/CoreElements'
 import imageSources from './img'
 import Steps from './steps'
 import sizeOfMoving from './steps/sizeOfMoving'
@@ -51,23 +50,28 @@ const CalculatorPage = ({ location }) => {
   const { citiesInTurkey } = allGraphCmsSehirler.nodes[0]
 
   return (
-    <Section>
-      <Container>
-        <H1 mb="40px">Hesap Makinesi</H1>
-        <Banner>
-          <Steps
-            citiesInTurkey={citiesInTurkey}
-            currentStep={currentStep}
-            setCurrentStep={setCurrentStep}
-            setCalculatorParams={setCalculatorParams}
-            calculatorParams={calculatorParams}
-            services={services}
-          />
-          <Img src={imageSources[currentStep]} />
-        </Banner>
-      </Container>
+    <>
+      <Section p="100px 0 0 0">
+        <Container>
+          <H1 mb="40px">Hesap Makinesi</H1>
+          <Flex alignItems="flex-start" justifyContent="space-between">
+            <Steps
+              citiesInTurkey={citiesInTurkey}
+              currentStep={currentStep}
+              setCurrentStep={setCurrentStep}
+              setCalculatorParams={setCalculatorParams}
+              calculatorParams={calculatorParams}
+              services={services}
+            />
+            <Img
+              display={['none', 'none', 'block']}
+              src={imageSources[currentStep]}
+            />
+          </Flex>
+        </Container>
+      </Section>
       <FAQSection />
-    </Section>
+    </>
   )
 }
 

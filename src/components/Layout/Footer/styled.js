@@ -31,13 +31,13 @@ export const NavGroup = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-direction: column;
+  flex-direction: row;
   padding: 96px 0;
   margin: 96px 0;
   border: solid 1px ${({ theme }) => hexToRGBA(theme.colors.grey, 0.4)};
   border-width: 1px 0;
   ${media.tablet`
-    flex-direction: row;  
+    flex-direction: column; 
   `};
 `
 

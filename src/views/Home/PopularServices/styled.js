@@ -9,11 +9,11 @@ export const List = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    flex-direction: column;
     max-width: 100%;
+    flex-direction: row;
 
     ${media.tablet`
-  flex-direction: row;
+    flex-direction: column;
   `};
   }
 `

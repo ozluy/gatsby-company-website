@@ -1,3 +1,4 @@
+import media from 'common/media'
 import styled, { css } from 'styled-components'
 import {
   typography,
@@ -29,6 +30,11 @@ export const Div = styled.div`
 
 export const Section = styled.section`
   padding: 100px 0;
+  ${media.desktop`
+  padding: 40px 0;
+
+`};
+
   ${sharedAttrs};
 `
 

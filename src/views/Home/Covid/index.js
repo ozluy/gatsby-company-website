@@ -12,15 +12,19 @@ const Covid = () => {
   return (
     <Section p="0" bg={hexToRGBA(theme.colors.green, 0.13)}>
       <Container>
-        <Flex alignItems="center" justifyContent="space-between">
-          <Div maxWidth="672px">
+        <Flex
+          flexDirection={['column', 'column', 'row']}
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Div maxWidth="672px" textAlign={['center', 'center', 'left']}>
             <H3 color="grey" mb="45px">
               Covid-19 kapsamında gerekli önlemleri alarak bu süreçte sizin için
               hizmet vermeye devam ediyoruz.
             </H3>
             <Button black>Hemen Hizmet Al</Button>
           </Div>
-          <Img src={covid} />
+          <Img mt={['40px', '40px', 0]} src={covid} />
         </Flex>
       </Container>
     </Section>

@@ -88,11 +88,17 @@ const Footer = (props) => {
   return (
     <Wrapper {...props}>
       <Animator component={Container} customConfig={{ origin: 'bottom' }}>
-        <Flex alignItems="center" justifyContent="space-between">
+        <Flex
+          flexDirection={['column', 'column', 'row']}
+          alignItems="center"
+          justifyContent="space-between"
+        >
           <H3 maxWidth="672px" color="grey">
             Destan Nakliyat ile hemen taşınmak iletişime geçin.
           </H3>
-          <Button black>Hemen Hizmet Al</Button>
+          <Button mt={['40px', '40px', '0']} black>
+            Hemen Hizmet Al
+          </Button>
         </Flex>
         <NavGroup>
           {NAV_LIST.map((navRow, rowIndex) => (

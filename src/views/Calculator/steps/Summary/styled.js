@@ -1,3 +1,4 @@
+import media from 'common/media'
 import { Flex, InlineFlex } from 'components/CoreElements'
 import styled from 'styled-components'
 
@@ -37,4 +38,16 @@ export const IconWrapper = styled(InlineFlex)`
 export const Label = styled.label`
   line-height: 23.87px;
   margin-top: 4px;
+  display: inline;
+
+  &:last-child {
+    display: inline;
+  }
+
+  ${media.desktop` 
+  display: none;
+  &:last-child {
+    display: none;
+  }
+  `}
 `

@@ -8,8 +8,8 @@ const StepSummary = ({ calculatorParams, currentStep }) => {
   const { selectedService } = calculatorParams
   return (
     <Wrapper>
-      {summaryTitles.map((title, index) => (
-        <Item key={title}>
+      {summaryTitles.map(({ desktopLabel, mobileLabel }, index) => (
+        <Item key={desktopLabel}>
           <IconWrapper>
             {selectedService && index === 0 && <Img src={tickSrc} />}
             {currentStep >= 1 && index === 1 && <Img src={tickSrc} />}
@@ -17,7 +17,8 @@ const StepSummary = ({ calculatorParams, currentStep }) => {
             {currentStep >= 4 && index === 3 && <Img src={tickSrc} />}
             {currentStep >= 5 && index === 4 && <Img src={tickSrc} />}
           </IconWrapper>
-          <Label>{title}</Label>
+          <Label>{desktopLabel}</Label>
+          <Label>{mobileLabel}</Label>
         </Item>
       ))}
     </Wrapper>

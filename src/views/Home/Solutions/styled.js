@@ -54,12 +54,12 @@ export const BoxItem = styled(Flex)`
   align-items: flex-start;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
   padding: 24px 26px;
   cursor: pointer;
+  width: 480px;
 
   ${media.desktop`
-  width: 480px;
+  width: 100%;
   `};
 
   ${({ active }) =>

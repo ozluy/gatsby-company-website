@@ -8,10 +8,10 @@ export const TwinBox = styled.ul`
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 15px 20px rgba(31, 72, 143, 0.02);
   border-radius: 20px;
-  width: 100%;
+  width: 513px;
 
   ${media.desktop`
-  width: 513px;
+  width: 100%;
   `};
 `
 
@@ -56,9 +56,17 @@ export const ComparisonWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-top: 60px;
-  flex-direction: column;
+  flex-direction: row;
 
   ${media.desktop`
-  flex-direction: row;
+  flex-direction: column;
+
+  ul{
+
+    height: auto;
+    svg {
+      min-width: 20px;
+    }
+  }
   `};
 `

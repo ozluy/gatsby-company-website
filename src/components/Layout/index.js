@@ -54,6 +54,11 @@ const GlobalStyles = createGlobalStyle`
     background-color: ${({ theme }) => hexToRGBA(theme.colors.blueBg)};
     font-weight: ${({ theme }) => theme.fontWeight.regular};
     font-family: 'Averta CY', helvatica, arial, sans-serif;
+
+    &.mobile__nav__open {
+      overflow: hidden;
+      height: 100vh !important;
+    }
   }
 
   * {
@@ -73,6 +78,10 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.colors.greyLighter};
     font-size: ${({ theme }) => theme.typography.primary};
     line-height: 21px;
+  }
+
+  figure {
+    margin: 0;
   }
 `
 
