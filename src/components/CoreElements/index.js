@@ -110,6 +110,10 @@ export const RicTextContent = styled(Div)`
 
   p {
     color: ${({ theme }) => theme.colors.greyLight};
+
+    a {
+      color: ${({ theme }) => theme.colors.secondary};
+    }
   }
 
   h1 {

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { Flex, I, Section } from 'components/CoreElements'
+import { Flex, I, RicTextContent, Section } from 'components/CoreElements'
 import hexToRGBA from 'common/hexToRGBA'
 
 export const Wrapper = styled(Section)`
@@ -44,7 +44,7 @@ export const StateIcon = styled(I)`
   margin-left: auto;
   cursor: pointer;
 `
-export const FAQSubCategory = styled.div`
+export const FAQSubCategory = styled(RicTextContent)`
   ul {
     padding-top: 2px;
     list-style: none;

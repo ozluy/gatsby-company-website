@@ -5,6 +5,7 @@ import { Flex, Headline } from 'components/CoreElements'
 import Form from './styled'
 import titles from './titles'
 import Stepper from './components'
+import StepSummary from './Summary'
 
 const Steps = ({
   currentStep,
@@ -15,6 +16,10 @@ const Steps = ({
   citiesInTurkey
 }) => (
   <Form>
+    <StepSummary
+      calculatorParams={calculatorParams}
+      currentStep={currentStep}
+    />
     <Headline mb="20px" color="secondary">
       {titles[currentStep]}
     </Headline>

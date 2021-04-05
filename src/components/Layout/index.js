@@ -40,7 +40,6 @@ const GlobalStyles = createGlobalStyle`
   ${cssVariables};
   ${colorClasses};
 
-
   html,
   body {
     margin: 0;
