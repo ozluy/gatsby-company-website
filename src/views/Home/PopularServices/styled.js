@@ -4,12 +4,14 @@ import styled from 'styled-components'
 
 export const List = styled.div`
   margin-top: 70px;
+  width: 100%;
 
   .scrollable__content {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     max-width: 100%;
+    width: 100%;
     flex-direction: row;
 
     ${media.tablet`
@@ -28,10 +30,19 @@ export const ListItem = styled(Flex)`
   justify-content: flex-start;
   min-width: 264px;
   max-width: 264px;
+  overflow: hidden;
+
+  img {
+    max-width: unset;
+  }
 
   &:not(:first-child) {
     margin-left: 28px;
   }
+
+  ${media.tablet`
+   margin: 20px auto 0 auto !important;
+  `};
 `
 
 export const IconWrapper = styled(I)`

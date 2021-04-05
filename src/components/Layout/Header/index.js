@@ -43,7 +43,11 @@ const Header = (props) => {
       <NavList isOpen={mobileMenuOpen}>
         {navLinks.map(({ title, link }) => (
           <NavItem key={title}>
-            <Link activeClassName="nav__active" to={`/${link}`}>
+            <Link
+              onClick={() => setMobileMenuOpen(false)}
+              activeClassName="nav__active"
+              to={`/${link}`}
+            >
               {title}
             </Link>
           </NavItem>
@@ -59,7 +63,7 @@ const Header = (props) => {
           <Flex
             flexDirection="row"
             alignItems="center"
-            justifyContent="space-between"
+            justifyContent={['flex-start', 'flex-start', 'space-between']}
           >
             <Hamburger
               isOpen={mobileMenuOpen}

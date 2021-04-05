@@ -88,43 +88,39 @@ const OurServicesPage = () => {
           Destan Nakliyat ile
         </Headline>
         <H1 textAlign="center">Hizmetlerimiz</H1>
-        <Flex mt="100px">
-          <Flex>
-            <ServicesWrapper width="300px">
-              {allServiceCategories.map(({ title, items }, index) => {
-                const isActive = activeIndex === index
-                return (
-                  <Service key={title}>
-                    <ServiceHeader
-                      onClick={() => {
-                        setActiveIndex(index)
-                        setActiveContent(null)
-                      }}
-                    >
-                      <H5 color={isActive ? 'secondary' : 'primary'}>
-                        {title}
-                      </H5>
-                      <StateIcon> {isActive ? '-' : '+'}</StateIcon>
-                    </ServiceHeader>
-                    {isActive && (
-                      <ServiceSubCategory>
-                        <ul>
-                          {items.map(({ name, pageContent }) => (
-                            <li
-                              key={name}
-                              onClick={() => setActiveContent(pageContent.html)}
-                            >
-                              {name}
-                            </li>
-                          ))}
-                        </ul>
-                      </ServiceSubCategory>
-                    )}
-                  </Service>
-                )
-              })}
-            </ServicesWrapper>
-          </Flex>
+        <Flex mt="100px" flexDirection={['column', 'column', 'row']}>
+          <ServicesWrapper>
+            {allServiceCategories.map(({ title, items }, index) => {
+              const isActive = activeIndex === index
+              return (
+                <Service key={title}>
+                  <ServiceHeader
+                    onClick={() => {
+                      setActiveIndex(index)
+                      setActiveContent(null)
+                    }}
+                  >
+                    <H5 color={isActive ? 'secondary' : 'primary'}>{title}</H5>
+                    <StateIcon> {isActive ? '-' : '+'}</StateIcon>
+                  </ServiceHeader>
+                  {isActive && (
+                    <ServiceSubCategory>
+                      <ul>
+                        {items.map(({ name, pageContent }) => (
+                          <li
+                            key={name}
+                            onClick={() => setActiveContent(pageContent.html)}
+                          >
+                            {name}
+                          </li>
+                        ))}
+                      </ul>
+                    </ServiceSubCategory>
+                  )}
+                </Service>
+              )
+            })}
+          </ServicesWrapper>
           {activeContent ? (
             <RicTextContent
               p={[0, 0, '40px']}

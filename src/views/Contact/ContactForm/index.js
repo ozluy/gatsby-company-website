@@ -5,8 +5,8 @@ import Container from 'components/Container'
 import Button from 'components/Button'
 import InputField from 'components/InputField'
 import Dropdown from 'components/Dropdown'
-
 import styled from 'styled-components'
+import { graphql, useStaticQuery } from 'gatsby'
 
 export const Form = styled.form`
   display: flex;
@@ -22,14 +22,25 @@ export const Form = styled.form`
   flex-direction: row;
 `
 
-const CATEGORIES = [
-  { value: 0, label: 'Sehirler arasi nakliyat' },
-  { value: 1, label: 'Evden eve nakliyat' }
-]
-
-const initialCategory = CATEGORIES[0]
 const ContactForm = () => {
   const { register, handleSubmit, errors, setValue, control } = useForm()
+  const { allGraphCmsService } = useStaticQuery(graphql`
+    {
+      allGraphCmsService {
+        nodes {
+          id
+          name
+        }
+      }
+    }
+  `)
+
+  const CATEGORIES = allGraphCmsService.nodes.map(({ name, id }) => ({
+    value: id,
+    label: name
+  }))
+
+  const initialCategory = CATEGORIES[0]
   const [selectedCategory, setSelectedCategory] = useState(initialCategory)
   useEffect(() => {
     register({ name: 'category' })
@@ -68,7 +79,7 @@ const ContactForm = () => {
                 placeholder="İsim"
                 name="fullName"
                 errorMessage={errors.fullName && 'Required!'}
-                wrapperProps={{ width: '45%' }}
+                wrapperProps={{ width: ['100%', '100%', '45%'] }}
                 onChange={onChange}
                 value={value}
               />
@@ -83,7 +94,7 @@ const ContactForm = () => {
                 name="phone"
                 errorMessage={errors.phone && 'Required!'}
                 placeholder="Telefon"
-                wrapperProps={{ width: '45%' }}
+                wrapperProps={{ width: ['100%', '100%', '45%'] }}
                 ref={register}
                 onChange={onChange}
                 value={value}
@@ -100,7 +111,7 @@ const ContactForm = () => {
                 errorMessage={errors.email && 'Required!'}
                 ref={register({ required: true })}
                 placeholder="Email"
-                wrapperProps={{ width: '45%' }}
+                wrapperProps={{ width: ['100%', '100%', '45%'] }}
                 onChange={onChange}
                 value={value}
               />
@@ -114,7 +125,7 @@ const ContactForm = () => {
             defaultValue={selectedCategory}
             value={selectedCategory}
             title="Kategori"
-            wrapperProps={{ width: '45%' }}
+            wrapperProps={{ width: ['100%', '100%', '45%'] }}
             onChange={(value, action) => {
               handleChange(value, action, setSelectedCategory)
             }}

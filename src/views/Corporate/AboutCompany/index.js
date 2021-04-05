@@ -29,7 +29,7 @@ const Banner = () => {
   return (
     <Section bg="lighterBg">
       <Container>
-        <Flex>
+        <Flex flexDirection={['column', 'column', 'row']}>
           <SideList>
             {allGraphCmsKurumsal.nodes.map(({ title }, index) => (
               <SideListItem
@@ -41,7 +41,7 @@ const Banner = () => {
               </SideListItem>
             ))}
           </SideList>
-          <Div>
+          <Div mt={['20px', '20px', 0]}>
             <H2
               pl="15px"
               pb="10px"

@@ -63,7 +63,7 @@ const Banner = () => {
       </Helmet>
       <Container>
         <Flex
-          flexDirection="row"
+          flexDirection={['column', 'column', 'row']}
           justifyContent="space-between"
           alignItems="center"
         >
@@ -81,7 +81,7 @@ const Banner = () => {
             </Anchor>
           </Flex>
           <Flex color="secondary" flexDirection="column">
-            <Headline mb="16px" color="white">
+            <Headline mt={['32px', '32px', 0]} mb="16px" color="white">
               İletişim Bilgileri
             </Headline>
             <Paragraph mt="16px">{email}</Paragraph>

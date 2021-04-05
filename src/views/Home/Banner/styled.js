@@ -1,3 +1,4 @@
+import media from 'common/media'
 import { InlineFlex, Section } from 'components/CoreElements'
 import styled from 'styled-components'
 
@@ -10,6 +11,10 @@ export const ActionWrapper = styled(InlineFlex)`
   flex-direction: row;
   width: 586px;
   background-color: ${({ theme }) => theme.colors.white};
+
+  ${media.tablet`  
+  width: auto;
+  `};
 `
 
 export const BgWrapper = styled.div`

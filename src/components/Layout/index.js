@@ -70,6 +70,10 @@ const GlobalStyles = createGlobalStyle`
     text-decoration: none;
   }
 
+  img {
+    max-width: 100%;
+  }
+
   ::placeholder {
     color: ${({ theme }) => theme.colors.greyLighter};
     font-size: ${({ theme }) => theme.typography.primary};

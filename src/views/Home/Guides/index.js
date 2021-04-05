@@ -1,32 +1,37 @@
 import React, { useState } from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
 import { Parallax } from 'react-scroll-parallax'
-import {
-  Div,
-  H2,
-  H5,
-  Img,
-  Paragraph,
-  Section,
-  Flex
-} from 'components/CoreElements'
+import { Div, H2, H5, Img, Section, Flex } from 'components/CoreElements'
 import Container from 'components/Container'
 import Book from 'components/Icons/book'
 import OpenBook from 'components/Icons/openBook'
 import {
   Guide,
   GuideList,
-  GuideListItem,
   GuideHeader,
   StateIcon,
   TitleIcon,
   GuidesWrapper
 } from './styled'
 import howto from './howto.png'
-import guides from './data'
 
 const Guides = () => {
   const [activeIndex, setActiveIndex] = useState(1)
 
+  const { allGraphCmsMovingGuide } = useStaticQuery(graphql`
+    {
+      allGraphCmsMovingGuide {
+        nodes {
+          title
+          detail {
+            html
+          }
+        }
+      }
+    }
+  `)
+
+  const guides = allGraphCmsMovingGuide.nodes
   return (
     <Section>
       <Container>
@@ -44,7 +49,7 @@ const Guides = () => {
           justifyContent="space-between"
         >
           <GuidesWrapper width={['auto', 'auto', '456px']}>
-            {guides.map(({ title, items }, index) => {
+            {guides.map(({ title, detail: { html } }, index) => {
               const isActive = activeIndex === index
               return (
                 <Guide key={title}>
@@ -58,13 +63,7 @@ const Guides = () => {
                     <StateIcon> {isActive ? '-' : '+'}</StateIcon>
                   </GuideHeader>
                   {isActive && (
-                    <GuideList>
-                      {items.map((item) => (
-                        <GuideListItem key={item}>
-                          <Paragraph color="grey">{item}</Paragraph>
-                        </GuideListItem>
-                      ))}
-                    </GuideList>
+                    <GuideList dangerouslySetInnerHTML={{ __html: html }} />
                   )}
                 </Guide>
               )

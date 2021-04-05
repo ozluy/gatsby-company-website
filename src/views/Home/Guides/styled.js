@@ -43,11 +43,18 @@ export const StateIcon = styled(I)`
   margin-left: auto;
   cursor: pointer;
 `
-export const GuideList = styled.ul`
-  list-style: disc;
-  padding-top: 2px;
-`
-export const GuideListItem = styled.li`
-  margin-top: 22px;
-  color: ${({ theme }) => theme.colors.secondary};
+export const GuideList = styled.div`
+  ul {
+    list-style: disc;
+    padding-top: 2px;
+  }
+
+  li {
+    margin-top: 22px;
+    color: ${({ theme }) => theme.colors.secondary};
+
+    p {
+      color: ${({ theme }) => theme.colors.green};
+    }
+  }
 `

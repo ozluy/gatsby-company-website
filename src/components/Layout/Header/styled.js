@@ -18,6 +18,8 @@ export const Wrapper = styled.header`
   }
 
   ${media.tablet`
+  padding: 20px 0;
+
   .destan__logo{
     svg {
       &:first-child {
@@ -71,6 +73,7 @@ export const Hamburger = styled.button`
   position: relative;
   overflow: hidden;
   z-index: 11;
+  margin-right: 15px;
 
   span {
     height: 2px;
@@ -132,6 +135,16 @@ export const NavItem = styled.li`
   &:not(:last-child) {
     margin-right: 45px;
   }
+
+  ${media.desktop`
+  &:not(:last-child) {
+    margin-right: 0;
+  }
+
+  a{
+   color: ${({ theme }) => theme.colors.primary} !important;
+  }
+  `};
 `
 export const HeadphonesWrapper = styled(Flex)`
   padding: 4px;
@@ -145,9 +158,10 @@ export const HeadphonesWrapper = styled(Flex)`
 export const PhoneNumber = styled(Div)`
   font-size: ${({ theme }) => theme.typography.medium};
   color: ${({ theme }) => theme.colors.primary};
+  font-weight: ${({ theme }) => theme.fontWeight.semibold};
 
   ${media.tablet`
-  font-size: ${({ theme }) => theme.typography.small};
+  font-size: ${({ theme }) => theme.typography.primary};
   `}
 `
 
@@ -164,5 +178,6 @@ export const CallCenter = styled(Flex)`
   ${media.tablet`
   font-size: ${({ theme }) => theme.typography.small};
   padding: 8px;
+  margin-left: auto;
   `}
 `

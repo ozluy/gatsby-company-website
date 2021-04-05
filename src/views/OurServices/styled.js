@@ -1,3 +1,4 @@
+import media from 'common/media'
 import { Flex, I, Section } from 'components/CoreElements'
 import styled from 'styled-components'
 
@@ -35,6 +36,20 @@ export const VerticalCalculator = styled(Flex)`
   > div {
     flex-basis: 20%;
   }
+
+  ${media.tablet`
+  flex-direction: column;
+  
+  > div {
+    flex-basis: 100%;
+    width: 100%;
+
+   
+  }
+  > svg{
+      transform: rotate(90deg);
+  }
+  `};
 `
 
 export const List = styled(Flex)`
@@ -47,6 +62,11 @@ export const List = styled(Flex)`
 `
 export const ServicesWrapper = styled(Flex)`
   flex-direction: column;
+  width: 300px;
+
+  ${media.tablet`
+  width: auto;
+  `}
 `
 
 export const Service = styled.div`
@@ -119,6 +139,15 @@ export const ListItem = styled.div`
   margin-top: 22px;
   margin-left: 22px;
   overflow: hidden;
+
+  img {
+    max-width: unset;
+  }
+
+  ${media.tablet`
+  margin-left:  auto;
+  margin-right:  auto;
+  `}
 `
 
 export const IconWrapper = styled(I)`

@@ -48,7 +48,7 @@ const ReferenceList = () => {
         <Flex
           flexWrap="wrap"
           alignItems="center"
-          justifyContent="space-between"
+          justifyContent={['center', 'center', 'flex-start']}
           mt="65px"
         >
           {allGraphCmsReferanslar.nodes
@@ -61,7 +61,12 @@ const ReferenceList = () => {
                 title={name}
                 href={`//${website}`}
               >
-                <Img mt="20px" borderRadius="10px" src={url} />
+                <Img
+                  width={['100%', '100%', 'auto']}
+                  mt="20px"
+                  borderRadius="10px"
+                  src={url}
+                />
               </Anchor>
             ))}
         </Flex>

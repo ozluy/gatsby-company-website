@@ -20,7 +20,7 @@ const Banner = () => {
             <Headline>Destan nakliyat ile</Headline>
             <H1>Kurumsal</H1>
           </Div>
-          <Img mb="-8px" src={banner} />
+          <Img display={['none', 'none', 'block']} mb="-8px" src={banner} />
         </Flex>
       </Container>
     </Section>

@@ -4,6 +4,10 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.footer`
   padding: 140px 0 56px 0;
+
+  ${media.tablet`
+  padding: 35px 0 14px 0;
+  `};
 `
 
 export const Socials = styled.ul`
@@ -39,6 +43,8 @@ export const NavGroup = styled.nav`
   border-width: 1px 0;
   ${media.tablet`
     flex-direction: column; 
+    padding: 24px 0;
+    margin: 24px 0;
   `};
 `
 

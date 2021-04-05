@@ -1,3 +1,4 @@
+import media from 'common/media'
 import { Flex } from 'components/CoreElements'
 import styled from 'styled-components'
 
@@ -59,6 +60,9 @@ export const ListItem = styled(Flex)`
   &:not(:first-child) {
     margin-left: 28px;
   }
+  ${media.tablet`
+      margin-left: 0 !important;
+  `};
 
   img {
     transition: all 0.3s ease-in-out;
