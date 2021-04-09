@@ -10,12 +10,9 @@ import {
   Section
 } from 'components/CoreElements'
 import Container from 'components/Container'
-import { useTheme } from 'styled-components'
-import { Helmet } from 'react-helmet'
+import Animator from 'components/Animator'
 
 const Banner = () => {
-  const theme = useTheme()
-  const { darkBg, white, secondary } = theme.colors
   const { allGraphCmsContactDetail } = useStaticQuery(graphql`
     {
       allGraphCmsContactDetail {
@@ -45,29 +42,18 @@ const Banner = () => {
   } = allGraphCmsContactDetail.nodes[0]
 
   return (
-    <Section bg={darkBg}>
-      <Helmet>
-        <style>
-          {`
-            #app_header {
-            background-color: ${darkBg};
-            }
-            nav  a{
-                color: ${white} !important;
-            }           
-            nav  ul li:last-child a{
-                color: ${secondary} !important;
-                }
-            `}
-        </style>
-      </Helmet>
+    <Section bg="darkBg">
       <Container>
         <Flex
           flexDirection={['column', 'column', 'row']}
           justifyContent="space-between"
           alignItems="center"
         >
-          <Flex flexDirection="column">
+          <Animator
+            customConfig={{ origin: 'left' }}
+            component={Flex}
+            flexDirection="column"
+          >
             <H1 mb="70px" color="white">
               Nasıl yardımcı olabiliriz?
             </H1>
@@ -79,8 +65,8 @@ const Banner = () => {
             >
               <Img src={mapImageSrc} />
             </Anchor>
-          </Flex>
-          <Flex color="secondary" flexDirection="column">
+          </Animator>
+          <Animator component={Flex} color="secondary" flexDirection="column">
             <Headline mt={['32px', '32px', 0]} mb="16px" color="white">
               İletişim Bilgileri
             </Headline>
@@ -92,7 +78,7 @@ const Banner = () => {
               24/7 Mobil Ulaşım
             </Headline>
             <Paragraph>{mobile}</Paragraph>
-          </Flex>
+          </Animator>
         </Flex>
       </Container>
     </Section>

@@ -1,6 +1,6 @@
 import hexToRGBA from 'common/hexToRGBA'
 import media from 'common/media'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.footer`
   padding: 140px 0 56px 0;
@@ -41,23 +41,24 @@ export const NavGroup = styled.nav`
   margin: 96px 0;
   border: solid 1px ${({ theme }) => hexToRGBA(theme.colors.grey, 0.4)};
   border-width: 1px 0;
-  ${media.tablet`
+
+  ${media.desktop`
     flex-direction: column; 
     padding: 24px 0;
     margin: 24px 0;
   `};
 `
 
-export const NavList = styled.ul`
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-`
-
 export const NavItem = styled.li`
   font-weight: ${({ theme }) => theme.fontWeight.regular};
   line-height: 19px;
-  color: ${({ theme }) => theme.colors.grey};
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > a {
+    color: ${({ theme }) => theme.colors.grey};
+  }
 
   &:not(:last-child) {
     margin-bottom: 16px;
@@ -66,8 +67,56 @@ export const NavItem = styled.li`
   &:first-child {
     font-size: ${({ theme }) => theme.typography.medium};
     line-height: 17px;
-    font-weight: ${({ theme }) => theme.fontWeight.bold};
+    font-weight: ${({ theme }) => theme.fontWeight.semibold};
     color: ${({ theme }) => theme.colors.blue};
     margin-bottom: 32px;
   }
+
+  svg {
+    display: none;
+  }
+
+  ${media.desktop`
+  svg {
+    display: inline-block;
+  }
+  `};
+`
+
+export const NavList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  ${media.desktop`
+    width: 100%;
+    ${NavItem} {
+        cursor: pointer;
+        &:first-child {
+        color: ${({ theme }) => theme.colors.primary};    
+        }
+        &:not(:first-child) {
+          display: none;
+        }
+        }
+
+    ${({ isOpen }) =>
+      isOpen &&
+      css`
+        ${NavItem} {
+          margin-bottom: 20px;
+          &:first-child {
+            color: ${({ theme }) => theme.colors.blue};
+          }
+          &:not(:first-child) {
+            display: flex;
+          }
+          svg {
+            transform: rotate(90deg);
+          }
+        }
+      `};
+  `};
 `

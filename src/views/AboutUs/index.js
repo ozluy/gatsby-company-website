@@ -1,3 +1,4 @@
+import Animator from 'components/Animator'
 import ChevronButtons from 'components/ChevronButtons'
 import Container from 'components/Container'
 import {
@@ -60,40 +61,53 @@ const AboutUsPage = () => {
       <Helmet>
         <style>
           {`          
-            nav  a{
+         @media screen and (min-width: 1025px){
+          #app_header nav  a {
                 color: ${white} !important;
             }
+         }
             `}
         </style>
       </Helmet>
       <Banner backgroundImage={`url("${asset1.url}")`}>
-        <H1 pb="180px">{title}</H1>
+        <Animator component={H1} customConfig={{ origin: 'bottom' }} pb="180px">
+          {title}
+        </Animator>
       </Banner>
       <Section bg="lightBg">
         <Container>
-          <TextContent>
+          <Animator component={TextContent} customConfig={{ origin: 'bottom' }}>
             <Headline color="secondary">{header}</Headline>
             <Div dangerouslySetInnerHTML={{ __html: html }} />
-          </TextContent>
+          </Animator>
         </Container>
       </Section>
 
       <Section bg="blue25">
         <Container>
-          <Flex justifyContent="space-between" alignItems="center">
+          <Animator
+            component={Flex}
+            customConfig={{ origin: 'bottom' }}
+            justifyContent="space-between"
+            alignItems="center"
+          >
             <Div maxWidth="300px">
               <Headline color="secondary"> Destan Nakliyat ile </Headline>
               <H2 mt="15px">Taşıdığımız Kamu Kurumları </H2>
             </Div>
             <ChevronButtons disableBefore />
-          </Flex>
+          </Animator>
           <List>
             {allGraphCmsTasidigimizKamuKurumlari.nodes.map(
-              ({ title: kurumTitle, photo: { url } }) => (
-                <ListItem key={kurumTitle}>
+              ({ title: kurumTitle, photo: { url } }, index) => (
+                <Animator
+                  component={ListItem}
+                  customConfig={{ delay: index * 100 }}
+                  key={kurumTitle}
+                >
                   <Img src={url} />
                   <H5 p="28px 32px">{kurumTitle}</H5>
-                </ListItem>
+                </Animator>
               )
             )}
           </List>

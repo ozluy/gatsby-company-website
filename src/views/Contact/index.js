@@ -15,11 +15,13 @@ const ContactPage = () => {
             #app_header {
             background-color: ${darkBg};
             }
-            nav  a{
+            @media screen and (min-width: 1025px){
+            #app_header nav  a{
                 color: ${white} !important;
             }           
-            nav  ul li:last-child a{
+            #app_header nav  ul li:last-child a{
                 color: ${secondary} !important;
+                }
                 }
             `}
         </style>

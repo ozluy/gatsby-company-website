@@ -2,6 +2,7 @@ import React from 'react'
 import { Div, Flex, H1, Headline, Img, Section } from 'components/CoreElements'
 import { Helmet } from 'react-helmet'
 import { useTheme } from 'styled-components'
+import Animator from 'components/Animator'
 import hexToRGBA from 'common/hexToRGBA'
 import Container from 'components/Container'
 import banner from './banner.svg'
@@ -16,11 +17,19 @@ const Banner = () => {
       </Helmet>
       <Container>
         <Flex justifyContent="space-between" flexDirection="row">
-          <Div maxWidth="215px">
+          <Animator
+            component={Div}
+            customConfig={{ origin: 'left' }}
+            maxWidth="215px"
+          >
             <Headline>Destan nakliyat ile</Headline>
             <H1>Referanslarımız</H1>
-          </Div>
-          <Img display={['none', 'none', 'block']} src={banner} />
+          </Animator>
+          <Animator
+            component={Img}
+            display={['none', 'none', 'block']}
+            src={banner}
+          />
         </Flex>
       </Container>
     </Section>

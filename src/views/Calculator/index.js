@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import Container from 'components/Container'
 import FAQSection from 'components/FAQ'
 import { Flex, H1, Img, Section } from 'components/CoreElements'
+import Animator from 'components/Animator'
 import imageSources from './img'
 import Steps from './steps'
 import sizeOfMoving from './steps/sizeOfMoving'
@@ -53,9 +54,13 @@ const CalculatorPage = ({ location }) => {
     <>
       <Section p="100px 0 0 0">
         <Container>
-          <H1 mb="40px">Hesap Makinesi</H1>
+          <Animator customConfig={{ origin: 'left' }} component={H1} mb="40px">
+            Hesap Makinesi
+          </Animator>
           <Flex alignItems="flex-start" justifyContent="space-between">
-            <Steps
+            <Animator
+              customConfig={{ origin: 'left' }}
+              component={Steps}
               citiesInTurkey={citiesInTurkey}
               currentStep={currentStep}
               setCurrentStep={setCurrentStep}
@@ -63,7 +68,9 @@ const CalculatorPage = ({ location }) => {
               calculatorParams={calculatorParams}
               services={services}
             />
-            <Img
+            <Animator
+              component={Img}
+              key={currentStep}
               display={['none', 'none', 'block']}
               src={imageSources[currentStep]}
             />

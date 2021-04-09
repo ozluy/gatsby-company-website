@@ -62,10 +62,12 @@ export const List = styled(Flex)`
 `
 export const ServicesWrapper = styled(Flex)`
   flex-direction: column;
+  min-width: 300px;
   width: 300px;
 
   ${media.tablet`
   width: auto;
+  min-width: auto;
   `}
 `
 

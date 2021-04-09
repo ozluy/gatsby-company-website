@@ -3,6 +3,7 @@ import Button from 'components/Button'
 import { Div, Flex, H2, H5, Img } from 'components/CoreElements'
 import Container from 'components/Container'
 import { graphql, useStaticQuery } from 'gatsby'
+import Animator from 'components/Animator'
 import {
   FAQsWrapper,
   FAQ,
@@ -46,7 +47,9 @@ const FAQSection = () => {
   return (
     <Wrapper>
       <Container>
-        <Flex
+        <Animator
+          component={Flex}
+          customConfig={{ origin: 'bottom' }}
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
@@ -75,13 +78,18 @@ const FAQSection = () => {
               </Button>
             ))}
           </Div>
-        </Flex>
+        </Animator>
 
         <FAQsWrapper>
           {faqs.map(({ question, answer: { html } }, index) => {
             const isActive = activeIndex === index
             return (
-              <FAQ key={question} isActive={isActive}>
+              <Animator
+                component={FAQ}
+                customConfig={{ delay: index * 100 }}
+                key={question}
+                isActive={isActive}
+              >
                 <FAQHeader
                   onClick={() => setActiveIndex(isActive ? -1 : index)}
                 >
@@ -91,7 +99,7 @@ const FAQSection = () => {
                 {isActive && (
                   <FAQSubCategory dangerouslySetInnerHTML={{ __html: html }} />
                 )}
-              </FAQ>
+              </Animator>
             )
           })}
         </FAQsWrapper>

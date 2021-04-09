@@ -9,23 +9,13 @@ import BgSvg from './BgSvg'
 
 const Banner = () => (
   <BannerWrapper>
-    <Container>
-      <Animator
-        customConfig={{ origin: 'left' }}
-        component={Headline}
-        color="secondary"
-      >
+    <Animator component={Container} customConfig={{ origin: 'left' }}>
+      <Headline component={Headline} color="secondary">
         Evinizi veya ofisinizi taşırken
-      </Animator>
-      <Animator
-        customConfig={{ origin: 'left' }}
-        component={H1}
-        m="15px 0 50px 0"
-        maxWidth="500px"
-        color="primary"
-      >
+      </Headline>
+      <H1 m="15px 0 50px 0" maxWidth="500px" color="primary">
         Paradan ve zamandan tasarruf edin
-      </Animator>
+      </H1>
 
       <ActionWrapper>
         <div>Talep ettiğiniz hizmeti seçerek en uygun teklifi alın</div>
@@ -33,7 +23,7 @@ const Banner = () => (
           <ButtonWithArrow>Fiyat hesapla</ButtonWithArrow>
         </Link>
       </ActionWrapper>
-    </Container>
+    </Animator>
 
     <Animator
       component={BgWrapper}

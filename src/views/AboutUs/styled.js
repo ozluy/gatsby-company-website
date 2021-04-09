@@ -23,7 +23,6 @@ export const TextContent = styled(RicTextContent)`
 
 export const List = styled.ul`
   display: flex;
-  align-items: center;
   justify-content: flex-start;
   overflow: auto auto;
   margin: 75px 0 0 0;

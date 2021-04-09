@@ -114,11 +114,11 @@ export const InlineFlex = styled(Div)`
 export const RicTextContent = styled(Div)`
   img {
     max-width: 100%;
+    width: 100%;
   }
 
   p {
     line-height: 24px;
-
     color: ${({ theme }) => theme.colors.greyLight};
 
     a {

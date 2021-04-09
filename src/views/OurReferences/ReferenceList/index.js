@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby'
 import Container from 'components/Container'
 import { Anchor, Flex, H2, Img, Section } from 'components/CoreElements'
 import SwitchButtons from 'components/SwitchButtons'
+import Animator from 'components/Animator'
 
 const ReferenceList = () => {
   const buttons = [
@@ -33,10 +34,19 @@ const ReferenceList = () => {
   return (
     <Section bg="white">
       <Container>
-        <H2 mb="40px" textAlign="center">
+        <Animator
+          component={H2}
+          customConfig={{ origin: 'bottom' }}
+          mb="40px"
+          textAlign="center"
+        >
           {activeCategory}
-        </H2>
-        <Flex justifyContent="center">
+        </Animator>
+        <Animator
+          component={Flex}
+          customConfig={{ origin: 'bottom' }}
+          justifyContent="center"
+        >
           <SwitchButtons
             startIndex={1}
             buttons={buttons.map(({ children }) => ({
@@ -44,7 +54,7 @@ const ReferenceList = () => {
               onClick: () => setActiveCategory(children)
             }))}
           />
-        </Flex>
+        </Animator>
         <Flex
           flexWrap="wrap"
           alignItems="center"
@@ -53,8 +63,10 @@ const ReferenceList = () => {
         >
           {allGraphCmsReferanslar.nodes
             .filter(({ servicecategory }) => servicecategory === activeCategory)
-            .map(({ name, website, logo: { url } }) => (
-              <Anchor
+            .map(({ name, website, logo: { url } }, index) => (
+              <Animator
+                component={Anchor}
+                customConfig={{ delay: index * 100 }}
                 key={name}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -67,7 +79,7 @@ const ReferenceList = () => {
                   borderRadius="10px"
                   src={url}
                 />
-              </Anchor>
+              </Animator>
             ))}
         </Flex>
       </Container>

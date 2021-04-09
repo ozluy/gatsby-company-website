@@ -9,18 +9,33 @@ import {
   Section
 } from 'components/CoreElements'
 import Container from 'components/Container'
+import Animator from 'components/Animator'
 import kamyon from './kamyon.svg'
 
 const EnhancedContainer = styled(Container)`
+  position: relative;
+`
+
+const EnhancedDiv = styled.div`
   background-image: url(${kamyon});
   background-position: right top;
   background-repeat: no-repeat;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 `
 
 const TwentyYearsOfExperience = () => (
   <Section bgColor="blue50">
     <EnhancedContainer>
-      <Div maxWidth="400px">
+      <Animator
+        component={Div}
+        customConfig={{ origin: 'left' }}
+        maxWidth="400px"
+      >
         <Headline color="secondary">20 yıllık tecrübe</Headline>
         <H2 mt="15px">
           Türkiye’nin <br /> en iyi lojistik firması
@@ -40,7 +55,8 @@ const TwentyYearsOfExperience = () => (
         <Paragraph mt="36px" lineHeight="26.88px">
           <Anchor>Daha fazla bilgi alın</Anchor>
         </Paragraph>
-      </Div>
+      </Animator>
+      <Animator component={EnhancedDiv} />
     </EnhancedContainer>
   </Section>
 )

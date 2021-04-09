@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Container from 'components/Container'
 import { Section, Flex, H2, Div } from 'components/CoreElements'
+import Animator from 'components/Animator'
 import { Content, SideList, SideListItem } from './styled'
 
 const Banner = () => {
@@ -32,16 +33,23 @@ const Banner = () => {
         <Flex flexDirection={['column', 'column', 'row']}>
           <SideList>
             {allGraphCmsKurumsal.nodes.map(({ title }, index) => (
-              <SideListItem
+              <Animator
+                component={SideListItem}
+                customConfig={{ delay: index * 100, origin: 'bottom' }}
                 onClick={() => setActiveIndex(index)}
                 active={index === activeIndex}
                 key={title}
               >
                 {index + 1}. {title}
-              </SideListItem>
+              </Animator>
             ))}
           </SideList>
-          <Div mt={['20px', '20px', 0]}>
+          <Animator
+            component={Div}
+            customConfig={{ origin: 'bottom' }}
+            mt={['20px', '20px', 0]}
+            key={subtitle}
+          >
             <H2
               pl="15px"
               pb="10px"
@@ -52,7 +60,7 @@ const Banner = () => {
               {subtitle}
             </H2>
             <Content dangerouslySetInnerHTML={{ __html: html }} />
-          </Div>
+          </Animator>
         </Flex>
       </Container>
     </Section>

@@ -7,6 +7,7 @@ import InputField from 'components/InputField'
 import Dropdown from 'components/Dropdown'
 import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
+import Animator from 'components/Animator'
 
 export const Form = styled.form`
   display: flex;
@@ -57,7 +58,9 @@ const ContactForm = () => {
   return (
     <Section bg="lighterBg">
       <Container>
-        <Flex
+        <Animator
+          component={Flex}
+          customConfig={{ origin: 'bottom' }}
           alignItems="center"
           justifyContent="center"
           flexDirection="column"
@@ -66,9 +69,13 @@ const ContactForm = () => {
           <H2 textAlign="center" maxWidth="450px">
             Tüm Soru ve Görüşlerinizi Buradan İletebilirsiniz
           </H2>
-        </Flex>
+        </Animator>
 
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Animator
+          component={Form}
+          customConfig={{ origin: 'bottom' }}
+          onSubmit={handleSubmit(onSubmit)}
+        >
           <Controller
             name="firstName"
             control={control}
@@ -156,7 +163,7 @@ const ContactForm = () => {
               Mesaj gönder
             </Button>
           </Flex>
-        </Form>
+        </Animator>
       </Container>
     </Section>
   )

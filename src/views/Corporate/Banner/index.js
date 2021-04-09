@@ -1,6 +1,7 @@
 import React from 'react'
 import { Div, Flex, H1, Headline, Img, Section } from 'components/CoreElements'
 import { Helmet } from 'react-helmet'
+import Animator from 'components/Animator'
 import { useTheme } from 'styled-components'
 import hexToRGBA from 'common/hexToRGBA'
 import Container from 'components/Container'
@@ -16,11 +17,20 @@ const Banner = () => {
       </Helmet>
       <Container>
         <Flex justifyContent="space-between" flexDirection="row">
-          <Div maxWidth="215px">
+          <Animator
+            customConfig={{ origin: 'left' }}
+            component={Div}
+            maxWidth="215px"
+          >
             <Headline>Destan nakliyat ile</Headline>
             <H1>Kurumsal</H1>
-          </Div>
-          <Img display={['none', 'none', 'block']} mb="-8px" src={banner} />
+          </Animator>
+          <Animator
+            component={Img}
+            display={['none', 'none', 'block']}
+            mb="-8px"
+            src={banner}
+          />
         </Flex>
       </Container>
     </Section>

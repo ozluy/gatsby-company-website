@@ -15,6 +15,7 @@ import Container from 'components/Container'
 import Dropdown from 'components/Dropdown'
 import { ButtonWithArrow } from 'components/Button'
 import ArrowRight from 'components/Icons/arrowRight'
+import Animator from 'components/Animator'
 import {
   List,
   Service,
@@ -84,12 +85,26 @@ const OurServicesPage = () => {
   return (
     <StyledSection>
       <Container>
-        <Headline color="secondary" textAlign="center">
+        <Animator
+          component={Headline}
+          customConfig={{ origin: 'bottom' }}
+          color="secondary"
+          textAlign="center"
+        >
           Destan Nakliyat ile
-        </Headline>
-        <H1 textAlign="center">Hizmetlerimiz</H1>
+        </Animator>
+        <Animator
+          component={H1}
+          customConfig={{ origin: 'bottom' }}
+          textAlign="center"
+        >
+          Hizmetlerimiz
+        </Animator>
         <Flex mt="100px" flexDirection={['column', 'column', 'row']}>
-          <ServicesWrapper>
+          <Animator
+            component={ServicesWrapper}
+            customConfig={{ origin: 'left' }}
+          >
             {allServiceCategories.map(({ title, items }, index) => {
               const isActive = activeIndex === index
               return (
@@ -120,14 +135,19 @@ const OurServicesPage = () => {
                 </Service>
               )
             })}
-          </ServicesWrapper>
+          </Animator>
           {activeContent ? (
             <RicTextContent
               p={[0, 0, '40px']}
+              bg="white"
+              mt="24px"
+              m={['0', '0', '24px 0 0 24px']}
+              boxShadow="0px 15px 20px rgba(31, 72, 143, 0.02)"
+              borderRadius="20px"
               dangerouslySetInnerHTML={{ __html: activeContent }}
             />
           ) : (
-            <List>
+            <Animator component={List} customConfig={{ origin: 'right' }}>
               {allServiceCategories[activeIndex].items.map(
                 ({
                   name,
@@ -157,7 +177,7 @@ const OurServicesPage = () => {
                   </ListItem>
                 )
               )}
-            </List>
+            </Animator>
           )}
         </Flex>
 

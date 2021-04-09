@@ -15,6 +15,7 @@ export const GuideHeader = styled(Flex)`
   align-items: center;
   justify-content: flex-start;
   flex-direction: row;
+  cursor: pointer;
 `
 export const TitleIcon = styled(I)`
   width: 48px;
