@@ -91,32 +91,32 @@ export const NavList = styled.ul`
   padding: 0;
 
   ${media.desktop`
-    width: 100%;
-    ${NavItem} {
-        cursor: pointer;
+  width: 100%;
+  ${NavItem} {
+      cursor: pointer;
+      &:first-child {
+      color: ${({ theme }) => theme.colors.primary};    
+      }
+      &:not(:first-child) {
+        display: none;
+      }
+      }
+
+  ${({ isOpen }) =>
+    isOpen &&
+    css`
+      ${NavItem} {
+        margin-bottom: 20px;
         &:first-child {
-        color: ${({ theme }) => theme.colors.primary};    
+          color: ${({ theme }) => theme.colors.blue};
         }
         &:not(:first-child) {
-          display: none;
+          display: flex;
         }
+        svg {
+          transform: rotate(90deg);
         }
-
-    ${({ isOpen }) =>
-      isOpen &&
-      css`
-        ${NavItem} {
-          margin-bottom: 20px;
-          &:first-child {
-            color: ${({ theme }) => theme.colors.blue};
-          }
-          &:not(:first-child) {
-            display: flex;
-          }
-          svg {
-            transform: rotate(90deg);
-          }
-        }
-      `};
+      }
+    `};
   `};
 `
