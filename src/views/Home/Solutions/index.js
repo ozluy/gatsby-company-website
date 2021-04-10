@@ -50,13 +50,8 @@ const Solutions = () => {
             <H2 mt="15px">Size özel sunulan çözümler</H2>
           </Div>
         </Flex>
-        <Flex
-          mt="80px"
-          justifyContent="space-between"
-          display={['none', 'none', 'flex']}
-          alignItems="center"
-        >
-          <ImgList>
+        <Flex mt="80px" justifyContent="space-between" alignItems="center">
+          <ImgList display={['none', 'none', 'flex']}>
             <Parallax y={[-30, 30]} tagOuter="figure">
               <Img src={solution1} />
             </Parallax>
