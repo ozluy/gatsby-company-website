@@ -8,6 +8,7 @@ import PopularServices from './PopularServices'
 import Solutions from './Solutions'
 import Covid from './Covid'
 import Guides from './Guides'
+import Testimonials from './Testimonials'
 
 const HomePage = () => (
   <>
@@ -20,6 +21,7 @@ const HomePage = () => (
     <Solutions />
     <Guides />
     <Covid />
+    <Testimonials />
   </>
 )
 
