@@ -13,12 +13,11 @@ Destan Nakliyat Gatsby
 
 Status: [![Netlify Status](https://api.netlify.com/api/v1/badges/c9242d50-e2f5-43d3-9cd8-ed61c0feaf56/deploy-status)](https://app.netlify.com/sites/destan-nakliyat/deploys)
 
-## NetlifyCMS
+## GraphCMS
 
-Netlify CMS is running at http://localhost:8000/admin/
+https://graphcms.com/
 
-You need be invited thorugh Netlify with your GitHub email address to be able to see CMS interface.
-
+You need be invited to GraphCMS with your GitHub email address to be able to see CMS interface.
 
 ## 🚀 Quick start
 
