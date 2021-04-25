@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Container from 'components/Container'
 import FAQSection from 'components/FAQ'
@@ -22,7 +22,7 @@ const CalculatorPage = ({ location }) => {
     destinationHouseCondition: oldHouseCondition[0],
     packaging: packaging[0],
     insurance: insurance[0],
-    dateOfMoving: { selectedOption: dateOfMoving[0], date: null, time: null },
+    dateOfMoving: { selectedOption: dateOfMoving[0], date: new Date() },
     noteForCarrier: '',
     contact: {
       name: '',
@@ -32,6 +32,8 @@ const CalculatorPage = ({ location }) => {
     cityFrom,
     cityTo
   })
+
+  useEffect(() => {})
   const { allGraphCmsService, allGraphCmsSehirler } = useStaticQuery(graphql`
     {
       allGraphCmsService {

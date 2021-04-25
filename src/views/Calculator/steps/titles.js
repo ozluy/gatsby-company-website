@@ -10,7 +10,7 @@ const titles = [
   'Nereye taşınıyorsun (yeni ev nerede)?',
   'Ne zaman taşınacaksınız?',
   'Email adresini gir',
-  'Tahmininiz şunlar arasında:'
+  'Tahminimiz şunlar arasında:'
 ]
 
 export default titles

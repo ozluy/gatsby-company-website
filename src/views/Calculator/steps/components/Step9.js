@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import dateOfMoving from '../dateOfMoving'
 
 const Step9 = ({ setCalculatorParams, calculatorParams }) => {
-  const [startDate, setStartDate] = useState(new Date())
+  const [startDate, setStartDate] = useState(calculatorParams.dateOfMoving.date)
   return (
     <>
       {dateOfMoving.map((movingDate) => (
@@ -32,7 +32,18 @@ const Step9 = ({ setCalculatorParams, calculatorParams }) => {
           {movingDate === dateOfMoving[0] && (
             <DatePicker
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              onChange={(date) => {
+                setStartDate(date)
+                setCalculatorParams({
+                  ...calculatorParams,
+                  ...{
+                    dateOfMoving: {
+                      ...calculatorParams.dateOfMoving,
+                      ...{ date }
+                    }
+                  }
+                })
+              }}
               showTimeSelect
               dateFormat="MMMM d, yyyy HH:mm"
             />
