@@ -14,7 +14,7 @@ import dateOfMoving from './steps/dateOfMoving'
 
 const CalculatorPage = ({ location }) => {
   const { cityFrom, cityTo, selectedService } = location.state || {}
-  const [currentStep, setCurrentStep] = useState(7)
+  const [currentStep, setCurrentStep] = useState(0)
   const [calculatorParams, setCalculatorParams] = useState({
     selectedService,
     sizeOfMoving: sizeOfMoving[0],
@@ -33,8 +33,8 @@ const CalculatorPage = ({ location }) => {
     cityTo: cityTo || {},
     districtFrom: {},
     districtTo: {},
-    neigborhoodFrom: {},
-    neigborhoodTo: {},
+    neighborhoodFrom: {},
+    neighborhoodTo: {},
     fromDistrictsList: [],
     toDistrictList: [],
     fromNeighborhoodsList: [],

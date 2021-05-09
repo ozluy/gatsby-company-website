@@ -34,7 +34,11 @@ const Steps = forwardRef(
         noteForCarrier,
         contact: { name, phone, email },
         cityFrom,
-        cityTo
+        cityTo,
+        districtFrom,
+        districtTo,
+        neighborhoodFrom,
+        neighborhoodTo
       } = calculatorParams
       formData.append('selectedService', selectedService.label)
       formData.append('name', name)
@@ -46,8 +50,14 @@ const Steps = forwardRef(
           ? `${selectedOption}, ${date}`
           : selectedOption
       )
-      formData.append('cityFrom', cityFrom.label)
-      formData.append('cityTo', cityTo.label)
+      formData.append(
+        'cityFrom',
+        `${cityFrom.label}-${districtFrom.label}-${neighborhoodFrom.label}`
+      )
+      formData.append(
+        'cityTo',
+        `${cityTo.label}-${districtTo.label}-${neighborhoodTo.label}`
+      )
       formData.append('sizeOfMoving', sizeOfMoving)
       formData.append('oldHouseCondition', oldHouseCondition)
       formData.append('packaging', packaging)
@@ -98,8 +108,9 @@ const Steps = forwardRef(
             <Button
               disabled={
                 (currentStep === 0 && !calculatorParams.selectedService) ||
-                (currentStep === 7 && !calculatorParams.cityFrom) ||
-                (currentStep === 8 && !calculatorParams.cityTo)
+                (currentStep === 7 &&
+                  !calculatorParams.neighborhoodFrom.label) ||
+                (currentStep === 8 && !calculatorParams.neighborhoodTo.label)
               }
               onClick={() => setCurrentStep(currentStep + 1)}
             >
