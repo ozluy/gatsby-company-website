@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'gatsby'
 import { Parallax } from 'react-scroll-parallax'
 import {
   Div,
@@ -30,7 +31,7 @@ const Solutions = () => {
     {
       title: 'Destan Vip',
       desc:
-        'Anahtarınızı teslim ederek, yeni evinize/ofisinize doğru yola çıkacağınız bir iş ortağı mı arıyorsanız paketleme ve taşıma işlemleri VIP’te.',
+        'Anahtarınızı teslim ederek, yeni evinize/ofisinize doğru yola çıkacağınız bir iş ortağı arıyorsanız paketleme ve taşıma işlemleri VIP’te.',
       Icon: Bookmark
     },
     {
@@ -84,7 +85,9 @@ const Solutions = () => {
               </BoxItem>
             ))}
             <Flex mt="80px" alignItems="center" justifyContent="center">
-              <ButtonWithArrow green> Hemen Fiyat Hesapla</ButtonWithArrow>
+              <Link to="/hesap-makinesi">
+                <ButtonWithArrow green> Hemen Fiyat Hesapla</ButtonWithArrow>
+              </Link>
             </Flex>
           </BoxList>
         </Flex>

@@ -124,6 +124,10 @@ export const RicTextContent = styled(Div)`
     a {
       color: ${({ theme }) => theme.colors.secondary};
     }
+
+    strong {
+      color: ${({ theme }) => theme.colors.secondary};
+    }
   }
 
   h1 {

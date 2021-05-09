@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import {
   Div,
   Flex,
@@ -107,7 +107,9 @@ const PopulerServices = () => {
           </ScrollContainer>
         </List>
         <Flex mt="80px" flexDirection="row" justifyContent="center">
-          <Button light>Tümünü Görüntüle</Button>
+          <Link to="/hizmetlerimiz">
+            <Button light>Tümünü Görüntüle</Button>
+          </Link>
         </Flex>
       </Container>
     </Section>

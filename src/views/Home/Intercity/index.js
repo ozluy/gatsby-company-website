@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, Link, useStaticQuery } from 'gatsby'
 import ChevronButtons from 'components/ChevronButtons'
 import Container from 'components/Container'
 import ScrollContainer from 'react-indiana-drag-scroll'
@@ -126,7 +126,9 @@ const Intercity = () => {
         </List>
 
         <Flex mt="80px" flexDirection="row" justifyContent="center">
-          <Button light>Tümünü Görüntüle</Button>
+          <Link to="/hizmetlerimiz">
+            <Button light>Tümünü Görüntüle</Button>
+          </Link>
         </Flex>
       </Container>
     </Section>

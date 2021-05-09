@@ -1,13 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import {
-  Anchor,
-  Div,
-  H2,
-  Headline,
-  Paragraph,
-  Section
-} from 'components/CoreElements'
+import { Link } from 'gatsby'
+import { Div, H2, Headline, Paragraph, Section } from 'components/CoreElements'
 import Container from 'components/Container'
 import Animator from 'components/Animator'
 import kamyon from './kamyon.svg'
@@ -53,7 +47,7 @@ const TwentyYearsOfExperience = () => (
           taşımacılık hizmeti sağlamaktadır.
         </Paragraph>
         <Paragraph mt="36px" lineHeight="26.88px">
-          <Anchor>Daha fazla bilgi alın</Anchor>
+          <Link to="/kurumsal">Daha fazla bilgi alın</Link>
         </Paragraph>
       </Animator>
       <Animator component={EnhancedDiv} />

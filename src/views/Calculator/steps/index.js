@@ -113,7 +113,6 @@ const Steps = forwardRef(
                 !calculatorParams.contact.email
               }
               onClick={() => {
-                console.log(calculatorParams)
                 handleFormSubmit()
                 setCurrentStep(currentStep + 1)
               }}

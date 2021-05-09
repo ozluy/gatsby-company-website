@@ -66,7 +66,7 @@ const CertificatesPage = () => {
               {header}
             </H2>
           </InlineFlex>
-          <Flex>
+          <Flex flexDirection={['column', 'column', 'row']}>
             <TextContent>
               <RicTextContent dangerouslySetInnerHTML={{ __html: html }} />
             </TextContent>

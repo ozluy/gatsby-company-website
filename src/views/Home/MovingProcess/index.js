@@ -11,6 +11,7 @@ import {
   Section,
   H5
 } from 'components/CoreElements'
+import { Link } from 'gatsby'
 import React from 'react'
 import step1 from './process_1.png'
 import step2 from './process_2.png'
@@ -35,7 +36,7 @@ const MovingProcess = () => {
       img: step3,
       title: 'Taşınma Randevusu',
       desc:
-        'Taşınma randevusunu oluşturduğumuz saatte yerine varan ekiplerimiz, titizlikle eşyalarınızı.'
+        'Taşınma randevusunu oluşturduğumuz saatte yerine varan ekiplerimiz, titizlikle eşyalarınızı taşırlar.'
     }
   ]
   return (
@@ -50,9 +51,11 @@ const MovingProcess = () => {
             <Headline color="secondary">Destan Nakliyat ile</Headline>
             <H2 mt="15px">Stressiz taşıma süreci nasıl işliyor?</H2>
           </Div>
-          <ButtonWithArrow m={['40px', '40px', '0']} green>
-            Hemen fiyat hesaplayın
-          </ButtonWithArrow>
+          <Link to="/hesap-makinesi">
+            <ButtonWithArrow m={['40px', '40px', '0']} green>
+              Hemen fiyat hesaplayın
+            </ButtonWithArrow>
+          </Link>
         </Flex>
         <TripletWrapper>
           {processSteps.map(({ title, desc, img }, index) => (

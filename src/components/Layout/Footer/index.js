@@ -7,7 +7,7 @@ import ChevronRight from 'components/Icons/chevronRight'
 import Facebook from 'components/Icons/facebook'
 import Instagram from 'components/Icons/instagram'
 import Twitter from 'components/Icons/twitter'
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import { graphql, Link, navigate, useStaticQuery } from 'gatsby'
 import React, { useMemo, useState } from 'react'
 import logoFooter from './logo_footer.svg'
 import {
@@ -155,7 +155,8 @@ const Footer = (props) => {
       { url: '/referanslarimiz', title: 'Referanslarımız' },
       { url: '/iletisim', title: 'Bize Ulaşın' },
       { url: '/hesap-makinesi', title: 'Hesap Makinesi' },
-      { url: '/hakkimizda', title: 'Hakkımızda' }
+      { url: '/hakkimizda', title: 'Hakkımızda' },
+      { url: '/sertifikalarimiz', title: 'Sertifikalarımız' }
     ]
   ]
 
@@ -170,7 +171,11 @@ const Footer = (props) => {
           <H3 maxWidth="672px" color="grey">
             Destan Nakliyat ile hemen taşınmak iletişime geçin.
           </H3>
-          <Button mt={['40px', '40px', '0']} black>
+          <Button
+            onClick={() => navigate('/hesap-makinesi')}
+            mt={['40px', '40px', '0']}
+            black
+          >
             Hemen Hizmet Al
           </Button>
         </Flex>

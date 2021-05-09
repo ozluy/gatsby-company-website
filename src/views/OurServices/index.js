@@ -31,6 +31,7 @@ import {
 
 const OurServicesPage = () => {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isCurrentIndex, setIsCurrentIndex] = useState(0)
   const [activeContent, setActiveContent] = useState(null)
   const [cityFrom, setCityFrom] = useState()
   const [cityTo, setCityTo] = useState()
@@ -106,12 +107,13 @@ const OurServicesPage = () => {
             customConfig={{ origin: 'left' }}
           >
             {allServiceCategories.map(({ title, items }, index) => {
-              const isActive = activeIndex === index
+              const isActive = activeIndex === index && isCurrentIndex === index
               return (
                 <Service key={title}>
                   <ServiceHeader
                     onClick={() => {
                       setActiveIndex(index)
+                      setIsCurrentIndex(isActive ? -1 : index)
                       setActiveContent(null)
                     }}
                   >

@@ -2,6 +2,7 @@ import hexToRGBA from 'common/hexToRGBA'
 import Button from 'components/Button'
 import Container from 'components/Container'
 import { Div, H3, Img, Section, Flex } from 'components/CoreElements'
+import { navigate } from 'gatsby'
 import React from 'react'
 import { useTheme } from 'styled-components'
 import covid from './covid.png'
@@ -22,7 +23,9 @@ const Covid = () => {
               Covid-19 kapsamında gerekli önlemleri alarak bu süreçte sizin için
               hizmet vermeye devam ediyoruz.
             </H3>
-            <Button black>Hemen Hizmet Al</Button>
+            <Button onClick={() => navigate('/hesap-makinesi')} black>
+              Hemen Hizmet Al
+            </Button>
           </Div>
           <Img mt={['40px', '40px', 0]} src={covid} />
         </Flex>
