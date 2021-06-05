@@ -1,28 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Container from 'components/Container'
 import FAQSection from 'components/FAQ'
 import { Flex, H1, Img, Section } from 'components/CoreElements'
 import Animator from 'components/Animator'
+import config from 'common/config'
 import imageSources from './img'
 import Steps from './steps'
-import sizeOfMoving from './steps/sizeOfMoving'
-import oldHouseCondition from './steps/oldHouseCondition'
-import packaging from './steps/packaging'
-import insurance from './steps/insurance'
-import dateOfMoving from './steps/dateOfMoving'
 
 const CalculatorPage = ({ location }) => {
   const { cityFrom, cityTo, selectedService } = location.state || {}
   const [currentStep, setCurrentStep] = useState(0)
   const [calculatorParams, setCalculatorParams] = useState({
+    distanceInKm: 0,
     selectedService,
-    sizeOfMoving: sizeOfMoving[0],
-    oldHouseCondition: oldHouseCondition[0],
-    destinationHouseCondition: oldHouseCondition[0],
-    packaging: packaging[0],
-    insurance: insurance[0],
-    dateOfMoving: { selectedOption: dateOfMoving[0], date: new Date() },
+    sizeOfMoving: config.sizeOfMoving[0],
+    oldHouseCondition: config.houseCondition[0],
+    destinationHouseCondition: config.houseCondition[0],
+    packaging: config.packaging[0],
+    insurance: config.insurance[0],
+    dateOfMoving: { selectedOption: config.dateOfMoving[0], date: new Date() },
     noteForCarrier: '',
     contact: {
       name: '',
@@ -40,14 +37,13 @@ const CalculatorPage = ({ location }) => {
     fromNeighborhoodsList: [],
     toNeighborhoodsList: []
   })
-
-  useEffect(() => {})
   const { allGraphCmsService, allGraphCmsSehirler } = useStaticQuery(graphql`
     {
       allGraphCmsService {
         nodes {
           id
           name
+          price
         }
       }
       allGraphCmsSehirler {

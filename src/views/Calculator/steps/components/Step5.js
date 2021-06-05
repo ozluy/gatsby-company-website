@@ -1,25 +1,25 @@
 import { Paragraph } from 'components/CoreElements'
 import RadioButton from 'components/RadioButton'
 import React from 'react'
-import insurance from '../insurance'
+import config from 'common/config'
 
 const Step5 = ({ calculatorParams, setCalculatorParams }) => (
   <>
     <Paragraph color="grey">
       Eşyaların yangın, kaza gibi afetlere karşı güvence altında olur
     </Paragraph>
-    {insurance.map((ins) => (
+    {config.insurance.map((ins) => (
       <RadioButton
-        checked={ins === calculatorParams.insurance}
+        checked={ins.label === calculatorParams.insurance.label}
         onChange={() =>
           setCalculatorParams({
             ...calculatorParams,
             ...{ insurance: ins }
           })
         }
-        id={ins}
-        key={ins}
-        label={ins}
+        id={ins.label}
+        key={ins.label}
+        label={ins.label}
         name="packaging"
       />
     ))}

@@ -2,11 +2,11 @@ import React, { forwardRef } from 'react'
 import { Link } from 'gatsby'
 import Button from 'components/Button'
 import { Flex, Headline } from 'components/CoreElements'
+import config from 'common/config'
 import Form from './styled'
 import titles from './titles'
 import Stepper from './components'
 import StepSummary from './Summary'
-import dateOfMovingOptions from './dateOfMoving'
 
 const Steps = forwardRef(
   (
@@ -20,7 +20,7 @@ const Steps = forwardRef(
     },
     ref
   ) => {
-    const handleFormSubmit = () => {
+    const handleFormSubmit = async () => {
       const formData = new FormData()
 
       const {
@@ -40,24 +40,52 @@ const Steps = forwardRef(
         neighborhoodFrom,
         neighborhoodTo
       } = calculatorParams
+      const cityToCombined = `${cityTo.label},${districtTo.label},${neighborhoodTo.label}`
+      const cityFromCombined = `${cityFrom.label},${districtFrom.label},${neighborhoodFrom.label}`
+
+      const service = new google.maps.DistanceMatrixService()
+      let distanceInKm = 0
+      await service.getDistanceMatrix(
+        {
+          origins: [cityToCombined],
+          destinations: [cityFromCombined],
+          travelMode: google.maps.TravelMode.DRIVING,
+          unitSystem: google.maps.UnitSystem.METRIC,
+          avoidHighways: false,
+          avoidTolls: false
+        },
+        (response, status) => {
+          if (status !== 'OK') {
+            // eslint-disable-next-line no-console
+            console.log(`Error: ${status}`)
+          } else {
+            const firstRow = response?.rows && response.rows[0]
+            if (firstRow) {
+              const distanceInMeters =
+                firstRow?.elements && firstRow.elements[0].distance.value
+              distanceInKm = Math.floor(distanceInMeters / 1000) || 0
+              setCalculatorParams({
+                ...calculatorParams,
+                ...{ distanceInKm }
+              })
+            }
+          }
+        }
+      )
+
       formData.append('selectedService', selectedService.label)
       formData.append('name', name)
       formData.append('phone', phone)
       formData.append('email', email)
+      formData.append('distanceInKm', distanceInKm)
       formData.append(
         'dateOfMoving',
-        dateOfMovingOptions[0] === selectedOption
+        config.dateOfMoving[0] === selectedOption
           ? `${selectedOption}, ${date}`
           : selectedOption
       )
-      formData.append(
-        'cityFrom',
-        `${cityFrom.label}-${districtFrom.label}-${neighborhoodFrom.label}`
-      )
-      formData.append(
-        'cityTo',
-        `${cityTo.label}-${districtTo.label}-${neighborhoodTo.label}`
-      )
+      formData.append('cityFrom', cityFromCombined)
+      formData.append('cityTo', cityToCombined)
       formData.append('sizeOfMoving', sizeOfMoving)
       formData.append('oldHouseCondition', oldHouseCondition)
       formData.append('packaging', packaging)

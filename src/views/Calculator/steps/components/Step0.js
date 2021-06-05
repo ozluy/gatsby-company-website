@@ -40,9 +40,10 @@ const Step0 = ({ services, calculatorParams, setCalculatorParams }) => {
         components={{ DropdownIndicator, IndicatorSeparator: null }}
         defaultValue={localSelectedService}
         value={localSelectedService}
-        options={services.map(({ name, id }) => ({
+        options={services.map(({ name, id, price }) => ({
           label: name,
-          value: id
+          value: id,
+          price
         }))}
         onChange={(value) => {
           const updatedParams = {
@@ -55,10 +56,10 @@ const Step0 = ({ services, calculatorParams, setCalculatorParams }) => {
       />
       <Paragraph color="grey">Popüler Hizmetler</Paragraph>
       <BadgeGroup>
-        {services.slice(0, 6).map(({ name, id }) => (
+        {services.slice(0, 6).map(({ name, id, price }) => (
           <Badge
             onClick={() => {
-              const value = { label: name, value: id }
+              const value = { label: name, value: id, price }
               const updatedParams = {
                 ...calculatorParams,
                 ...{ selectedService: value }

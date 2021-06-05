@@ -1,7 +1,7 @@
 import React from 'react'
 import Banner from './Banner'
 import TwentyYearsOfExperience from './TwentyYearsOfExperience'
-// import WhyDestanNakliyat from './WhyDestanNakliyat'
+import WhyDestanNakliyat from './WhyDestanNakliyat'
 import MovingProcess from './MovingProcess'
 import Intercity from './Intercity'
 import PopularServices from './PopularServices'
@@ -13,7 +13,7 @@ import Testimonials from './Testimonials'
 const HomePage = () => (
   <>
     <Banner />
-    {/* <WhyDestanNakliyat /> */}
+    <WhyDestanNakliyat />
     <TwentyYearsOfExperience />
     <MovingProcess />
     <Intercity />

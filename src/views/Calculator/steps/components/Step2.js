@@ -1,20 +1,22 @@
 import React from 'react'
 import RadioButton from 'components/RadioButton'
-import oldHouseCondition from '../oldHouseCondition'
+import config from 'common/config'
 
 const Step2 = ({ calculatorParams, setCalculatorParams }) =>
-  oldHouseCondition.map((houseCondition) => (
+  config.houseCondition.map((houseCondition) => (
     <RadioButton
-      checked={houseCondition === calculatorParams.oldHouseCondition}
+      checked={
+        houseCondition.label === calculatorParams.oldHouseCondition.label
+      }
       onChange={() =>
         setCalculatorParams({
           ...calculatorParams,
           ...{ oldHouseCondition: houseCondition }
         })
       }
-      id={houseCondition}
-      key={houseCondition}
-      label={houseCondition}
+      id={houseCondition.label}
+      key={houseCondition.label}
+      label={houseCondition.label}
       name="oldHouseCondition"
     />
   ))

@@ -1,17 +1,18 @@
 import DatePicker from 'components/DatePicker'
 import RadioButton from 'components/RadioButton'
 import React, { useState } from 'react'
-import dateOfMoving from '../dateOfMoving'
+import config from 'common/config'
 
 const Step9 = ({ setCalculatorParams, calculatorParams }) => {
   const [startDate, setStartDate] = useState(calculatorParams.dateOfMoving.date)
   return (
     <>
-      {dateOfMoving.map((movingDate) => (
+      {config.dateOfMoving.map((movingDate) => (
         <>
           <RadioButton
             checked={
-              movingDate === calculatorParams.dateOfMoving.selectedOption
+              movingDate.label ===
+              calculatorParams.dateOfMoving.selectedOption.label
             }
             onChange={() =>
               setCalculatorParams({
@@ -24,12 +25,12 @@ const Step9 = ({ setCalculatorParams, calculatorParams }) => {
                 }
               })
             }
-            id={movingDate}
-            key={movingDate}
-            label={movingDate}
+            id={movingDate.label}
+            key={movingDate.label}
+            label={movingDate.label}
             name="packaging"
           />
-          {movingDate === dateOfMoving[0] && (
+          {movingDate === config.dateOfMoving[0] && (
             <DatePicker
               selected={startDate}
               onChange={(date) => {

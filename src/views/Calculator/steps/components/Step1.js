@@ -1,20 +1,20 @@
 import React from 'react'
 import RadioButton from 'components/RadioButton'
-import sizeOfMoving from '../sizeOfMoving'
+import config from 'common/config'
 
 const Step1 = ({ calculatorParams, setCalculatorParams }) =>
-  sizeOfMoving.map((movingSize) => (
+  config.sizeOfMoving.map((movingSize) => (
     <RadioButton
-      checked={movingSize === calculatorParams.sizeOfMoving}
+      checked={movingSize.label === calculatorParams.sizeOfMoving.label}
       onChange={() =>
         setCalculatorParams({
           ...calculatorParams,
           ...{ sizeOfMoving: movingSize }
         })
       }
-      id={movingSize}
-      key={movingSize}
-      label={movingSize}
+      id={movingSize.label}
+      key={movingSize.label}
+      label={movingSize.label}
       name="movingSize"
     />
   ))

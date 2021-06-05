@@ -1,20 +1,20 @@
 import RadioButton from 'components/RadioButton'
 import React from 'react'
-import packaging from '../packaging'
+import config from 'common/config'
 
 const Step4 = ({ calculatorParams, setCalculatorParams }) =>
-  packaging.map((pack) => (
+  config.packaging.map((pack) => (
     <RadioButton
-      checked={pack === calculatorParams.packaging}
+      checked={pack.label === calculatorParams.packaging.label}
       onChange={() =>
         setCalculatorParams({
           ...calculatorParams,
           ...{ packaging: pack }
         })
       }
-      id={pack}
-      key={pack}
-      label={pack}
+      id={pack.label}
+      key={pack.label}
+      label={pack.label}
       name="packaging"
     />
   ))

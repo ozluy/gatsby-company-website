@@ -122,6 +122,11 @@ const Layout = ({ children }) => {
         }
       })}`}
         </script>
+
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmltmm1GIjMZ69h1COEjHNAu6R98p-p04&callback=initMap&libraries=&v=weekly"
+          async
+        />
       </ParallaxProvider>
     </ThemeProvider>
   )
