@@ -42,15 +42,26 @@ const h1Styles = css`
   font-size: ${({ theme }) => theme.typography.h1};
   font-weight: ${({ theme }) => theme.fontWeight.semibold};
   letter-spacing: -2px;
+
+  ${media.tablet`
+font-size: 36px};
+  `}
 `
 
 const h2Styles = css`
   font-size: ${({ theme }) => theme.typography.h2};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+
+  ${media.tablet`
+font-size: 32px};
+  `}
 `
 const h3Styles = css`
   font-size: ${({ theme }) => theme.typography.h3};
   font-weight: ${({ theme }) => theme.fontWeight.bold};
+  ${media.tablet`
+font-size: 28px};
+  `}
 `
 const h4Styles = css`
   font-size: ${({ theme }) => theme.typography.headline};

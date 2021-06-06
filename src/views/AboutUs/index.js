@@ -11,6 +11,7 @@ import {
   Img,
   Section
 } from 'components/CoreElements'
+import SEO from 'components/Seo'
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { Helmet } from 'react-helmet'
@@ -22,9 +23,14 @@ const AboutUsPage = () => {
   const { white } = theme.colors
   const {
     allGraphCmsPage,
+    graphCmsSeoPage,
     allGraphCmsTasidigimizKamuKurumlari
   } = useStaticQuery(graphql`
     {
+      graphCmsSeoPage(slug: { eq: "hakkimizda" }) {
+        title
+        metaDescription
+      }
       allGraphCmsTasidigimizKamuKurumlari {
         nodes {
           title
@@ -55,9 +61,10 @@ const AboutUsPage = () => {
     header,
     asset1
   } = allGraphCmsPage.nodes[0]
-
+  const { metaTitle, metaDescription } = graphCmsSeoPage
   return (
     <>
+      <SEO title={metaTitle} description={metaDescription} />
       <Helmet>
         <style>
           {`          

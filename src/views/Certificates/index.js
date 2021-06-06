@@ -1,6 +1,7 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import Container from 'components/Container'
+import SEO from 'components/Seo'
 import {
   Div,
   H1,
@@ -16,8 +17,12 @@ import { Banner, AssetContent, TextContent } from './styled'
 import bannerImage from './sertifikalarimiz_banner.svg'
 
 const CertificatesPage = () => {
-  const { allGraphCmsPage } = useStaticQuery(graphql`
+  const { allGraphCmsPage, graphCmsSeoPage } = useStaticQuery(graphql`
     {
+      graphCmsSeoPage(slug: { eq: "sertifikalarimiz" }) {
+        title
+        metaDescription
+      }
       allGraphCmsPage(
         filter: { remoteId: { eq: "ckmj4nw8wcx0i0b03nx1gkrph" } }
       ) {
@@ -46,8 +51,11 @@ const CertificatesPage = () => {
     asset2
   } = allGraphCmsPage.nodes[0]
 
+  const { metaTitle, metaDescription } = graphCmsSeoPage
+
   return (
     <>
+      <SEO title={metaTitle} description={metaDescription} />
       <Section p="0 0 0 0">
         <Container>
           <Banner>

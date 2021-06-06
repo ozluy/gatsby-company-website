@@ -156,7 +156,8 @@ const Footer = (props) => {
       { url: '/iletisim', title: 'Bize Ulaşın' },
       { url: '/hesap-makinesi', title: 'Hesap Makinesi' },
       { url: '/hakkimizda', title: 'Hakkımızda' },
-      { url: '/sertifikalarimiz', title: 'Sertifikalarımız' }
+      { url: '/sertifikalarimiz', title: 'Sertifikalarımız' },
+      { url: '/haberler-ve-gonderiler', title: 'Haberler ve Gönderiler' }
     ]
   ]
 

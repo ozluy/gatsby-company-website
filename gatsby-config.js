@@ -6,7 +6,8 @@ module.exports = {
     titleTemplate: '%s',
     description: 'Profesyonel Ev Ofis Nakliyatı',
     url: 'https://destannakliyat.com.tr',
-    image: '/images/logo.jpg'
+    image: '/images/logo.jpg',
+    twitterUsername: '@destannakliyat'
   },
   plugins: [
     {

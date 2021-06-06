@@ -5,6 +5,7 @@ import FAQSection from 'components/FAQ'
 import { Flex, H1, Img, Section } from 'components/CoreElements'
 import Animator from 'components/Animator'
 import config from 'common/config'
+import SEO from 'components/Seo'
 import imageSources from './img'
 import Steps from './steps'
 
@@ -37,8 +38,16 @@ const CalculatorPage = ({ location }) => {
     fromNeighborhoodsList: [],
     toNeighborhoodsList: []
   })
-  const { allGraphCmsService, allGraphCmsSehirler } = useStaticQuery(graphql`
+  const {
+    graphCmsSeoPage,
+    allGraphCmsService,
+    allGraphCmsSehirler
+  } = useStaticQuery(graphql`
     {
+      graphCmsSeoPage(slug: { eq: "hesap-makinesi" }) {
+        title
+        metaDescription
+      }
       allGraphCmsService {
         nodes {
           id
@@ -56,8 +65,10 @@ const CalculatorPage = ({ location }) => {
   const services = allGraphCmsService.nodes
   const { citiesInTurkey } = allGraphCmsSehirler.nodes[0]
 
+  const { metaTitle, metaDescription } = graphCmsSeoPage
   return (
     <>
+      <SEO title={metaTitle} description={metaDescription} />
       <Section p="100px 0 0 0">
         <Container>
           <Animator customConfig={{ origin: 'left' }} component={H1} mb="40px">

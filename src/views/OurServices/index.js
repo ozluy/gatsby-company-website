@@ -11,6 +11,7 @@ import {
   Paragraph,
   RicTextContent
 } from 'components/CoreElements'
+import SEO from 'components/Seo'
 import Container from 'components/Container'
 import Dropdown from 'components/Dropdown'
 import { ButtonWithArrow } from 'components/Button'
@@ -39,9 +40,14 @@ const OurServicesPage = () => {
   const {
     allGraphCmsService,
     allGraphCmsSehirler,
-    allGraphCmsServicesCategory
+    allGraphCmsServicesCategory,
+    graphCmsSeoPage
   } = useStaticQuery(graphql`
     {
+      graphCmsSeoPage(slug: { eq: "hizmetlerimiz" }) {
+        title
+        metaDescription
+      }
       allGraphCmsService {
         nodes {
           id
@@ -72,6 +78,8 @@ const OurServicesPage = () => {
       }
     }
   `)
+
+  const { title: metaTitle, metaDescription } = graphCmsSeoPage
   const allServices = allGraphCmsService.nodes
   const allServiceCategories = allGraphCmsServicesCategory.nodes.map(
     ({ title, relatedEnum }) => {
@@ -85,6 +93,7 @@ const OurServicesPage = () => {
   const { citiesInTurkey } = allGraphCmsSehirler.nodes[0]
   return (
     <StyledSection>
+      <SEO title={metaTitle} description={metaDescription} />
       <Container>
         <Animator
           component={Headline}
