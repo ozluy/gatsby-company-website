@@ -45,13 +45,20 @@ const PostDetail = ({ location }) => {
     }
   `)
 
+  const blogPost = allGraphCmsBlogPost.nodes.find(
+    ({ slug }) => slug === postSlug
+  )
+
+  if (!blogPost) {
+    return null
+  }
   const {
     title,
     content: { html },
     blogType,
     blogAuthor,
     bannerPhoto
-  } = allGraphCmsBlogPost.nodes.find(({ slug }) => slug === postSlug)
+  } = blogPost
 
   return (
     <Section>
